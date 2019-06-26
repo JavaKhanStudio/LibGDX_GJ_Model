@@ -17,7 +17,6 @@ public class GVars_Debug
 		collisionDebug = true ;
 		soundDebug = true ; 
 		coreInformationDebug = true ;
-		GVars_Debug.shapeDebugRenderer = new ShapeRenderer() ;
 	}
 	
 	public static void desactivateDebug()
@@ -25,7 +24,6 @@ public class GVars_Debug
 		collisionDebug = false ;
 		soundDebug = false ; 
 		coreInformationDebug = false ;
-		GVars_Debug.shapeDebugRenderer = null ;
 	}
 	
 	public static void setInFullDebug(boolean b) 

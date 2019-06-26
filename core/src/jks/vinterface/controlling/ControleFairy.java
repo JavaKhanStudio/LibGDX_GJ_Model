@@ -3,9 +3,9 @@ package jks.vinterface.controlling;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 
-import jks.personnage.Enum_AnimState;
-import jks.personnage.SIW_Data;
-import jks.personnage.SpriteModel;
+import jks.personnage.index.Enum_AnimState;
+import jks.personnage.index.SIW_Data;
+import jks.personnage.model.SpriteModel;
 
 public class ControleFairy extends SpriteModel
 {

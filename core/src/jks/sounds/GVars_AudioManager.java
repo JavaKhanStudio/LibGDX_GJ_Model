@@ -22,17 +22,7 @@ public class GVars_AudioManager
 	private static Sound itemPickupSound;
 	private static Sound touchingground;
 
-	private static FileHandle fileHandleToDarkForestMusic = Gdx.files.internal("musics/Music_ForetNoire.wav");
-	private static FileHandle fileHandleToDarkForestEnemyMusic = Gdx.files.internal("musics/Music_ForetNoire_Ennemy.wav");
-	private static FileHandle fileHandleToDarkForestAmbiance = Gdx.files.internal("sounds/Amb_DarkForest_Loop.wav");
-	
-	private static FileHandle fileHandleToMenuHouseMusic = Gdx.files.internal("musics/Music_Menu.wav");
-	
-	private static FileHandle FH_Clairiere_Music = Gdx.files.internal("musics/Music_Clairiere.wav");
-	private static FileHandle FH_Clairiere_Ambiance = Gdx.files.internal("sounds/Amb_Glade_Loop.wav");
-	
-	private static FileHandle FH_ClairWood_Music = Gdx.files.internal("musics/Music_ForetClaire.wav");
-	private static FileHandle FH_ClairWood_Ambiance = Gdx.files.internal("sounds/Amb_LiteForest_Loop.wav");
+	private static FileHandle musicFile = Gdx.files.internal("musics/pagayez.mp3");
 
 	private static Music currentlyRunningMusic;
 	private static Music currentlyRunningMusicSecondary;
@@ -40,7 +30,7 @@ public class GVars_AudioManager
 
 	public static void init() 
 	{
-		PreLoadAllSounds();
+		
 	}
 
 	private static void PreLoadAllSounds()
@@ -123,64 +113,11 @@ public class GVars_AudioManager
 		
 		switch (whichOne) 
 		{
-			case DarkForest:
+			case MUSIC:
 				if (currentlyRunningMusic == null) 
 				{
-					currentlyRunningMusic = Gdx.audio.newMusic(fileHandleToDarkForestMusic);
-					currentlyRunningMusic.setLooping(true);
-					currentlyRunningMusic.play();
-				}
-				if (currentlyRunningAmbiance == null) 
-				{
-					currentlyRunningAmbiance = Gdx.audio.newMusic(fileHandleToDarkForestAmbiance);
-					currentlyRunningAmbiance.setLooping(true);
-					currentlyRunningAmbiance.play();
-				}
-	
-				if (currentlyRunningMusicSecondary == null) 
-				{
-					currentlyRunningMusicSecondary = Gdx.audio.newMusic(fileHandleToDarkForestEnemyMusic);
-					currentlyRunningMusicSecondary.setLooping(true);
-					currentlyRunningMusicSecondary.play();
-				}
-	
-				break;
-			
-			case Glade : 
-				if (currentlyRunningMusic == null) 
-				{
-					currentlyRunningMusic = Gdx.audio.newMusic(FH_Clairiere_Music);
-					currentlyRunningMusic.setLooping(true);
-					currentlyRunningMusic.play();
-				}
-				if (currentlyRunningAmbiance == null) 
-				{
-					currentlyRunningAmbiance = Gdx.audio.newMusic(FH_Clairiere_Ambiance);
-					currentlyRunningAmbiance.setLooping(true);
-					currentlyRunningAmbiance.play();
-				}
-				break ; 
-				
-			case ClaireWood : 
-				if (currentlyRunningMusic == null) 
-				{
-					currentlyRunningMusic = Gdx.audio.newMusic(FH_ClairWood_Music);
-					currentlyRunningMusic.setLooping(true);
-					currentlyRunningMusic.play();
-				}
-				if (currentlyRunningAmbiance == null) 
-				{
-					currentlyRunningAmbiance = Gdx.audio.newMusic(FH_ClairWood_Ambiance);
-					currentlyRunningAmbiance.setLooping(true);
-					currentlyRunningAmbiance.play();
-				}
-				break ; 
-				
-			case Menu_House:
-				if (currentlyRunningMusic == null) 
-				{
-					currentlyRunningMusic = Gdx.audio.newMusic(fileHandleToMenuHouseMusic);
-					currentlyRunningMusic.setLooping(true);
+					currentlyRunningMusic = Gdx.audio.newMusic(musicFile);
+					currentlyRunningMusic.setLooping(false);
 					currentlyRunningMusic.play();
 				}
 				break;

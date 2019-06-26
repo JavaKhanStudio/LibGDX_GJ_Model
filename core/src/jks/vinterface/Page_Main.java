@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -18,8 +17,6 @@ import jks.sounds.GVars_AudioManager;
 import jks.tools.Vector2Int;
 import jks.vars.GVars_Heart;
 import jks.vinterface.controlling.ControllableInterface;
-import jks.vinterface.overlay.OverlayCredit;
-import jks.vue.Utils_View;
 import jks.vue.models.Vue_Game;
 
 public class Page_Main extends Table implements ControllableInterface
@@ -42,14 +39,13 @@ public class Page_Main extends Table implements ControllableInterface
 	public ImageButton start ;
 	public ImageButton credit ;
 	public ImageButton quit ;   	
-	
-	public Image logo ;
+
 	
 	
 	public Page_Main()
 	{
 		this.defaults().space(25);
-		this.setFillParent(true);
+		this.setFillParent(true) ;
 		this.setTransform(false);
 		
 		buttonX = Gdx.graphics.getWidth()/8.5f ;
@@ -57,25 +53,21 @@ public class Page_Main extends Table implements ControllableInterface
 		decalY = 0 ;
 		decalX = buttonX * 0.8f ; 
 		
-		start = new ImageButton(Index_Interface.menuPrincipale_jouer) ; 
+		start = new ImageButton(GVars_Interface.baseSkin) ; 
 		start.setSize(buttonX, buttonY);
 		start.setPosition(Gdx.graphics.getWidth() - buttonX - decalX, (buttonY + decalY) * 1f );
 		
-		credit = new ImageButton(Index_Interface.menuPrincipale_jouer) ; 
+		credit = new ImageButton(GVars_Interface.baseSkin) ; 
 		credit.setSize(buttonX, buttonY);
 		credit.setPosition(Gdx.graphics.getWidth() - buttonX - decalX, (buttonY + decalY) * 1f );
 		
-		quit =  new ImageButton(Index_Interface.menuPrincipale_quitter) ;	
+		quit =  new ImageButton(GVars_Interface.baseSkin) ;	
 		quit.setSize(buttonX, buttonY);
 		quit.setPosition(Gdx.graphics.getWidth() - buttonX - decalX, (buttonY + decalY) * 0f );
 		
-		logo = new Image(Index_Interface.menuLogo) ;
-		logo.setSize(Gdx.graphics.getWidth()/4.5f, Gdx.graphics.getHeight()/4.5f);
-		logo.setPosition(Gdx.graphics.getWidth() - logo.getWidth() -  decalX/3, Gdx.graphics.getHeight() - logo.getHeight() - decalX/3);
 		
 		GVars_Interface.mainInterface.addActor(start);
 		GVars_Interface.mainInterface.addActor(quit);
-		GVars_Interface.mainInterface.addActor(logo);
 		events() ;
 		GVars_Interface.activedInterface(this);
 	}
@@ -109,14 +101,6 @@ public class Page_Main extends Table implements ControllableInterface
 		
 		});
 		
-		credit.addListener(new InputListener()
-		{
-			public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) 
-	        {
-				Utils_View.setOverlay(new OverlayCredit());
-				return true;
-			}
-		});
 		
 		quit.addListener(new InputListener()
 		{

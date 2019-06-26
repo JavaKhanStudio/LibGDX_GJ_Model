@@ -1,8 +1,11 @@
 package jks.camera;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import static jks.vars.GVars_Heart.* ; 
 
 public class GVars_Camera 
 {
@@ -22,13 +25,23 @@ public class GVars_Camera
 	
 	public static boolean isXAmovible = true;
 	public static boolean isYAmovible = false;
+	public static float screenMovementSpeed = 7.5f;
+	
+	public static float worldMutiplier = 2f ;
 	
 	public static void init()
 	{
 		camera = new OrthographicCamera();
-//		camera.setToOrtho(false, sizeCamCaseX, sizeCamCaseY);
+		staticBatch = new SpriteBatch();
+//		camera.setToOrtho(false, 100, 100);
+//		camera.setToOrtho(false, 320/PPM, 240/PPM);
+//		camera.setToOrtho(false, Gdx.graphics.getWidth()/PPM, Gdx.graphics.getHeight()/PPM);
+		camera.setToOrtho(false, Gdx.graphics.getWidth() * GVars_Camera.worldMutiplier, Gdx.graphics.getHeight() * GVars_Camera.worldMutiplier);
 		
 		
 	}
+
+
+	
 	
 }

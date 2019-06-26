@@ -1,20 +1,15 @@
 package jks.input;
 
-import static jks.input.GVars_Inputs.*;
-import static jks.input.GVars_Inputs.jumpPressed;
+import static jks.input.GVars_Controller.getPlayer;
 
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.controllers.ControllerListener;
-import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.controllers.PovDirection;
 import com.badlogic.gdx.math.Vector3;
 
 import jks.debug.GVars_Debug;
 import jks.vars.GVars_Game;
-import jks.vars.GVars_Heart;
-import jks.vinterface.GVars_Interface;
-import jks.vinterface.controlling.Utils_Controllable;
+import jks.vars.GVars_Heart; 
 
 public class IKM_Game_XBoxController implements ControllerListener
 {
@@ -24,7 +19,6 @@ public class IKM_Game_XBoxController implements ControllerListener
 	{
 		if(GVars_Debug.coreInformationDebug)
 			System.out.println("Connecte controller");
-		
 	}
 
 	@Override
@@ -32,20 +26,30 @@ public class IKM_Game_XBoxController implements ControllerListener
 	{
 		if(GVars_Debug.coreInformationDebug)
 			System.out.println("Disconnected controller");
-		
-		GVars_Heart.togglePauseMenu();
 	}
 
 	@Override
 	public boolean buttonDown(Controller controller, int buttonCode) 
 	{
+		Player_Inputs inputing = getPlayer(controller) ; 
+		if(inputing == null)
+		{
+			GVars_Game.addPlayer(controller);
+			return false; 
+		}
+
 		switch (buttonCode) 
 		{
 			case KeysXbox.A :
-				jumpPressed = true ; 
+				inputing.jumpPressed = true ; 
+				return true ;
+			case KeysXbox.B :
+				inputing.powerLeft = true ; 
+				return true ;
+			case KeysXbox.X :
+				inputing.powerRight = true ; 
 				return true ;
 			case KeysXbox.START :
-				GVars_Heart.togglePauseMenu();
 				return true ;
 			case KeysXbox.BACK :
 				if(GVars_Debug.coreInformationDebug)
@@ -54,6 +58,7 @@ public class IKM_Game_XBoxController implements ControllerListener
 				}
 				return true ;
 		}
+		
 		return false;
 	}
 
@@ -62,7 +67,7 @@ public class IKM_Game_XBoxController implements ControllerListener
 	{
 		if(GVars_Game.inCinematic)
 			return true; 
-		
+		/*
 		switch (buttonCode) 
 		{
 			case KeysXbox.A :
@@ -72,12 +77,20 @@ public class IKM_Game_XBoxController implements ControllerListener
 			case KeysXbox.BACK :
 				return true ;
 		}
-		return false;
+		*/
+		return false;	
 	}
 	
 	@Override
 	public boolean axisMoved(Controller controller, int axisCode, float value) 
-	{return Utils_Controller.axisController(axisCode,value) ;}
+	{
+		Player_Inputs inputing = getPlayer(controller) ; 
+		
+		if(inputing == null)
+		{return false;}
+		
+		return Utils_Controller.axisController(axisCode,value,inputing) ;
+	}
 
 	@Override
 	public boolean povMoved(Controller controller, int povCode, PovDirection value) 

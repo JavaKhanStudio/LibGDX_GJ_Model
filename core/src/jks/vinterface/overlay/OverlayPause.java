@@ -13,8 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import jks.tools.Vector2Int;
 import jks.vars.GVars_Heart;
 import jks.vinterface.GVars_Interface;
-import jks.vinterface.Index_Interface;
-import jks.vinterface.Utils_Interface;
 import jks.vue.models.Vue_Enter;
 
 public class OverlayPause extends OverlayModel
@@ -31,14 +29,14 @@ public class OverlayPause extends OverlayModel
 		Image fond = new Image(new Texture(Gdx.files.internal("ui/pause/" + "pauseMenu.png"),true));
 		fond.setSize(Gdx.graphics.getWidth()/1.5f, Gdx.graphics.getHeight()/1.25f);
 		fond.setPosition(Gdx.graphics.getWidth()/2 - fond.getWidth()/2, Gdx.graphics.getHeight()/2 - fond.getHeight()/2);
-		Image coupeSonLibelle = new Image(Index_Interface.libelleCoupeSon) ; 
+//		Image coupeSonLibelle = new Image(Index_Interface.libelleCoupeSon) ; 
 		//coupeSonLibelle.setSize(Gdx.graphics.getWidth()/5, Gdx.graphics.getHeight()/10.5f);
 		
 		float xPosition = Gdx.graphics.getWidth() * 0.28f;
 		float yposition = Gdx.graphics.getHeight() / 2.8f;
-		coupeSonLibelle.setPosition(xPosition, yposition);
+//		coupeSonLibelle.setPosition(xPosition, yposition);
 		
-		retour = new ImageButton(Index_Interface.pauseRetour);
+		retour = new ImageButton(GVars_Interface.baseSkin);
 		retour.addListener(new InputListener()
 		{
 			@Override
@@ -49,7 +47,7 @@ public class OverlayPause extends OverlayModel
 	        }
 		}) ;
 		
-		quitter = new ImageButton(Index_Interface.menuPrincipale_quitter);
+		quitter = new ImageButton(GVars_Interface.baseSkin);
 		quitter.addListener(new InputListener()
 		{
 			@Override

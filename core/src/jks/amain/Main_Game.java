@@ -4,10 +4,8 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 
-import jks.camera.GVars_Camera;
-import jks.input.GVars_Inputs;
+import jks.input.Player_Inputs;
 import jks.vars.GVars_Heart;
-import jks.vue.models.Vue_Enter;
 import jks.vue.models.Vue_Game;
 
 public class Main_Game extends ApplicationAdapter 
@@ -17,9 +15,11 @@ public class Main_Game extends ApplicationAdapter
 	@Override
 	public void create () 
 	{
-		GVars_Heart.init();
-		GVars_Heart.changeVue(new Vue_Enter(),true) ;    
-		Gdx.graphics.setVSync(true);
+		GVars_Heart.changeVue(new Vue_Game(),true) ; 
+//		Gdx.graphics.setWindowedMode(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()) ; 
+//		Gdx.graphics.setVSync(true);
+//		Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode()) ; 
+//		Gdx.graphics.setWindowedMode(width, height)
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class Main_Game extends ApplicationAdapter
     
     	if (delta > 0) 
     	{
-    		GVars_Inputs.updateInput_ControllingInterface() ;
+    		Player_Inputs.updateInput_ControllingInterface() ;
     		
     		if(!GVars_Heart.isPaused)
     			GVars_Heart.vue.update(delta);
@@ -56,15 +56,6 @@ public class Main_Game extends ApplicationAdapter
     @Override
 	public void dispose() 
 	{
-    	try
-    	{
-    		System.out.println("EMERGENCY SAVE");
-    	}
-    	catch(Exception e)
-    	{
-    		e.printStackTrace();
-    		System.out.println("faild to emergency save!");
-    	}
-    	
+    
     }
 }

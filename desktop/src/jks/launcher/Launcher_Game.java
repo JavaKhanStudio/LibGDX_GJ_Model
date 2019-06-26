@@ -1,7 +1,5 @@
 package jks.launcher;
 
-import static jks.launcher.settings.GVars_Laucher.taille;
-
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
@@ -28,13 +26,13 @@ public class Launcher_Game
 		new LwjglApplication(new Main_Game(), config);
 	}
 	
-	
+	/*
 	public static void activateGame(LwjglApplicationConfiguration config)
 	{
 		config.width = (int) (16 * taille) ;
 		config.height = (int) (9 * taille) ;
 		new LwjglApplication(new Main_Game(), config);
 	}
-	
+	*/
 	
 }

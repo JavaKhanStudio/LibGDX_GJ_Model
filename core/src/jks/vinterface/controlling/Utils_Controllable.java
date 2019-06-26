@@ -11,7 +11,7 @@ import jks.tools.GlobalTimmer;
 import jks.vars.GVars_Heart;
 import jks.vinterface.GVars_Interface;
 import static jks.vinterface.GVars_Interface.* ; 
-import static jks.input.GVars_Inputs.* ;
+import static jks.input.Player_Inputs.* ;
 
 public class Utils_Controllable 
 {
@@ -34,7 +34,7 @@ public class Utils_Controllable
 	{
 		if(neededTime > GlobalTimmer.getElapse(Enum_Timming.CONTROLLER_MOVE, false))
 			return ;
-			
+		/*	
 		if(leftPressed)
 		{moveX(false) ;}
 		else if(rightPressed)
@@ -44,7 +44,7 @@ public class Utils_Controllable
 		{moveY(true) ; }
 		else if(downPressed)
 		{moveY(false) ; }
-		
+		*/
 		GlobalTimmer.getElapse(Enum_Timming.CONTROLLER_MOVE, true);
 	}
 	

@@ -1,15 +1,15 @@
 package jks.input;
 
-import static jks.input.GVars_Inputs.* ; 
-
 import com.badlogic.gdx.Input.Keys;
+
+import static jks.input.GVars_Controller.getPlayer;
+import static jks.input.GVars_Controller.pcPlayer;
+
 import com.badlogic.gdx.InputAdapter;
 
 import jks.debug.GVars_Debug;
 import jks.vars.GVars_Game;
 import jks.vars.GVars_Heart;
-import jks.vinterface.GVars_Interface;
-import jks.vinterface.controlling.Utils_Controllable;
 
 public class IKM_Game_Keyboard extends InputAdapter 
 {
@@ -17,37 +17,68 @@ public class IKM_Game_Keyboard extends InputAdapter
 		@Override
 		public boolean keyDown (int keycode) 
 		{
-	
+			
+			Player_Inputs inputing = getPlayer(null) ; 
+			if(inputing == null)
+			{
+				GVars_Game.addPlayer();
+				return false; 
+			}
 			
 			switch (keycode) 
 			{
-//				case Keys.W:
-				case Keys.UP:
-				case Keys.SPACE:
-					jumpPressed = true ; 
-					return true;
-//				case Keys.A:
-				case Keys.LEFT:
-					leftPressed = true;
-					return true;
-//				case Keys.D:
-				case Keys.RIGHT:
-					rightPressed = true;
-					return true ; 
-//				case Keys.S :
-				case Keys.DOWN :
-					downPressed = true ;
-					return true;
+				case Keys.SPACE :
+				case Keys.UP :
+					inputing.jumpPressed = true ; 
+					return true ;
+				case Keys.D :
+					inputing.powerLeft = true ; 
+					return true ;
+				case Keys.Q :
+					inputing.powerRight = true ; 
+					return true ;
+				case Keys.LEFT :
+					inputing.leftPressed = true ; 
+					inputing.rightPressed = false ;
+					return true ;
+				case Keys.RIGHT :
+					inputing.rightPressed = true ; 
+					inputing.leftPressed = false ;
+					return true ;
 				case Keys.ESCAPE :
-					GVars_Heart.togglePauseMenu();
-					return true ; 
-				default : 
+					return true ;
+				case Keys.BACKSPACE :
 					if(GVars_Debug.coreInformationDebug)
-						return debuggOptions(keycode) ;
-					else 
-						return false ; 
-				
+					{
+						GVars_Heart.vue.restart();
+					}
+					return true ;	
 			}
+
+			return false ; 
+		}
+		
+		@Override
+		public boolean keyUp (int keycode) 
+		{
+			if(GVars_Game.inCinematic)
+				return true; 
+			
+			Player_Inputs inputing = getPlayer(null) ;  
+			if(inputing == null)
+				return false ; 
+			
+			switch (keycode) 
+			{
+			case Keys.LEFT :
+				inputing.leftPressed = false ; 
+				return true ;
+			case Keys.RIGHT :
+				inputing.rightPressed = false ; 
+				return true ;
+			}
+			
+			return false;
 		}
 		
 		private boolean debuggOptions(int keycode) 
@@ -66,41 +97,5 @@ public class IKM_Game_Keyboard extends InputAdapter
 			
 		}
 
-		@Override
-		public boolean keyUp (int keycode) 
-		{
-			if(GVars_Game.inCinematic)
-				return true; 
-			
-			switch (keycode) 
-			{
-				case Keys.W:
-				case Keys.UP:
-				case Keys.SPACE:
-					jumpPressed = false ; 
-					jumpSupression = true ;
-					return true;
-				case Keys.A:
-				case Keys.LEFT:
-					leftPressed = false;
-					return true;
-				case Keys.D:
-				case Keys.RIGHT:
-					rightPressed = false;
-					return true;
-				case Keys.DOWN :
-				case Keys.S :
-					downPressed = false ;
-					return true ; 
-				case Keys.PLUS : 
-				case Keys.Q : 
-					zoomInPressed = false ;
-					return true ; 
-				case Keys.MINUS : 
-				case Keys.E : 
-					zoomOutPressed = false ;
-					return true ; 
-			}
-			return false;
-		}
+		
 }

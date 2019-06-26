@@ -5,6 +5,9 @@ import static jks.launcher.settings.GVars_Laucher.finalWidth;
 import static jks.launcher.settings.GVars_Laucher.sample;
 import static jks.launcher.settings.GVars_Laucher.tailleTest;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Graphics.DisplayMode;
+import com.badlogic.gdx.Graphics.Monitor;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import jks.vars.FVars_Heart;
@@ -17,14 +20,18 @@ public class Utils_Launcher
 		config.samples = sample; 
 		config.vSyncEnabled = true ;
 		config.resizable = false ;
-		config.useGL30 = true ; 
+		config.useGL30 = false ;
+		config.title = "La chasse galerie" ; 
+		
 	}
 	
 	public static void setFullScreen(LwjglApplicationConfiguration config)
 	{
+
 		config.width = finalWidth ;
 		config.height = finalHeight ;
 		config.fullscreen = true ;
+		
 	}
 	
 	public static void setSideTestScreen(LwjglApplicationConfiguration config)

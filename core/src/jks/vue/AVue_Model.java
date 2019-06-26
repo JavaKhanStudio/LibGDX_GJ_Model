@@ -1,18 +1,16 @@
 package jks.vue;
 
+import static jks.vinterface.GVars_Interface.mainInterface;
+
 import java.util.ArrayList;
 
-import com.badlogic.gdx.graphics.g2d.Batch;
-
-import jks.vinterface.GVars_Interface;
 import jks.vinterface.ToRender;
-import jks.vinterface.overlay.OverlayModel;
-import static jks.vinterface.GVars_Interface.* ; 
+import jks.vinterface.overlay.OverlayModel; 
 
 public abstract class AVue_Model 
 {
 
-	public ArrayList<ToRender> toRender ; 
+	public ArrayList<ToRender> toRender = new ArrayList<ToRender>(); 
 	
 	public OverlayModel overlay ; 
 	public AView_Model_Filter filter ; 

@@ -4,7 +4,11 @@ import java.util.Random;
 
 import com.badlogic.gdx.assets.AssetManager;
 
-import jks.debug.GVars_Debug;
+import jks.camera.GVars_Camera;
+import jks.input.GVars_Controller;
+import jks.parralax.GVars_Parralax;
+import jks.personnage.index.Index_Sprite;
+import jks.physic.Gvars_Physic;
 import jks.sounds.GVars_AudioManager;
 import jks.tools.Enum_Timming;
 import jks.tools.GlobalTimmer;
@@ -22,34 +26,24 @@ public class GVars_Heart
 
 	public static void init() 
 	{
-		if(GVars_Debug.coreInformationDebug)
-			GlobalTimmer.registerTime(Enum_Timming.WHOLE);
-		if(GVars_Debug.coreInformationDebug)
-			GlobalTimmer.registerTime(Enum_Timming.INSTANCE);
-		
 		loadAssets() ; 
-		if(GVars_Debug.coreInformationDebug)
-			GlobalTimmer.getElapse(Enum_Timming.INSTANCE, "Load assets", true);
-	
-		if(GVars_Debug.debugMode)
-			GVars_Debug.setInFullDebug(true) ;
-		
-		if(GVars_Debug.coreInformationDebug)
-			GlobalTimmer.getElapse(Enum_Timming.WHOLE, "", true);
+		GVars_Parralax.init() ; 
+		Gvars_Physic.init(); 
+		GVars_Camera.init();
+		GVars_Interface.init();
+		GVars_Controller.init();
+		GVars_Interface.init();
 		
 		GlobalTimmer.purge() ;
-		GlobalTimmer.registerTime(Enum_Timming.CONTROLLER_MOVE);
 	}
  
 	
 	public static void loadAssets()
 	{
 		GlobalTimmer.registerTime(Enum_Timming.ASSETS);
-		GVars_Interface.init();
-		GlobalTimmer.getElapse(Enum_Timming.ASSETS, "Interface", true);
 		
-//		Index_Sprite.init();
-//		GlobalTimmer.getElapse(Enum_Timming.ASSETS, "Sprite", true);
+		Index_Sprite.init();
+		GlobalTimmer.getElapse(Enum_Timming.ASSETS, "Sprite", true);
 		
 		GVars_AudioManager.init();
 		GlobalTimmer.getElapse(Enum_Timming.ASSETS, "Sounds", true);
