@@ -1,17 +1,15 @@
 package jks.vinterface.controlling;
 
-import com.badlogic.gdx.Input.Keys;
+import static jks.vinterface.GVars_Interface.buttonMap;
+import static jks.vinterface.GVars_Interface.cursorPos;
 
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 
-import jks.debug.GVars_Debug;
 import jks.input.KeysXbox;
 import jks.tools.Enum_Timming;
 import jks.tools.GlobalTimmer;
-import jks.vars.GVars_Heart;
 import jks.vinterface.GVars_Interface;
-import static jks.vinterface.GVars_Interface.* ; 
-import static jks.input.Player_Inputs.* ;
 
 public class Utils_Controllable 
 {

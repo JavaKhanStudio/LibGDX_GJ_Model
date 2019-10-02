@@ -1,13 +1,10 @@
 package jks.input;
 
-import com.badlogic.gdx.Input.Keys;
-
 import static jks.input.GVars_Controller.getPlayer;
-import static jks.input.GVars_Controller.pcPlayer;
 
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
 
-import jks.debug.GVars_Debug;
 import jks.vars.GVars_Game;
 import jks.vars.GVars_Heart;
 

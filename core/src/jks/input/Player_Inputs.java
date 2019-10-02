@@ -1,8 +1,5 @@
 package jks.input;
 
-import jks.vinterface.GVars_Interface;
-import jks.vinterface.controlling.Utils_Controllable; 
-
 public class Player_Inputs 
 {
 	public boolean 

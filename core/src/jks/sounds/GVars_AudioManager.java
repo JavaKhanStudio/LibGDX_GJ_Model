@@ -1,6 +1,7 @@
 package jks.sounds;
 
-import static jks.sounds.GVars_Audio.*;
+import static jks.sounds.GVars_Audio.volume;
+import static jks.sounds.GVars_Audio.volumeFootStep;
 
 import java.util.ArrayList;
 
