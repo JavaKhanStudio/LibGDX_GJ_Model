@@ -20,8 +20,8 @@ allprojects {
 
     version = '1.0'
     ext {
-        appName = "ChasseGalerie"
-        gdxVersion = '1.9.8'
+        appName = "generic"
+        gdxVersion = '1.9.ç'
         roboVMVersion = '2.3.5'
         box2DLightsVersion = '1.4'
         ashleyVersion = '1.7.0'

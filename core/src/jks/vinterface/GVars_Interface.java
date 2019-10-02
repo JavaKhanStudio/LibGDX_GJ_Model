@@ -10,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
-import jks.personnage.ScoreLabel;
 import jks.tools.Vector2Int;
 import jks.vinterface.controlling.ControllableInterface;
 import jks.vinterface.controlling.Utils_Controllable;
@@ -51,7 +50,6 @@ public class GVars_Interface implements Runnable
 		bottomScore.setPosition(
 				(Gdx.graphics.getWidth() - bottomScore.getWidth())/2, 
 				bottomScore.getHeight()/8);
-		ScoreLabel.buttonSize = bottomScore.getHeight()/3f ; 
 		
 		mainInterface.addActor(bottomScore);
 	}

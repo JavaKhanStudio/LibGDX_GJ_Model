@@ -7,8 +7,6 @@ public class Utils_Controller
 	static float minForceMoveX = 0.3f;
 	static float minForceMoveY = 0.2f;
 	
-	
-	
 	public static boolean axisController(int axisCode, float value, Player_Inputs player)
 	{
 		if(GVars_Game.inCinematic)

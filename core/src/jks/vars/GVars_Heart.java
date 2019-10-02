@@ -6,9 +6,6 @@ import com.badlogic.gdx.assets.AssetManager;
 
 import jks.camera.GVars_Camera;
 import jks.input.GVars_Controller;
-import jks.parralax.GVars_Parralax;
-import jks.personnage.index.Index_Sprite;
-import jks.physic.Gvars_Physic;
 import jks.sounds.GVars_AudioManager;
 import jks.tools.Enum_Timming;
 import jks.tools.GlobalTimmer;
@@ -27,8 +24,7 @@ public class GVars_Heart
 	public static void init() 
 	{
 		loadAssets() ; 
-		GVars_Parralax.init() ; 
-		Gvars_Physic.init(); 
+	
 		GVars_Camera.init();
 		GVars_Interface.init();
 		GVars_Controller.init();
@@ -42,7 +38,7 @@ public class GVars_Heart
 	{
 		GlobalTimmer.registerTime(Enum_Timming.ASSETS);
 		
-		Index_Sprite.init();
+//		Index_Sprite.init();
 		GlobalTimmer.getElapse(Enum_Timming.ASSETS, "Sprite", true);
 		
 		GVars_AudioManager.init();

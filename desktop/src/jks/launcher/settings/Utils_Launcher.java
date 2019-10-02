@@ -5,9 +5,6 @@ import static jks.launcher.settings.GVars_Laucher.finalWidth;
 import static jks.launcher.settings.GVars_Laucher.sample;
 import static jks.launcher.settings.GVars_Laucher.tailleTest;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics.DisplayMode;
-import com.badlogic.gdx.Graphics.Monitor;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import jks.vars.FVars_Heart;

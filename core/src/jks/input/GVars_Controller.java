@@ -4,8 +4,6 @@ import java.util.HashMap;
 
 import com.badlogic.gdx.controllers.Controller;
 
-import jks.personnage.index.SIW_Data;
-
 public class GVars_Controller 
 {
 	public static HashMap<Controller,Player_Inputs> playerList ; 

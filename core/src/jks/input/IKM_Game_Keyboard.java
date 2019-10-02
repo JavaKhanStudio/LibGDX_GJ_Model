@@ -21,7 +21,6 @@ public class IKM_Game_Keyboard extends InputAdapter
 			Player_Inputs inputing = getPlayer(null) ; 
 			if(inputing == null)
 			{
-				GVars_Game.addPlayer();
 				return false; 
 			}
 			
@@ -48,10 +47,6 @@ public class IKM_Game_Keyboard extends InputAdapter
 				case Keys.ESCAPE :
 					return true ;
 				case Keys.BACKSPACE :
-					if(GVars_Debug.coreInformationDebug)
-					{
-						GVars_Heart.vue.restart();
-					}
 					return true ;	
 			}
 
@@ -65,6 +60,7 @@ public class IKM_Game_Keyboard extends InputAdapter
 				return true; 
 			
 			Player_Inputs inputing = getPlayer(null) ;  
+			
 			if(inputing == null)
 				return false ; 
 			
@@ -92,10 +88,7 @@ public class IKM_Game_Keyboard extends InputAdapter
 				default :
 					System.out.println("Nothing found for " + keycode);
 					return false ; 
-			}
+			}	
 			
-			
-		}
-
-		
+		}		
 }

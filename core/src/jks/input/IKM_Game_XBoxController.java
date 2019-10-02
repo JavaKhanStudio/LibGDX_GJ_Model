@@ -34,7 +34,6 @@ public class IKM_Game_XBoxController implements ControllerListener
 		Player_Inputs inputing = getPlayer(controller) ; 
 		if(inputing == null)
 		{
-			GVars_Game.addPlayer(controller);
 			return false; 
 		}
 
