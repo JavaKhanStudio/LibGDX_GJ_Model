@@ -44,7 +44,7 @@ public class Vue_Game extends AVue_Model
     	Gdx.input.setInputProcessor(new InputMultiplexer(GVars_Interface.mainInterface, new IKM_Game_Keyboard()));
 		Controllers.clearListeners();
 		Controllers.addListener(new IKM_Game_XBoxController()) ; 
-		GVars_AudioManager.PlayMusic(Enum_Music.MUSIC);
+		GVars_AudioManager.PlayMusic(Enum_Music.GAME);
 		
     }
 
@@ -87,7 +87,6 @@ public class Vue_Game extends AVue_Model
 	@Override
 	public void update(float delta) 
 	{
-		
 		cleanUp() ; 
     	
     	GVars_Controller.act(delta);

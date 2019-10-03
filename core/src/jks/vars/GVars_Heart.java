@@ -20,6 +20,7 @@ public class GVars_Heart
 	public static AVue_Model vue;
 	public static final Random random = new Random();
 	public static AssetManager assetManager = new AssetManager();
+	public static boolean isFullScreen = false;
 
 	public static void init() 
 	{

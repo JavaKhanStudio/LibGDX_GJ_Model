@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -40,36 +41,57 @@ public class Page_Main extends Table implements ControllableInterface
 	public ImageButton credit ;
 	public ImageButton quit ;   	
 
-	
+	public Image logo ;
 	
 	public Page_Main()
 	{
+		init() ; 
+		resize(); 
+		buildEvents() ;
+		
+
+		this.add(start) ;
+		this.add(credit) ;
+		this.add(quit) ;
+		this.add(logo); 
+//		GVars_Interface.mainInterface.addActor(start);
+//		GVars_Interface.mainInterface.addActor(credit);
+//		GVars_Interface.mainInterface.addActor(quit);
+		
+		GVars_Interface.activedInterface(this);
+	}
+	
+	private void init()
+	{
+		start = new ImageButton(Index_Interface.mainMenus_PlayButton) ; 
+		credit = new ImageButton(Index_Interface.mainMenus_CreditButton) ; 
+		quit =  new ImageButton(Index_Interface.mainMenus_Quit) ;	
+		logo = new Image(Index_Interface.mainMenus_Logo) ;
+	}
+
+	private void resize() 
+	{
+		this.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		this.defaults().space(25);
 		this.setFillParent(true) ;
 		this.setTransform(false);
-		
 		buttonX = Gdx.graphics.getWidth()/8.5f ;
 		buttonY = Gdx.graphics.getWidth()/9.5f ;
 		decalY = 0 ;
-		decalX = buttonX * 0.8f ; 
+		decalX = buttonX * 0.8f ;
 		
-		start = new ImageButton(GVars_Interface.baseSkin) ; 
 		start.setSize(buttonX, buttonY);
 		start.setPosition(Gdx.graphics.getWidth() - buttonX - decalX, (buttonY + decalY) * 1f );
-		
-		credit = new ImageButton(GVars_Interface.baseSkin) ; 
+			
 		credit.setSize(buttonX, buttonY);
 		credit.setPosition(Gdx.graphics.getWidth() - buttonX - decalX, (buttonY + decalY) * 1f );
 		
-		quit =  new ImageButton(GVars_Interface.baseSkin) ;	
 		quit.setSize(buttonX, buttonY);
 		quit.setPosition(Gdx.graphics.getWidth() - buttonX - decalX, (buttonY + decalY) * 0f );
 		
+		logo.setSize(Gdx.graphics.getWidth()/4.5f, Gdx.graphics.getHeight()/4.5f);
+		logo.setPosition(Gdx.graphics.getWidth() - logo.getWidth() -  decalX/3, Gdx.graphics.getHeight() - logo.getHeight() - decalX/3);
 		
-		GVars_Interface.mainInterface.addActor(start);
-		GVars_Interface.mainInterface.addActor(quit);
-		events() ;
-		GVars_Interface.activedInterface(this);
 	}
 	
 	Button buildButton (String text, boolean toggle)
@@ -88,7 +110,7 @@ public class Page_Main extends Table implements ControllableInterface
 	}
 	
 	
-	private void events() 
+	private void buildEvents() 
 	{
 		start.addListener(new InputListener()
 		{

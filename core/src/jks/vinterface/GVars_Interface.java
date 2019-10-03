@@ -29,20 +29,13 @@ public class GVars_Interface implements Runnable
 	public static ArrayList<ArrayList<Button>> buttonMap ;
 	
 	public static Table bottomScore ; 
-	
-	public static TextureRegionDrawable scoreRegion ;
-	public static TextureRegionDrawable deathRegion ;
 
-	
 	public static void init() 
 	{
-//		baseSkin = Init_UI.loadSkin();
 		baseSkin = new Skin(Gdx.files.internal("skin/freezing-ui.json"));
 		mainInterface = new Stage();
 		Gdx.input.setInputProcessor(mainInterface);
 		
-		scoreRegion = Utils_Interface.buildDrawingRegionTexture("ui/score.png") ;		
-		deathRegion = Utils_Interface.buildDrawingRegionTexture("ui/death.png") ;
 		
 		bottomScore = new Table() ; 
 		bottomScore.setWidth(Gdx.graphics.getWidth() * width);

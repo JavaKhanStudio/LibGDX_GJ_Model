@@ -2,10 +2,13 @@ package jks.amain;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Graphics.DisplayMode;
 import com.badlogic.gdx.graphics.GL20;
 
 import jks.input.Player_Inputs;
 import jks.vars.GVars_Heart;
+import jks.vinterface.GVars_Interface;
+import jks.vue.models.Vue_Enter;
 import jks.vue.models.Vue_Game;
 
 public class Main_Game extends ApplicationAdapter 
@@ -15,7 +18,16 @@ public class Main_Game extends ApplicationAdapter
 	@Override
 	public void create () 
 	{
-		GVars_Heart.changeVue(new Vue_Game(),true) ; 
+		GVars_Interface.init() ; 
+		GVars_Heart.changeVue(new Vue_Enter(),true) ; 
+
+		if(GVars_Heart.isFullScreen)
+		{
+			DisplayMode mode = Gdx.graphics.getDisplayMode();
+			Gdx.graphics.setFullscreenMode(mode);
+		}
+	
+		
 //		Gdx.graphics.setWindowedMode(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()) ; 
 //		Gdx.graphics.setVSync(true);
 //		Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode()) ; 

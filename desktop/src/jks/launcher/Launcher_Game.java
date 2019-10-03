@@ -2,6 +2,7 @@ package jks.launcher;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 
 import jks.amain.Main_Game;
 import jks.debug.GVars_Debug;
@@ -13,17 +14,17 @@ public class Launcher_Game
 
 	public static void main (String[] arg) 
 	{
-		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		Utils_Launcher.basicConfig(config) ; 
 		finalModelGame(config);
 	}
 	
-	public static void finalModelGame(LwjglApplicationConfiguration config)
+	public static void finalModelGame(Lwjgl3ApplicationConfiguration config)
 	{
 		GVars_Audio.muted = false ;
 		GVars_Debug.debugMode = false;
 		Utils_Launcher.setFullScreen(config);
-		new LwjglApplication(new Main_Game(), config);
+		new Lwjgl3Application(new Main_Game(), config);
 	}
 	
 	/*

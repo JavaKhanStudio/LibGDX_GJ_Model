@@ -41,10 +41,7 @@ public abstract class AVue_Model
 	
 	public void drawInterface()
 	{
-		mainInterface.draw() ;
-		
-			
+		mainInterface.draw() ;		
 	}
-
 	
 }
