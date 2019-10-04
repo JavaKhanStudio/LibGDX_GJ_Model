@@ -58,7 +58,7 @@ public class Page_Main extends Table implements ControllableInterface
 //		GVars_Interface.mainInterface.addActor(credit);
 //		GVars_Interface.mainInterface.addActor(quit);
 		
-		GVars_Interface.activedInterface(this);
+		GVars_Ui.activedInterface(this);
 	}
 	
 	private void init()
@@ -96,12 +96,12 @@ public class Page_Main extends Table implements ControllableInterface
 	
 	Button buildButton (String text, boolean toggle)
 	{
-		Button button = new Button(GVars_Interface.baseSkin);
+		Button button = new Button(GVars_Ui.baseSkin);
 		button.setSize(buttonX, buttonY);
 		button.pad(buttonY,buttonX,buttonY,buttonX);
 		button.setClip(true);
 		
-		Label label = new Label(text,GVars_Interface.baseSkin);
+		Label label = new Label(text,GVars_Ui.baseSkin);
 		
 		label.setAlignment(Align.bottomRight);
 		button.add(label);

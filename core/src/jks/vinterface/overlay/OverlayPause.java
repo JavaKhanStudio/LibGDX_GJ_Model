@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 
 import jks.tools.Vector2Int;
 import jks.vars.GVars_Heart;
-import jks.vinterface.GVars_Interface;
+import jks.vinterface.GVars_Ui;
 import jks.vue.models.Vue_Enter;
 
 public class OverlayPause extends OverlayModel
@@ -23,7 +23,7 @@ public class OverlayPause extends OverlayModel
 	
 	public OverlayPause() 
 	{
-		super("Pause Button" , GVars_Interface.baseSkin) ;
+		super("Pause Button" , GVars_Ui.baseSkin) ;
 		
 //		Image fond = new Image(Index_Interface.menuPause) ; 
 		Image fond = new Image(new Texture(Gdx.files.internal("ui/pause/" + "pauseMenu.png"),true));
@@ -36,7 +36,7 @@ public class OverlayPause extends OverlayModel
 		float yposition = Gdx.graphics.getHeight() / 2.8f;
 //		coupeSonLibelle.setPosition(xPosition, yposition);
 		
-		retour = new ImageButton(GVars_Interface.baseSkin);
+		retour = new ImageButton(GVars_Ui.baseSkin);
 		retour.addListener(new InputListener()
 		{
 			@Override
@@ -47,7 +47,7 @@ public class OverlayPause extends OverlayModel
 	        }
 		}) ;
 		
-		quitter = new ImageButton(GVars_Interface.baseSkin);
+		quitter = new ImageButton(GVars_Ui.baseSkin);
 		quitter.addListener(new InputListener()
 		{
 			@Override

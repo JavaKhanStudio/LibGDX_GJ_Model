@@ -20,7 +20,7 @@ import jks.sounds.GVars_AudioManager;
 import jks.tools2d.parallax.heart.Parallax_Heart;
 import jks.vars.GVars_Game;
 import jks.vars.GVars_Heart;
-import jks.vinterface.GVars_Interface;
+import jks.vinterface.GVars_Ui;
 import jks.vinterface.ToRender;
 import jks.vue.AVue_Model;
 
@@ -41,7 +41,7 @@ public class Vue_Game extends AVue_Model
     	if(GVars_Debug.collisionDebug)
     		debugRenderer = new Box2DDebugRenderer() ; 
     	
-    	Gdx.input.setInputProcessor(new InputMultiplexer(GVars_Interface.mainInterface, new IKM_Game_Keyboard()));
+    	Gdx.input.setInputProcessor(new InputMultiplexer(GVars_Ui.mainUi, new IKM_Game_Keyboard()));
 		Controllers.clearListeners();
 		Controllers.addListener(new IKM_Game_XBoxController()) ; 
 		GVars_AudioManager.PlayMusic(Enum_Music.GAME);

@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 import jks.tools.Vector2Int;
 import jks.vinterface.controlling.ControllableInterface;
@@ -16,11 +15,11 @@ import jks.vinterface.controlling.Utils_Controllable;
 import jks.vinterface.overlay.OverlayPause;
 import jks.vue.Utils_View;
 
-public class GVars_Interface implements Runnable 
+public class GVars_Ui implements Runnable 
 {
 
 	public static Skin baseSkin;
-	public static Stage mainInterface;
+	public static Stage mainUi;
 	public static Table interaction;
 	
 	public static Vector2Int cursorPos ; 
@@ -32,19 +31,10 @@ public class GVars_Interface implements Runnable
 
 	public static void init() 
 	{
-		baseSkin = new Skin(Gdx.files.internal("skin/freezing-ui.json"));
-		mainInterface = new Stage();
-		Gdx.input.setInputProcessor(mainInterface);
+		baseSkin = new Skin(Gdx.files.internal("skins/uis/basic/uiskin.json"));
 		
-		
-		bottomScore = new Table() ; 
-		bottomScore.setWidth(Gdx.graphics.getWidth() * width);
-		bottomScore.setHeight(Gdx.graphics.getHeight() * height);
-		bottomScore.setPosition(
-				(Gdx.graphics.getWidth() - bottomScore.getWidth())/2, 
-				bottomScore.getHeight()/8);
-		
-		mainInterface.addActor(bottomScore);
+		mainUi = new Stage();
+		Gdx.input.setInputProcessor(mainUi);
 	}
 
 	private static float width = 0.7f; 
@@ -52,15 +42,13 @@ public class GVars_Interface implements Runnable
 	
 	public static void reset()
 	{
-		mainInterface = new Stage();
-		resetInterface();
-		Gdx.input.setInputProcessor(mainInterface);
+		mainUi = new Stage();
+		Gdx.input.setInputProcessor(mainUi);
 	}
 
 	@Override
-	public void run() {
-		init();
-	}
+	public void run() 
+	{init();}
 	
 	public static void setPause(boolean setPause) 
 	{
@@ -83,7 +71,7 @@ public class GVars_Interface implements Runnable
 		Button currentButton = Utils_Controllable.getCurrentButton() ;
 		currentButton.getClickListener().enter(null, 0, 0, -1, null) ;
 	}
-	
+
 	public static void selectButton()
 	{
 		InputEvent event1 = new InputEvent();

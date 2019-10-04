@@ -32,12 +32,7 @@ public class GVars_Camera
 	{
 		camera = new OrthographicCamera();
 		staticBatch = new SpriteBatch();
-		camera.setToOrtho(false, Gdx.graphics.getWidth() * GVars_Camera.worldMutiplier, Gdx.graphics.getHeight() * GVars_Camera.worldMutiplier);
-		
-		
+		camera.setToOrtho(false, Gdx.graphics.getWidth() * GVars_Camera.worldMutiplier, Gdx.graphics.getHeight() * GVars_Camera.worldMutiplier);	
 	}
-
-
-	
 	
 }

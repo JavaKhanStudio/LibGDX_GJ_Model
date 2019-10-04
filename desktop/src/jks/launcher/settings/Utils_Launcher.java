@@ -2,17 +2,12 @@ package jks.launcher.settings;
 
 import static jks.launcher.settings.GVars_Laucher.finalHeight;
 import static jks.launcher.settings.GVars_Laucher.finalWidth;
-import static jks.launcher.settings.GVars_Laucher.sample;
 import static jks.launcher.settings.GVars_Laucher.tailleTest;
 
-import org.lwjgl.util.Display;
-
-import com.badlogic.gdx.Graphics;
-import com.badlogic.gdx.Graphics.DisplayMode;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 
 import jks.vars.FVars_Heart;
+import jks.vars.GVars_Heart;
 
 public class Utils_Launcher 
 {
@@ -29,18 +24,13 @@ public class Utils_Launcher
 	public static void setFullScreen(Lwjgl3ApplicationConfiguration config)
 	{
 		basicConfig(config) ; 
-		config.width = finalWidth ;
-		config.height = finalHeight ;
-		config.setFullscreenMode(Display.().());
-		config.setFullscreenMode(DisplayMode);
-		
+		config.setWindowedMode(finalWidth, finalHeight);
+		GVars_Heart.isFullScreen = true ; 
 	}
 	
 	public static void setSideTestScreen(Lwjgl3ApplicationConfiguration config)
 	{
-		config.width = (int) (FVars_Heart.screenXModel * tailleTest) ;
-		config.height = (int) (FVars_Heart.screenYModel * tailleTest) ;
-		config.x = 0 ;
-		config.y = 0 ;
+		config.setWindowedMode((int) (FVars_Heart.screenXModel * tailleTest), (int) (FVars_Heart.screenYModel * tailleTest));
+		config.setWindowPosition(45, 45);
 	}
 }

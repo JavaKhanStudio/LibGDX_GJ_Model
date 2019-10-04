@@ -5,9 +5,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics.DisplayMode;
 import com.badlogic.gdx.graphics.GL20;
 
+import jks.camera.GVars_Camera;
 import jks.input.Player_Inputs;
 import jks.vars.GVars_Heart;
-import jks.vinterface.GVars_Interface;
+import jks.vinterface.GVars_Ui;
 import jks.vue.models.Vue_Enter;
 import jks.vue.models.Vue_Game;
 
@@ -18,9 +19,11 @@ public class Main_Game extends ApplicationAdapter
 	@Override
 	public void create () 
 	{
-		GVars_Interface.init() ; 
+		GVars_Ui.init() ; 
+		GVars_Camera.init();
 		GVars_Heart.changeVue(new Vue_Enter(),true) ; 
 
+		
 		if(GVars_Heart.isFullScreen)
 		{
 			DisplayMode mode = Gdx.graphics.getDisplayMode();

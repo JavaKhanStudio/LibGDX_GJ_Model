@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
-import jks.vinterface.GVars_Interface;
+import jks.vinterface.GVars_Ui;
 import jks.vinterface.ToRender;
 
 public class ShowFPS implements ToRender 
@@ -20,7 +20,7 @@ public class ShowFPS implements ToRender
 		fpsLabel = new Label("", label1Style);
 		fpsLabel.setFontScale(3.5f);
 		fpsLabel.setPosition(decal * 1.5f, Gdx.graphics.getHeight() - decal);
-		GVars_Interface.mainInterface.addActor(fpsLabel);
+		GVars_Ui.mainUi.addActor(fpsLabel);
 	}
 	
 	@Override

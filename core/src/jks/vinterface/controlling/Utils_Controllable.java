@@ -1,7 +1,7 @@
 package jks.vinterface.controlling;
 
-import static jks.vinterface.GVars_Interface.buttonMap;
-import static jks.vinterface.GVars_Interface.cursorPos;
+import static jks.vinterface.GVars_Ui.buttonMap;
+import static jks.vinterface.GVars_Ui.cursorPos;
 
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import jks.input.KeysXbox;
 import jks.tools.Enum_Timming;
 import jks.tools.GlobalTimmer;
-import jks.vinterface.GVars_Interface;
+import jks.vinterface.GVars_Ui;
 
 public class Utils_Controllable 
 {
@@ -22,7 +22,7 @@ public class Utils_Controllable
 			case Keys.DOWN  : moveY(false) ; break ;
 			case Keys.RIGHT : moveX(true) ; break ;
 			case Keys.LEFT  : moveX(false) ; break ;
-			case Keys.ENTER : GVars_Interface.selectButton() ; break ;
+			case Keys.ENTER : GVars_Ui.selectButton() ; break ;
 		}
 	}
 	
@@ -51,7 +51,7 @@ public class Utils_Controllable
 		switch (buttonCode) 
 		{
 			case KeysXbox.A :
-				GVars_Interface.selectButton() ;
+				GVars_Ui.selectButton() ;
 				return true ;
 			case KeysXbox.START :
 				return true ;

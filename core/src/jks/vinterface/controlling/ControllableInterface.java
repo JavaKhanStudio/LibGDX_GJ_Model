@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 
 import jks.tools.Vector2Int;
-import jks.vinterface.GVars_Interface;
+import jks.vinterface.GVars_Ui;
 
 public interface ControllableInterface 
 {
@@ -15,7 +15,7 @@ public interface ControllableInterface
 	{return new Vector2Int() ;}
 	
 	public default void activateInterfaceControle()
-	{GVars_Interface.activedInterface(this) ;}
+	{GVars_Ui.activedInterface(this) ;}
 	
 	public default ControllableInterface getClosingLink()
 	{return null ;}

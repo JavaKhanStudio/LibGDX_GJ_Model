@@ -1,8 +1,13 @@
 package jks.vue;
 
-import static jks.vinterface.GVars_Interface.mainInterface;
+import static jks.vinterface.GVars_Ui.mainUi;
 
 import java.util.ArrayList;
+
+import org.lwjgl.opengl.GL30;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 
 import jks.vinterface.ToRender;
 import jks.vinterface.overlay.OverlayModel; 
@@ -25,7 +30,7 @@ public abstract class AVue_Model
 	
 	public void clear()
 	{
-		
+		Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 	}
 	
 	public void renderBeforeInterface()
@@ -41,7 +46,7 @@ public abstract class AVue_Model
 	
 	public void drawInterface()
 	{
-		mainInterface.draw() ;		
+		mainUi.draw() ;		
 	}
 	
 }
