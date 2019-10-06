@@ -10,9 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 import jks.sounds.GVars_AudioManager;
 import jks.tools.Vector2Int;
@@ -43,22 +42,24 @@ public class Page_Main extends Table implements ControllableInterface
 
 	public Image logo ;
 	
+	public TextButton taPas ; 
+	
 	public Page_Main()
 	{
 		init() ; 
-		resize(); 
-		buildEvents() ;
+//		resize(); 
+//		buildEvents() ;
 		
-
-		this.add(start) ;
-		this.add(credit) ;
-		this.add(quit) ;
-		this.add(logo); 
+//		this.add(start) ;
+//		this.add(credit) ;
+//		this.add(quit) ;
+//		this.add(logo); 
+		this.add(taPas) ; 
 //		GVars_Interface.mainInterface.addActor(start);
 //		GVars_Interface.mainInterface.addActor(credit);
 //		GVars_Interface.mainInterface.addActor(quit);
 		
-		GVars_Ui.activedInterface(this);
+//		GVars_Ui.activedInterface(this);
 	}
 	
 	private void init()
@@ -67,47 +68,48 @@ public class Page_Main extends Table implements ControllableInterface
 		credit = new ImageButton(Index_Interface.mainMenus_CreditButton) ; 
 		quit =  new ImageButton(Index_Interface.mainMenus_Quit) ;	
 		logo = new Image(Index_Interface.mainMenus_Logo) ;
+		taPas = new TextButton("increment Once +",GVars_Ui.baseSkin) ; 
 	}
 
 	private void resize() 
 	{
 		this.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		this.defaults().space(25);
-		this.setFillParent(true) ;
-		this.setTransform(false);
+//		this.defaults().space(25);
+//		this.setFillParent(true) ;
+//		this.setTransform(false);
 		buttonX = Gdx.graphics.getWidth()/8.5f ;
 		buttonY = Gdx.graphics.getWidth()/9.5f ;
 		decalY = 0 ;
 		decalX = buttonX * 0.8f ;
 		
-		start.setSize(buttonX, buttonY);
-		start.setPosition(Gdx.graphics.getWidth() - buttonX - decalX, (buttonY + decalY) * 1f );
-			
-		credit.setSize(buttonX, buttonY);
-		credit.setPosition(Gdx.graphics.getWidth() - buttonX - decalX, (buttonY + decalY) * 1f );
-		
-		quit.setSize(buttonX, buttonY);
-		quit.setPosition(Gdx.graphics.getWidth() - buttonX - decalX, (buttonY + decalY) * 0f );
-		
-		logo.setSize(Gdx.graphics.getWidth()/4.5f, Gdx.graphics.getHeight()/4.5f);
-		logo.setPosition(Gdx.graphics.getWidth() - logo.getWidth() -  decalX/3, Gdx.graphics.getHeight() - logo.getHeight() - decalX/3);
+//		start.setSize(buttonX, buttonY);
+//		start.setPosition(Gdx.graphics.getWidth() - buttonX - decalX, (buttonY + decalY) * 1f );
+//			
+//		credit.setSize(buttonX, buttonY);
+//		credit.setPosition(Gdx.graphics.getWidth() - buttonX - decalX, (buttonY + decalY) * 1f );
+//		
+//		quit.setSize(buttonX, buttonY);
+//		quit.setPosition(Gdx.graphics.getWidth() - buttonX - decalX, (buttonY + decalY) * 0f );
+//		
+//		logo.setSize(Gdx.graphics.getWidth()/4.5f, Gdx.graphics.getHeight()/4.5f);
+//		logo.setPosition(Gdx.graphics.getWidth() - logo.getWidth() -  decalX/3, Gdx.graphics.getHeight() - logo.getHeight() - decalX/3);
 		
 	}
 	
-	Button buildButton (String text, boolean toggle)
-	{
-		Button button = new Button(GVars_Ui.baseSkin);
-		button.setSize(buttonX, buttonY);
-		button.pad(buttonY,buttonX,buttonY,buttonX);
-		button.setClip(true);
-		
-		Label label = new Label(text,GVars_Ui.baseSkin);
-		
-		label.setAlignment(Align.bottomRight);
-		button.add(label);
-
-		return button;
-	}
+//	Button buildButton (String text, boolean toggle)
+//	{
+//		Button button = new Button(GVars_Ui.baseSkin);
+//		button.setSize(buttonX, buttonY);
+//		button.pad(buttonY,buttonX,buttonY,buttonX);
+//		button.setClip(true);
+//		
+//		Label label = new Label(text,GVars_Ui.baseSkin);
+//		
+//		label.setAlignment(Align.bottomRight);
+//		button.add(label);
+//
+//		return button;
+//	}
 	
 	
 	private void buildEvents() 

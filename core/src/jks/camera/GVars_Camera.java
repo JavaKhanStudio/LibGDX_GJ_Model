@@ -1,6 +1,5 @@
 package jks.camera;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -30,9 +29,9 @@ public class GVars_Camera
 	
 	public static void init()
 	{
-		camera = new OrthographicCamera();
+//		camera = new OrthographicCamera();
 		staticBatch = new SpriteBatch();
-		camera.setToOrtho(false, Gdx.graphics.getWidth() * GVars_Camera.worldMutiplier, Gdx.graphics.getHeight() * GVars_Camera.worldMutiplier);	
+//		camera.setToOrtho(false, Gdx.graphics.getWidth() * GVars_Camera.worldMutiplier, Gdx.graphics.getHeight() * GVars_Camera.worldMutiplier);	
 	}
 	
 }

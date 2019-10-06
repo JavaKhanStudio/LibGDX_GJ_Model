@@ -15,7 +15,6 @@ public class Utils_View
 		removeCurrentOverlay() ; 
 		GVars_Heart.vue.overlay = overlay ; 
 		GVars_Ui.mainUi.addActor(overlay) ;
-//		GVars_Interface.currentControllable.currentControllable = null ;
 		GVars_Ui.activedInterface(GVars_Heart.vue.overlay);
 	}
 	

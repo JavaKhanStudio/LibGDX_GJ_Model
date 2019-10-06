@@ -17,13 +17,11 @@ import jks.vinterface.font.GVars_Font;
 
 public class Init_UI 
 {
-
 	
 	public static Skin loadSkin () 
 	{
 		Skin skin = new Skin();
 		
-
 		Pixmap pixmap = new Pixmap(10, 10, Format.RGBA8888);
 		pixmap.setColor(Color.WHITE);
 		pixmap.fill();
@@ -62,8 +60,7 @@ public class Init_UI
 		progressBarStyle.knobBefore.setMinHeight(15);
 		progressBarStyle.knobAfter = skin.newDrawable("white", new Color(1, 0, 0, 0.66f));
 		progressBarStyle.knobAfter.setMinHeight(15);
-		
-		
+				
 		WindowStyle windowStyle = new WindowStyle() ;
 		windowStyle.background = skin.newDrawable("white", new Color(0.25f, 0.25f, 0.25f, 0.66f));
 		windowStyle.titleFont = skin.getFont("default");

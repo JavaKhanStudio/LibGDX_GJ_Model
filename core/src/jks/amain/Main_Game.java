@@ -10,7 +10,6 @@ import jks.input.Player_Inputs;
 import jks.vars.GVars_Heart;
 import jks.vinterface.GVars_Ui;
 import jks.vue.models.Vue_Enter;
-import jks.vue.models.Vue_Game;
 
 public class Main_Game extends ApplicationAdapter 
 {
@@ -23,13 +22,11 @@ public class Main_Game extends ApplicationAdapter
 		GVars_Camera.init();
 		GVars_Heart.changeVue(new Vue_Enter(),true) ; 
 
-		
 		if(GVars_Heart.isFullScreen)
 		{
 			DisplayMode mode = Gdx.graphics.getDisplayMode();
 			Gdx.graphics.setFullscreenMode(mode);
 		}
-	
 		
 //		Gdx.graphics.setWindowedMode(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()) ; 
 //		Gdx.graphics.setVSync(true);

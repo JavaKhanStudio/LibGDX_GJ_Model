@@ -19,7 +19,7 @@ public class Launcher_Test
 	
 	public static void testingMode(Lwjgl3ApplicationConfiguration config)
 	{
-		GVars_Audio.muted = false ;
+		GVars_Audio.muted = true ;
 //		GVars_Debug.activatedDebug() ;
 		Utils_Launcher.setSideTestScreen(config);
 		new Lwjgl3Application(new Main_Game(), config);

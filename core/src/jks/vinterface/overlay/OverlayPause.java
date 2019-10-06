@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import jks.tools.Vector2Int;
 import jks.vars.GVars_Heart;
 import jks.vinterface.GVars_Ui;
+import jks.vinterface.Index_Interface;
 import jks.vue.models.Vue_Enter;
 
 public class OverlayPause extends OverlayModel
@@ -26,7 +27,7 @@ public class OverlayPause extends OverlayModel
 		super("Pause Button" , GVars_Ui.baseSkin) ;
 		
 //		Image fond = new Image(Index_Interface.menuPause) ; 
-		Image fond = new Image(new Texture(Gdx.files.internal("ui/pause/" + "pauseMenu.png"),true));
+		Image fond = new Image(Index_Interface.pauseMenus);
 		fond.setSize(Gdx.graphics.getWidth()/1.5f, Gdx.graphics.getHeight()/1.25f);
 		fond.setPosition(Gdx.graphics.getWidth()/2 - fond.getWidth()/2, Gdx.graphics.getHeight()/2 - fond.getHeight()/2);
 //		Image coupeSonLibelle = new Image(Index_Interface.libelleCoupeSon) ; 

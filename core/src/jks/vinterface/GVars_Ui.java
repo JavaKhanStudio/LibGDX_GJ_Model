@@ -3,11 +3,16 @@ package jks.vinterface;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.kotcrab.vis.ui.VisUI;
 
 import jks.tools.Vector2Int;
 import jks.vinterface.controlling.ControllableInterface;
@@ -28,13 +33,33 @@ public class GVars_Ui implements Runnable
 	public static ArrayList<ArrayList<Button>> buttonMap ;
 	
 	public static Table bottomScore ; 
+	
+	public static FreeTypeFontGenerator generator ;
+	public static FreeTypeFontGenerator generator2 ;
+	public static FreeTypeFontParameter parameter ;
+	public static BitmapFont mainFont ; 
+	public static BitmapFont secondFont ; 
 
 	public static void init() 
 	{
-		baseSkin = new Skin(Gdx.files.internal("skins/uis/basic/uiskin.json"));
+		generator = new FreeTypeFontGenerator(Gdx.files.internal("ui/fonts/OptimusPrinceps.ttf"));
+		generator2 = new FreeTypeFontGenerator(Gdx.files.internal("ui/fonts/GeosansLight.ttf"));
+		parameter = new FreeTypeFontParameter();
+		resize() ;
 		
+		baseSkin = new Skin(Gdx.files.internal("ui/skins/basic/uiskin.json"));
+		VisUI.load(GVars_Ui.baseSkin);
 		mainUi = new Stage();
 		Gdx.input.setInputProcessor(mainUi);
+	
+	}
+	
+	public static void resize()
+	{
+		parameter.size = 30 ;
+		mainFont = generator.generateFont(parameter);
+		secondFont = generator2.generateFont(parameter);
+		mainFont.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
 	}
 
 	private static float width = 0.7f; 

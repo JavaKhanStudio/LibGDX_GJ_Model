@@ -5,7 +5,6 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 
 import jks.amain.Main_Game;
 import jks.debug.GVars_Debug;
-import jks.launcher.settings.Utils_Launcher;
 import jks.sounds.GVars_Audio;
 
 public class Launcher_Game 

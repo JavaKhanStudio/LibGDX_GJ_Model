@@ -1,12 +1,14 @@
 package jks.vinterface;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class Index_Interface 
 {
 	
-	public static final String menu = "ui/menu/";
-	public static final String pausePath = "ui/pause/";
+	public static final String menu = "ui/icon/menu/";
+	public static final String pausePath = "ui/icon/pause/";
 	public static final String misc = "misc/" ;
 	
 
@@ -45,6 +47,9 @@ public class Index_Interface
 		mainMenus_Quit  = Utils_Interface.buildDrawingRegionTexture(menu + "bouton_quitter.png") ;
 		
 		credit  = Utils_Interface.buildDrawingRegionTexture(menu + "credit.png") ;
+	
+		
+	
 	}
 	
 	
