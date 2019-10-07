@@ -11,13 +11,11 @@ public class Index_Interface
 	public static final String pausePath = icon + "pause/";
 	public static final String misc = "misc/" ;
 	
-	
 	public static String maisMenus_Background = menu + "background.jpg" ;
 	public static String mainMenus_Logo = menu + "logo.png";
 	
 	public static String pauseMenus_Background = pausePath + "pauseMenu.png";
 	public static String pauseMenus_Back = pausePath + "boutonRetour.png";
-	
 	
 	public static String label_CutSound = pausePath + "libelleCoupeSon.png";
 	public static String checkbox_Ok = pausePath + "cocheOk.png";

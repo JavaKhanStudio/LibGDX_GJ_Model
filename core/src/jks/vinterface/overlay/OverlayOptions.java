@@ -1,14 +1,19 @@
 package jks.vinterface.overlay;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics.DisplayMode;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
+import com.badlogic.gdx.utils.Align;
+import com.kotcrab.vis.ui.widget.VisLabel;
 import com.kotcrab.vis.ui.widget.VisTable;
 
 import jks.tools.Vector2Int;
@@ -23,11 +28,16 @@ public class OverlayOptions extends OverlayModel
 	ImageButton retour ;
 	
 	VisTable mainTable ; 
+	VisTable graphicBloc ; 
+	VisTable soundBloc ; 
+	
+	HashMap<String,DisplayMode> displayMap ;
+	ArrayList<String> displayList ; 
 	
 	public OverlayOptions() 
 	{
 		super(GVars_Ui.baseSkin) ;
-		
+		this.setLayoutEnabled(false);
 			
 		retour = new ImageButton(Utils_TexturesAcess.buildDrawingRegionTexture(Index_Interface.pauseMenus_Back));
 		retour.addListener(new InputListener()
@@ -40,50 +50,61 @@ public class OverlayOptions extends OverlayModel
 				return true;
 	        }
 		}) ;
+			
+		mainTable = new VisTable() ;
+		mainTable.setTouchable(Touchable.childrenOnly);
+		mainTable.setBackground(Utils_TexturesAcess.buildDrawingRegionTexture(Index_Interface.empty));
+		graphicBloc = buildGraphicsBloc(); 
+		soundBloc = buildSoundsBloc() ; 
 		
-		buildGraphicsBloc() ; 
-		float decalY = Gdx.graphics.getHeight() / 8.8f ;
+		mainTable.addActor(graphicBloc);
+		mainTable.addActor(soundBloc);
+		resize() ; 
 		
-		retour.setSize(Gdx.graphics.getWidth() / 7.5f, Gdx.graphics.getHeight() / 9.0f);
-		
-		
-		retour.setPosition(Gdx.graphics.getWidth() / 2 - retour.getWidth() / 2, Gdx.graphics.getHeight() / 2.8f);
-		
-		
-		this.setLayoutEnabled(false);
-		this.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		
+		this.addActor(mainTable);
 		this.addActor(retour);
 	}
 	
 	float widthPercent = 4f/5 ;
 	float heightPercent = 3.5f/5 ;
 	
-	public void resize() {
+	public void resize() 
+	{
 		float sizeWidth = Gdx.graphics.getWidth() * widthPercent ; 
 		float sizeHeight = Gdx.graphics.getHeight() * heightPercent ; 
 		
 		mainTable.setWidth(sizeWidth);
 		mainTable.setHeight(sizeHeight);
 		mainTable.setPosition((Gdx.graphics.getWidth() - sizeWidth)/2, (Gdx.graphics.getHeight() - sizeHeight)/2);
+		
+		retour.setSize(Gdx.graphics.getWidth() / 7.5f, Gdx.graphics.getHeight() / 9.0f);
+		retour.setPosition(0, Gdx.graphics.getHeight() / 3.8f);
+		
+		this.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	}
 	
 	public VisTable buildGraphicsBloc()
 	{
-		DisplayMode[] modes = Lwjgl3ApplicationConfiguration.getDisplayModes();
-		for(DisplayMode mode : modes)
-		{
-			System.out.println(mode);
-		}
-		
 		VisTable table = new VisTable() ;
 		
-//		VisLabel graphics = new VisLabel("Graphics", "Title") ;
-//		graphics.setAlignment(Align.center);
-//		
-//		table.add(graphics).colspan(2) ;
-//		table.row() ; 
-//		table.add(new VisLabel("Resolution:")) ; 
+		VisLabel graphics = new VisLabel("Graphics") ;
+		graphics.setAlignment(Align.center);
+		
+		buildDisplayList() ; 
+		
+		final SelectBox<String> selectBox = new SelectBox<String>(GVars_Ui.baseSkin);
+		String[] resolutions = new String[displayMap.size()];
+		
+		int a = 0; 
+		for(String value : displayList)
+		{resolutions[a++] = value ;}
+		
+		selectBox.setItems(resolutions);
+		
+		table.add(graphics).colspan(2) ;
+		table.row() ; 
+		table.add(new VisLabel("Resolution:")) ; 
+		table.add(selectBox) ;
 		
 		return table ; 
 	}
@@ -110,6 +131,29 @@ public class OverlayOptions extends OverlayModel
 		buttonList.add(retour) ;
 		returningList.add(buttonList) ; 
 		return returningList;
+	}
+	
+	public void buildDisplayList()
+	{
+		DisplayMode[] modes = Lwjgl3ApplicationConfiguration.getDisplayModes();
+		displayMap = new HashMap<String,DisplayMode>() ;
+		displayList = new ArrayList<>() ;
+		
+		for(DisplayMode mode : modes)
+		{
+			if(mode.width >= 800 
+					&& mode.refreshRate == 60
+					)
+			{
+				float ratio = (float)mode.width/(float)mode.height ; 
+				if(ratio < 1.778 && ratio > 1.7)
+				{
+					String displaySize = mode.width + "x" + mode.height ; 
+					displayMap.put(displaySize, mode) ; 
+					displayList.add(displaySize) ;
+				}	
+			}
+		} 
 	}
 	
 	@Override
