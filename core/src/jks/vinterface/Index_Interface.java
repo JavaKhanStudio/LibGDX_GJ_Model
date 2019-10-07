@@ -1,56 +1,60 @@
 package jks.vinterface;
 
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class Index_Interface 
 {
 	
-	public static final String menu = "ui/icon/menu/";
-	public static final String pausePath = "ui/icon/pause/";
+	public static final String icon = "ui/icon/";
+	public static final String menu = icon + "menu/";
+	public static final String pausePath = icon + "pause/";
 	public static final String misc = "misc/" ;
 	
-
-	public static TextureRegionDrawable maisMenus_Background ;
-	public static TextureRegionDrawable mainMenus_Logo ;
-	public static TextureRegionDrawable mainMenus_PlayButton ;
-	public static TextureRegionDrawable mainMenus_CreditButton ;
-	public static TextureRegionDrawable mainMenus_Quit ;
 	
-	public static TextureRegionDrawable pauseMenus ;
-	public static TextureRegionDrawable pauseMenus_Back ;
+	public static String maisMenus_Background = menu + "background.jpg" ;
+	public static String mainMenus_Logo = menu + "logo.png";
 	
-	public static TextureRegionDrawable scoreBackground ;
+	public static String pauseMenus_Background = pausePath + "pauseMenu.png";
+	public static String pauseMenus_Back = pausePath + "boutonRetour.png";
 	
-	public static TextureRegionDrawable label_CutSound ;
-	public static TextureRegionDrawable checkbox_Ok ;
-	public static TextureRegionDrawable checkBoxt_Empty ;
 	
-	public static TextureRegionDrawable credit ;
+	public static String label_CutSound = pausePath + "libelleCoupeSon.png";
+	public static String checkbox_Ok = pausePath + "cocheOk.png";
+	public static String checkBoxt_Empty = pausePath + "cocheVide.png";
+	
+	public static String empty = icon + "grayEmpty.png" ; 
+	
+	public static AssetManager manager ; 
 	
 	public static void init()
 	{
-		pauseMenus  = Utils_Interface.buildDrawingRegionTexture(pausePath + "pauseMenu.png") ;
-		pauseMenus_Back = Utils_Interface.buildDrawingRegionTexture(pausePath + "boutonRetour.png") ;
-		label_CutSound = Utils_Interface.buildDrawingRegionTexture(pausePath + "libelleCoupeSon.png") ;
-		scoreBackground = Utils_Interface.buildDrawingRegionTexture("ui/score/" + "scoreLabel.png") ;
+		manager = new AssetManager();
 		
-		checkbox_Ok = Utils_Interface.buildDrawingRegionTexture(pausePath + "cocheOk.png") ;
-		checkBoxt_Empty = Utils_Interface.buildDrawingRegionTexture(pausePath + "cocheVide.png") ;
+		initEnter() ;
+		initBasic() ; 
 		
-		maisMenus_Background = Utils_Interface.buildDrawingRegionTexture(menu + "startScreen2.jpg") ;
-		
-		mainMenus_Logo  = Utils_Interface.buildDrawingRegionTexture(menu + "logo.png") ;
-		mainMenus_PlayButton  = Utils_Interface.buildDrawingRegionTexture(menu + "bouton_jouer.png") ;
-		mainMenus_CreditButton  = Utils_Interface.buildDrawingRegionTexture(menu + "bouton_credit.png") ;
-		mainMenus_Quit  = Utils_Interface.buildDrawingRegionTexture(menu + "bouton_quitter.png") ;
-		
-		credit  = Utils_Interface.buildDrawingRegionTexture(menu + "credit.png") ;
-	
-		
+		manager.finishLoading();
 	
 	}
 	
+	private static void initBasic() 
+	{
+		manager.load(empty, Texture.class);
+		
+	}
+
+	public static void initEnter()
+	{
+		manager.load(maisMenus_Background, Texture.class);
+		manager.load(mainMenus_Logo, Texture.class);
+		manager.load(pauseMenus_Background, Texture.class);
+		manager.load(pauseMenus_Back, Texture.class);
+		manager.load(label_CutSound, Texture.class);
+		manager.load(checkbox_Ok, Texture.class);
+		manager.load(checkBoxt_Empty, Texture.class);
+		manager.finishLoading();
+	}
+
 	
 }

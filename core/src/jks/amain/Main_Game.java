@@ -3,12 +3,14 @@ package jks.amain;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics.DisplayMode;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
 
 import jks.camera.GVars_Camera;
 import jks.input.Player_Inputs;
 import jks.vars.GVars_Heart;
 import jks.vinterface.GVars_Ui;
+import jks.vinterface.Index_Interface;
 import jks.vue.models.Vue_Enter;
 
 public class Main_Game extends ApplicationAdapter 
@@ -20,6 +22,8 @@ public class Main_Game extends ApplicationAdapter
 	{
 		GVars_Ui.init() ; 
 		GVars_Camera.init();
+		Index_Interface.init();
+		
 		GVars_Heart.changeVue(new Vue_Enter(),true) ; 
 
 		if(GVars_Heart.isFullScreen)
@@ -27,6 +31,8 @@ public class Main_Game extends ApplicationAdapter
 			DisplayMode mode = Gdx.graphics.getDisplayMode();
 			Gdx.graphics.setFullscreenMode(mode);
 		}
+		
+		
 		
 //		Gdx.graphics.setWindowedMode(Gdx.graphics.getWidth(),Gdx.graphics.getHeight()) ; 
 //		Gdx.graphics.setVSync(true);

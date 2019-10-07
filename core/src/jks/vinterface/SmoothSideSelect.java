@@ -1,11 +1,8 @@
 package jks.vinterface;
 
 import java.util.ArrayList;
-import java.util.concurrent.Callable;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -19,7 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 
-import jks.vinterface.overlay.OverlayPause;
+import jks.vinterface.overlay.OverlayOptions;
 import jks.vue.Utils_View;
 
 public class SmoothSideSelect extends Table
@@ -83,7 +80,7 @@ public class SmoothSideSelect extends Table
 			{
 				if(onFocus)
 				{
-					Utils_View.setOverlay(new OverlayPause());
+					Utils_View.setOverlay(new OverlayOptions());
 					System.out.println("Must be implement " + button + " " + pointer) ;
 				}
 			}
@@ -138,7 +135,7 @@ public class SmoothSideSelect extends Table
 
 				if(onFocus)
 				{
-					System.out.println("Must be implement " + button + " " + pointer) ;
+					System.exit(0);
 				}
 			}
 			
@@ -156,7 +153,7 @@ public class SmoothSideSelect extends Table
 	{
 		this.setWidth(Gdx.graphics.getWidth()/4);
 		this.setHeight(Gdx.graphics.getHeight());
-		decalX = Gdx.graphics.getWidth()/8 ;
+		decalX = Gdx.graphics.getWidth()/15 ;
 		sizeX = 300 ;
 		sizeY = 40 ; 
 		topPosY = Gdx.graphics.getHeight()/2.5f ;

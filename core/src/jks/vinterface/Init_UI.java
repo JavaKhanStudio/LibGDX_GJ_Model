@@ -34,15 +34,15 @@ public class Init_UI
 		skin.add("defaultBig", GVars_Font.font24);
 		
 		ButtonStyle buttonStyle = new ButtonStyle();
-		buttonStyle.up = skin.newDrawable(Utils_Interface.buildDrawingRegionTexture("interface/buttonIcon.png"), Color.DARK_GRAY);
+		buttonStyle.up = skin.newDrawable(Utils_TexturesAcess.buildDrawingRegionTexture("interface/buttonIcon.png"), Color.DARK_GRAY);
 
 		CheckBoxStyle checkBox = new CheckBoxStyle() ;
-		checkBox.checkboxOn = skin.newDrawable(Utils_Interface.buildDrawingRegionTexture("general/icon/checkbox_fill_teach.png"));
-		checkBox.checkboxOff = skin.newDrawable(Utils_Interface.buildDrawingRegionTexture("general/icon/checkbox_empty.png"));
+		checkBox.checkboxOn = skin.newDrawable(Utils_TexturesAcess.buildDrawingRegionTexture("general/icon/checkbox_fill_teach.png"));
+		checkBox.checkboxOff = skin.newDrawable(Utils_TexturesAcess.buildDrawingRegionTexture("general/icon/checkbox_empty.png"));
 		checkBox.font = skin.getFont("default");
 		
 		TextButtonStyle textButtonStyle = new TextButtonStyle();
-		textButtonStyle.up = skin.newDrawable(Utils_Interface.buildDrawingRegionTexture("interface/buttonIcon.png"), Color.DARK_GRAY);
+		textButtonStyle.up = skin.newDrawable(Utils_TexturesAcess.buildDrawingRegionTexture("interface/buttonIcon.png"), Color.DARK_GRAY);
 		textButtonStyle.font = skin.getFont("default");
 		
 

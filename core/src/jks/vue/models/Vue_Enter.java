@@ -1,5 +1,8 @@
 package jks.vue.models;
 
+import static jks.vinterface.Index_Interface.maisMenus_Background;
+import static jks.vinterface.Index_Interface.manager;
+
 import java.util.ArrayList;
 
 import org.lwjgl.opengl.GL20;
@@ -16,10 +19,8 @@ import jks.input.Player_Inputs;
 import jks.sounds.Enum_Music;
 import jks.sounds.GVars_AudioManager;
 import jks.vinterface.GVars_Ui;
-import jks.vinterface.Page_Main;
 import jks.vinterface.SmoothSideSelect;
-import jks.vue.AVue_Model;
-
+import jks.vue.AVue_Model; 
 
 public class Vue_Enter extends AVue_Model
 {
@@ -31,10 +32,10 @@ public class Vue_Enter extends AVue_Model
 	public void init()
 	{
 		toRender = new ArrayList<>() ;
-//		sourceTexture = new Texture("ennemy/monster1.png") ; 
-		background = new Texture("ui/icon/menu/startScreen2.jpg");
-//		background.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()) ;
-//		background.set
+		
+		background = manager.get(maisMenus_Background, Texture.class) ;
+	
+
 //		GVars_Ui.mainUi.addActor(background);
 		
 		GVars_AudioManager.PlayMusic(Enum_Music.INTRO);
@@ -78,7 +79,7 @@ public class Vue_Enter extends AVue_Model
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		GVars_Camera.staticBatch.begin() ;
-//		GVars_Camera.staticBatch.draw(background,0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		GVars_Camera.staticBatch.draw(background,0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		GVars_Camera.staticBatch.end() ;
 		
 		renderBeforeInterface() ;

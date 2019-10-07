@@ -19,7 +19,7 @@ public class Launcher_Game
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setWindowedMode(1300, 800);
 		config.useOpenGL3(true, 1, 1);
-		config.setTitle("Parallax");
+		config.setTitle("GENERIC");
 		//config.setWindowIcon("skins/uis/parallaxIcon.png");
 
 		config.useVsync(true);
