@@ -27,6 +27,7 @@ public class Vue_Enter extends AVue_Model
 	Texture background ;
 	public Texture sourceTexture ;
 	TextButton incrementOnce ;
+	SmoothSideSelect smoothSideSelect ; 
 	
 	@Override
 	public void init()
@@ -34,21 +35,18 @@ public class Vue_Enter extends AVue_Model
 		toRender = new ArrayList<>() ;
 		
 		background = manager.get(maisMenus_Background, Texture.class) ;
-	
 
-//		GVars_Ui.mainUi.addActor(background);
-		
 		GVars_AudioManager.PlayMusic(Enum_Music.INTRO);
 
 		Gdx.input.setInputProcessor(new InputMultiplexer(GVars_Ui.mainUi));
 		Controllers.clearListeners();
 		Controllers.addListener(new IKM_Game_XBoxController()) ; 
 		
-//		GVars_Ui.mainUi.addActor(new Page_Main());
-		GVars_Ui.mainUi.addActor(new SmoothSideSelect());
+
+		smoothSideSelect = new SmoothSideSelect() ; 
+		GVars_Ui.mainUi.addActor(smoothSideSelect);
 		incrementOnce = new TextButton("increment Once +",GVars_Ui.baseSkin) ; 
-//		GVars_Ui.mainUi.addActor(incrementOnce);
-	
+		smoothSideSelect.enterScene();
 	}
 
 	@Override

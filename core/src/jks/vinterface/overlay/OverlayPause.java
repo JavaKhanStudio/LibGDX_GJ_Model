@@ -38,8 +38,6 @@ public class OverlayPause extends OverlayModel
 	        }
 		}) ;
 		
-		float decalY = Gdx.graphics.getHeight() / 8.8f ;
-		
 		retour.setSize(Gdx.graphics.getWidth() / 7.5f, Gdx.graphics.getHeight() / 9.0f);
 		retour.setPosition(Gdx.graphics.getWidth() / 2 - retour.getWidth() / 2, Gdx.graphics.getHeight() / 2.8f);
 		

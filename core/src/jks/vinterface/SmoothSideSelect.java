@@ -33,6 +33,11 @@ public class SmoothSideSelect extends Table
 	ArrayList<Table> list ;
 	int index = 0; 
 	Integer movingBy = 0; 
+	
+	float enterSpeed = 0.5f; 
+	float enterspeedIncrement = 0.07f ; 
+	float leavingSpeed = 0.5f ; 
+	float leavingSpeedIncrement = 0.05f ; 
 	 
 	public SmoothSideSelect()
 	{
@@ -174,7 +179,7 @@ public class SmoothSideSelect extends Table
 		textLabel.setTouchable(Touchable.disabled);
 		Button textButton = new Button(GVars_Ui.baseSkin);
 		textButton.setColor(0, 0, 0, 0.0f);
-		float positionX = decalX ; 
+		float positionX = 0 ; 
 		float positionY = topPosY - (sizeY * index) - (decalY * index) ;
 		
 		table.add(textButton) ;
@@ -184,7 +189,6 @@ public class SmoothSideSelect extends Table
 		table.setBounds(positionX, positionY, sizeX, sizeY);
 		textButton.setBounds(0, 0, sizeX, sizeY);
 		textLabel.setBounds(0, 0, sizeX, sizeY);
-		
 		
 		textButton.addListener(new InputListener()
 		{		
@@ -210,6 +214,38 @@ public class SmoothSideSelect extends Table
 		this.add(table) ;
 		return textButton ; 
 	}
+	
+	public void enterScene()
+	{
+		for(int a = 0 ; a < list.size() ; a++)
+		{
+			MoveToAction action1 = new MoveToAction();
+		    action1.setPosition(decalX, topPosY - (sizeY * a) - (decalY * a));
+		    action1.setDuration(enterSpeed + a * (enterspeedIncrement));
+		    
+		    SequenceAction sequence = new SequenceAction();
+		    sequence.addAction(action1);
+		    
+		    list.get(a).addAction(sequence);
+		}
+
+	}
+	
+	public void exitScene()
+	{
+		for(int a = 0 ; a < list.size() ; a++)
+		{
+			MoveToAction action1 = new MoveToAction();
+		    action1.setPosition(0, topPosY - (sizeY * a) - (decalY * a));
+		    action1.setDuration(leavingSpeed +  a * (leavingSpeedIncrement));
+		    
+		    SequenceAction sequence = new SequenceAction();
+		    sequence.addAction(action1);
+		    
+		    list.get(a).addAction(sequence);
+		}
+	}
+	 
 	
 	public SequenceAction buildSelectSequence(int positionX, int positionY)
 	{

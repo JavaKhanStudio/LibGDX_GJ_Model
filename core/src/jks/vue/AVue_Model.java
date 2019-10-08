@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import org.lwjgl.opengl.GL30;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 
 import jks.vinterface.ToRender;
 import jks.vinterface.overlay.OverlayModel; 

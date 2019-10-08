@@ -5,7 +5,8 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Index_Interface 
 {
-	
+
+	public static final String frame = "ui/frame/";
 	public static final String icon = "ui/icon/";
 	public static final String menu = icon + "menu/";
 	public static final String pausePath = icon + "pause/";
@@ -22,6 +23,8 @@ public class Index_Interface
 	public static String checkBoxt_Empty = pausePath + "cocheVide.png";
 	
 	public static String empty = icon + "grayEmpty.png" ; 
+	public static String frame_Gray = frame + "grayFrame.png" ; 
+	public static String frame_GraySmoke = frame + "borderSmokeGray.png" ; 
 	
 	public static AssetManager manager ; 
 	
@@ -39,7 +42,8 @@ public class Index_Interface
 	private static void initBasic() 
 	{
 		manager.load(empty, Texture.class);
-		
+		manager.load(frame_Gray, Texture.class);
+		manager.load(frame_GraySmoke, Texture.class);
 	}
 
 	public static void initEnter()

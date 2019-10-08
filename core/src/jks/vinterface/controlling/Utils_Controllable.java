@@ -42,7 +42,7 @@ public class Utils_Controllable
 		{moveY(true) ; }
 		else if(downPressed)
 		{moveY(false) ; }
-		*/
+		//*/
 		GlobalTimmer.getElapse(Enum_Timming.CONTROLLER_MOVE, true);
 	}
 	

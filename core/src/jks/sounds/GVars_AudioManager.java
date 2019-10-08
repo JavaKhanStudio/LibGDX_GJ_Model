@@ -1,7 +1,6 @@
 package jks.sounds;
 
-import static jks.sounds.GVars_Audio.volume;
-import static jks.sounds.GVars_Audio.volumeFootStep;
+import static jks.sounds.GVars_Audio.masterVolume;
 
 import java.util.ArrayList;
 
@@ -55,12 +54,12 @@ public class GVars_AudioManager
 			case Jumping:
 				int randomizedIndex = MathUtils.random.nextInt(jumpingSounds.size());
 				runningSound.stop();
-				jumpingSounds.get(randomizedIndex).play(volume);
+				jumpingSounds.get(randomizedIndex).play(masterVolume);
 				break;
 	
 			case Running:
 				runningSound.stop();
-				runningSound.loop(volume * volumeFootStep, 1.1f, 0) ;
+				runningSound.loop(masterVolume, 1.1f, 0) ;
 				break;
 	
 			case Idlling:
@@ -86,12 +85,12 @@ public class GVars_AudioManager
 			case Jumping:
 				int randomizedIndex = MathUtils.random.nextInt(jumpingSounds.size());
 				runningSound.stop();
-				jumpingSounds.get(randomizedIndex).play(volume);
+				jumpingSounds.get(randomizedIndex).play(masterVolume);
 				break;
 	
 			case Running:
 				runningSound.stop();
-				runningSound.loop(volume * volumeFootStep, 1.1f, 0) ;
+				runningSound.loop(masterVolume, 1.1f, 0) ;
 				break;
 	
 			case Idlling:

@@ -23,9 +23,8 @@ public class Utils_Vue
 			{
 				cell = layer.getCell(x, y);
 				if (cell != null) 
-				{
 					cells.add(new Vector2(x, y));
-				}
+				
 			}
 		}
 		

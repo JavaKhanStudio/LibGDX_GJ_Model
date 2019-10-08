@@ -73,16 +73,11 @@ public class Vue_Game extends AVue_Model
 
 	@Override
 	public void destroy() 
-	{
-		// TODO Auto-generated method stub
-		
-	}
+	{}
 
 	@Override
-	public void restart() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void restart() 
+	{}
 
 	@Override
 	public void update(float delta) 
@@ -99,5 +94,4 @@ public class Vue_Game extends AVue_Model
 		
 	}
 
-   
 }
