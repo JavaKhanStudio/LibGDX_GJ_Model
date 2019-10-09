@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.AlphaAction;
+import com.badlogic.gdx.scenes.scene2d.actions.DelayAction;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -17,9 +18,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 
 import jks.vinterface.overlay.OverlayOptions;
+import jks.vinterface.overlay.ReplayAction;
 import jks.vue.Utils_View;
 
-public class SmoothSideSelect extends Table
+public class SmoothSideSelect extends Table implements ReplayAction
 {
 
 	Float baseSpeed = 0.4f ;
@@ -34,14 +36,17 @@ public class SmoothSideSelect extends Table
 	int index = 0; 
 	Integer movingBy = 0; 
 	
-	float enterSpeed = 0.5f; 
-	float enterspeedIncrement = 0.07f ; 
-	float leavingSpeed = 0.5f ; 
-	float leavingSpeedIncrement = 0.05f ; 
+	float enterSpeed = 0.34f; 
+	float enterspeedDelayIncrement = 0.12f ; 
+	float leavingSpeed = 0.2f ; 
+	float leavingSpeedDelayIncrement = 0.05f ; 
+	
+	ReplayAction ref ;
 	 
 	public SmoothSideSelect()
 	{
 		resize() ;
+		ref = this ; 
 		this.setLayoutEnabled(false);
 		list = new ArrayList<>() ; 
 		
@@ -85,8 +90,8 @@ public class SmoothSideSelect extends Table
 			{
 				if(onFocus)
 				{
-					Utils_View.setOverlay(new OverlayOptions());
-					System.out.println("Must be implement " + button + " " + pointer) ;
+					exitScene();
+					Utils_View.setOverlay(new OverlayOptions(ref));
 				}
 			}
 			
@@ -179,7 +184,7 @@ public class SmoothSideSelect extends Table
 		textLabel.setTouchable(Touchable.disabled);
 		Button textButton = new Button(GVars_Ui.baseSkin);
 		textButton.setColor(0, 0, 0, 0.0f);
-		float positionX = 0 ; 
+		float positionX = -sizeX ; 
 		float positionY = topPosY - (sizeY * index) - (decalY * index) ;
 		
 		table.add(textButton) ;
@@ -221,10 +226,14 @@ public class SmoothSideSelect extends Table
 		{
 			MoveToAction action1 = new MoveToAction();
 		    action1.setPosition(decalX, topPosY - (sizeY * a) - (decalY * a));
-		    action1.setDuration(enterSpeed + a * (enterspeedIncrement));
+		    action1.setDuration(enterSpeed);
+		    
+		    DelayAction delay = new DelayAction(a * (enterspeedDelayIncrement)) ; 
 		    
 		    SequenceAction sequence = new SequenceAction();
+		    sequence.addAction(delay);
 		    sequence.addAction(action1);
+		   
 		    
 		    list.get(a).addAction(sequence);
 		}
@@ -233,13 +242,31 @@ public class SmoothSideSelect extends Table
 	
 	public void exitScene()
 	{
-		for(int a = 0 ; a < list.size() ; a++)
+//		for(int a = list.size() - 1 ; a >= 0 ; a--)
+//		{
+//			MoveToAction action1 = new MoveToAction();
+//		    action1.setPosition(-sizeX, topPosY - (sizeY * a) - (decalY * a));
+//		    action1.setDuration(leavingSpeed);
+//		    
+//		    DelayAction delay = new DelayAction((list.size() - (a + 1)) * (leavingSpeedDelayIncrement)) ; 
+//		    
+//		    SequenceAction sequence = new SequenceAction();
+//		    sequence.addAction(delay);
+//		    sequence.addAction(action1);
+//		    
+//		    list.get(a).addAction(sequence);
+//		}
+		
+		for(int a = 0 ;  a < list.size() ; a++)
 		{
 			MoveToAction action1 = new MoveToAction();
-		    action1.setPosition(0, topPosY - (sizeY * a) - (decalY * a));
-		    action1.setDuration(leavingSpeed +  a * (leavingSpeedIncrement));
+		    action1.setPosition(-sizeX, topPosY - (sizeY * a) - (decalY * a));
+		    action1.setDuration(leavingSpeed);
+		    
+		    DelayAction delay = new DelayAction(a * (leavingSpeedDelayIncrement)) ; 
 		    
 		    SequenceAction sequence = new SequenceAction();
+		    sequence.addAction(delay);
 		    sequence.addAction(action1);
 		    
 		    list.get(a).addAction(sequence);

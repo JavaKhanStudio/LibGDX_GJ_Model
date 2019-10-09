@@ -9,6 +9,7 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
@@ -28,6 +29,7 @@ public class OverlayOptions extends OverlayModel
 {
 
 	ImageButton retour ;
+	float returnButtonPositionY = 0 ;
 	
 	VisTable mainTable ; 
 	
@@ -39,11 +41,14 @@ public class OverlayOptions extends OverlayModel
 	HashMap<String,DisplayMode> displayMap ;
 	ArrayList<String> displayList ; 
 	
-	String frames = Index_Interface.frame_GraySmoke ;
+	String frames = Index_Interface.frame_Gray ;
 	
-	public OverlayOptions() 
+	ReplayAction backway ;
+	
+	public OverlayOptions(ReplayAction ref) 
 	{
 		super(GVars_Ui.baseSkin) ;
+		backway = ref ; 
 		this.setLayoutEnabled(false);
 			
 		retour = new ImageButton(Utils_TexturesAcess.buildDrawingRegionTexture(Index_Interface.pauseMenus_Back));
@@ -54,6 +59,7 @@ public class OverlayOptions extends OverlayModel
 	        {
 				Utils_View.removeCurrentOverlay() ;
 				Utils_View.removeFilter() ;
+				backway.enterScene();
 				return true;
 	        }
 		}) ;
@@ -77,8 +83,16 @@ public class OverlayOptions extends OverlayModel
 		mainTable.addActor(graphicBloc);
 		mainTable.addActor(soundBloc);
 		mainTable.addActor(prefBloc);
+		retour.setPosition(-5, 0);
 		resize() ; 
 		
+		MoveToAction getIn = new MoveToAction();
+	    getIn.setPosition(0, returnButtonPositionY);
+	    getIn.setDuration(0.3f);
+	    retour.addAction(getIn);
+		
+	    
+	    
 		this.addActor(mainTable);
 		this.addActor(retour);
 	}
@@ -119,7 +133,13 @@ public class OverlayOptions extends OverlayModel
 		languageBloc.setPosition(decalSideX, decalY);
 		
 		retour.setSize(sizebuttonX, Gdx.graphics.getHeight() / 9.0f);
-		retour.setPosition(0, Gdx.graphics.getHeight() / 3.8f);
+		returnButtonPositionY = Gdx.graphics.getHeight() / 3.8f ; 
+		
+		if(retour.getX() <= 0) 
+			retour.setPosition(-sizebuttonX, returnButtonPositionY);
+		else
+			retour.setPosition(0, returnButtonPositionY);
+			
 		
 		this.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	}
