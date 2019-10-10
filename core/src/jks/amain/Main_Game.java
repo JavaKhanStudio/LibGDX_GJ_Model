@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import jks.camera.GVars_Camera;
 import jks.input.Player_Inputs;
 import jks.vars.GVars_Heart;
-import jks.vinterface.GVars_Ui;
+import jks.vinterface.GVars_UI;
 import jks.vinterface.Index_Interface;
 import jks.vue.models.Vue_Enter;
 
@@ -19,7 +19,7 @@ public class Main_Game extends ApplicationAdapter
 	@Override
 	public void create () 
 	{
-		GVars_Ui.init() ; 
+		GVars_UI.init() ; 
 		GVars_Camera.init();
 		Index_Interface.init();
 		

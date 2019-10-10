@@ -20,7 +20,7 @@ import com.kotcrab.vis.ui.widget.VisTable;
 import com.kotcrab.vis.ui.widget.VisTextButton;
 
 import jks.tools.Vector2Int;
-import jks.vinterface.GVars_Ui;
+import jks.vinterface.GVars_UI;
 import jks.vinterface.Index_Interface;
 import jks.vinterface.Utils_TexturesAcess;
 import jks.vue.Utils_View;
@@ -47,7 +47,7 @@ public class OverlayOptions extends OverlayModel
 	
 	public OverlayOptions(ReplayAction ref) 
 	{
-		super(GVars_Ui.baseSkin) ;
+		super(GVars_UI.baseSkin) ;
 		backway = ref ; 
 		this.setLayoutEnabled(false);
 			
@@ -153,7 +153,7 @@ public class OverlayOptions extends OverlayModel
 		
 
 		final SelectBox<String> selectBox_Resolution = buildResolutionBox() ; 	
-		final SelectBox<String> selectBox_FPS = new SelectBox<String>(GVars_Ui.baseSkin);
+		final SelectBox<String> selectBox_FPS = new SelectBox<String>(GVars_UI.baseSkin);
 		VisCheckBox vSynchCheckBox = new VisCheckBox("Is VSynch") ; 
 		VisTextButton apply = new VisTextButton("Apply") ;
 		
@@ -175,7 +175,7 @@ public class OverlayOptions extends OverlayModel
 	private SelectBox<String> buildResolutionBox() 
 	{
 		buildDisplayList() ; 
-		SelectBox<String> selectBox = new SelectBox<String>(GVars_Ui.baseSkin);
+		SelectBox<String> selectBox = new SelectBox<String>(GVars_UI.baseSkin);
 		String[] resolutions = new String[displayMap.size()];
 		
 		int a = 0; 

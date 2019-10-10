@@ -20,7 +20,7 @@ import jks.vinterface.controlling.Utils_Controllable;
 import jks.vinterface.overlay.OverlayPause;
 import jks.vue.Utils_View;
 
-public class GVars_Ui implements Runnable 
+public class GVars_UI implements Runnable 
 {
 
 	public static Skin baseSkin;
@@ -48,7 +48,7 @@ public class GVars_Ui implements Runnable
 		resize() ;
 		
 		baseSkin = new Skin(Gdx.files.internal("ui/skins/basic/uiskin.json"));
-		VisUI.load(GVars_Ui.baseSkin);
+		VisUI.load(GVars_UI.baseSkin);
 		mainUi = new Stage();
 		Gdx.input.setInputProcessor(mainUi);
 	

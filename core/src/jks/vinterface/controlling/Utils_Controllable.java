@@ -1,7 +1,8 @@
 package jks.vinterface.controlling;
 
-import static jks.vinterface.GVars_Ui.buttonMap;
-import static jks.vinterface.GVars_Ui.cursorPos;
+import static jks.vinterface.GVars_UI.buttonMap;
+import static jks.vinterface.GVars_UI.cursorPos;
+import static jks.input.GVars_Inputs.* ; 
 
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -9,20 +10,22 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import jks.input.KeysXbox;
 import jks.tools.Enum_Timming;
 import jks.tools.GlobalTimmer;
-import jks.vinterface.GVars_Ui;
+import jks.vinterface.GVars_UI;
 
 public class Utils_Controllable 
 {
 
 	public static void decodeInterfaceKeybord(int keycode)
 	{
+		System.out.println("key " + keycode);
+		
 		switch(keycode)
 		{
 			case Keys.UP    : moveY(true) ; break ;
 			case Keys.DOWN  : moveY(false) ; break ;
 			case Keys.RIGHT : moveX(true) ; break ;
 			case Keys.LEFT  : moveX(false) ; break ;
-			case Keys.ENTER : GVars_Ui.selectButton() ; break ;
+			case Keys.ENTER : GVars_UI.selectButton() ; break ;
 		}
 	}
 	
@@ -32,7 +35,7 @@ public class Utils_Controllable
 	{
 		if(neededTime > GlobalTimmer.getElapse(Enum_Timming.CONTROLLER_MOVE, false))
 			return ;
-		/*	
+		///*	
 		if(leftPressed)
 		{moveX(false) ;}
 		else if(rightPressed)
@@ -51,7 +54,7 @@ public class Utils_Controllable
 		switch (buttonCode) 
 		{
 			case KeysXbox.A :
-				GVars_Ui.selectButton() ;
+				GVars_UI.selectButton() ;
 				return true ;
 			case KeysXbox.START :
 				return true ;
@@ -98,6 +101,7 @@ public class Utils_Controllable
 		}
 		
 		checkForYCompatibility() ;
+		getCurrentButton() ; 
 //		GVars_Interface.controlFairy.moveToo(getCurrentButton());
 	}
 

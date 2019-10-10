@@ -9,11 +9,13 @@ import jks.input.GVars_Controller;
 import jks.sounds.GVars_AudioManager;
 import jks.tools.Enum_Timming;
 import jks.tools.GlobalTimmer;
-import jks.vinterface.GVars_Ui;
+import jks.vinterface.GVars_UI;
 import jks.vue.AVue_Model;
 
 public class GVars_Heart 
 {
+
+	public static boolean isAzerty = true ; 
 	
 	public static boolean debug = true;
 	public static boolean isPaused = false ; 
@@ -27,9 +29,9 @@ public class GVars_Heart
 		loadAssets() ; 
 	
 		GVars_Camera.init();
-		GVars_Ui.init();
+		GVars_UI.init();
 		GVars_Controller.init();
-		GVars_Ui.init();
+		GVars_UI.init();
 		
 		GlobalTimmer.purge() ;
 	}
@@ -63,7 +65,7 @@ public class GVars_Heart
 	public static void togglePauseMenu() 
 	{
 		GVars_Heart.isPaused = !GVars_Heart.isPaused ; 
-		GVars_Ui.setPause(GVars_Heart.isPaused) ; 
+		GVars_UI.setPause(GVars_Heart.isPaused) ; 
 	}
 
 }

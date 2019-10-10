@@ -93,26 +93,18 @@ public class IKM_Game_XBoxController implements ControllerListener
 
 	@Override
 	public boolean povMoved(Controller controller, int povCode, PovDirection value) 
-	{
-		return false;
-	}
+	{return false;}
 
 	@Override
 	public boolean xSliderMoved(Controller controller, int sliderCode, boolean value) 
-	{
-		return false;
-	}
+	{return false;}
 
 	@Override
 	public boolean ySliderMoved(Controller controller, int sliderCode, boolean value) 
-	{
-		return false;
-	}
+	{return false;}
 
 	@Override
 	public boolean accelerometerMoved(Controller controller, int accelerometerCode, Vector3 value) 
-	{
-		return false;
-	}
+	{return false;}
 
 }

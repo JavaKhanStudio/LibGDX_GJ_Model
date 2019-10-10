@@ -142,7 +142,6 @@ public class SmoothSideSelect extends Table implements ReplayAction
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 			{
-
 				if(onFocus)
 				{
 					System.exit(0);
@@ -178,11 +177,11 @@ public class SmoothSideSelect extends Table implements ReplayAction
 		table.setLayoutEnabled(false);
 		
 		Label.LabelStyle labelStyle = new Label.LabelStyle();
-	    labelStyle.font = GVars_Ui.mainFont;
+	    labelStyle.font = GVars_UI.mainFont;
 	    
 		Label textLabel = new Label(text, labelStyle) ;
 		textLabel.setTouchable(Touchable.disabled);
-		Button textButton = new Button(GVars_Ui.baseSkin);
+		Button textButton = new Button(GVars_UI.baseSkin);
 		textButton.setColor(0, 0, 0, 0.0f);
 		float positionX = -sizeX ; 
 		float positionY = topPosY - (sizeY * index) - (decalY * index) ;
@@ -280,8 +279,7 @@ public class SmoothSideSelect extends Table implements ReplayAction
 	    action1.setPosition(positionX, positionY);
 	    action1.setDuration(baseSpeed);
 	        
-	    SequenceAction sequence = new SequenceAction();
-	    
+	    SequenceAction sequence = new SequenceAction() ;
 	    sequence.addAction(action1);
 	    
 	    return sequence ; 
@@ -302,7 +300,6 @@ public class SmoothSideSelect extends Table implements ReplayAction
 	    action1.setDuration(baseSpeed);
 	    
 	    SequenceAction sequence = new SequenceAction();
-
 	    sequence.addAction(action1);
 	    
 	    return sequence ; 

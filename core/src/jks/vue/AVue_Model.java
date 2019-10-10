@@ -1,6 +1,6 @@
 package jks.vue;
 
-import static jks.vinterface.GVars_Ui.mainUi;
+import static jks.vinterface.GVars_UI.mainUi;
 
 import java.util.ArrayList;
 

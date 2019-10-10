@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 
 import jks.tools.Vector2Int;
 import jks.vars.GVars_Heart;
-import jks.vinterface.GVars_Ui;
+import jks.vinterface.GVars_UI;
 import jks.vinterface.Index_Interface;
 import jks.vinterface.Utils_TexturesAcess;
 
@@ -21,7 +21,7 @@ public class OverlayPause extends OverlayModel
 	
 	public OverlayPause() 
 	{
-		super(GVars_Ui.baseSkin) ;
+		super(GVars_UI.baseSkin) ;
 
 		float xPosition = Gdx.graphics.getWidth() * 0.28f;
 		float yposition = Gdx.graphics.getHeight() / 2.8f;

@@ -21,31 +21,29 @@ public class IKM_Game_Keyboard extends InputAdapter
 				return false; 
 			}
 			
-			switch (keycode) 
+			if(pressingTop(keycode))
 			{
-				case Keys.SPACE :
-				case Keys.UP :
-					inputing.jumpPressed = true ; 
-					return true ;
-				case Keys.D :
-					inputing.powerLeft = true ; 
-					return true ;
-				case Keys.Q :
-					inputing.powerRight = true ; 
-					return true ;
-				case Keys.LEFT :
-					inputing.leftPressed = true ; 
-					inputing.rightPressed = false ;
-					return true ;
-				case Keys.RIGHT :
-					inputing.rightPressed = true ; 
-					inputing.leftPressed = false ;
-					return true ;
-				case Keys.ESCAPE :
-					return true ;
-				case Keys.BACKSPACE :
-					return true ;	
+				inputing.upPressed = true ; 
+				return true ;
 			}
+			else if(pressingDown(keycode))
+			{
+				inputing.downPressed = true ; 
+				return true ; 
+			}		
+			else if(pressingLeft(keycode))
+			{
+				inputing.leftPressed = true ; 
+				inputing.rightPressed = false ;
+				return true ;
+			}
+			else if(pressingRight(keycode))
+			{
+				inputing.rightPressed = true ; 
+				inputing.leftPressed = false ;
+				return true ;
+			}
+			
 
 			return false ; 
 		}
@@ -87,5 +85,53 @@ public class IKM_Game_Keyboard extends InputAdapter
 					return false ; 
 			}	
 			
-		}		
+		}
+		
+		private boolean pressingTop(int keycode) 
+		{
+			if(GVars_Heart.isAzerty && Keys.Z == keycode)
+				return true ; 
+			else if(Keys.W == keycode)
+				return true ;
+				
+			if(Keys.UP == keycode)
+				return true ;
+			
+			return false; 
+		}
+		
+		private boolean pressingDown(int keycode) 
+		{
+			if(Keys.S == keycode)
+				return true ; 
+				
+			if(Keys.DOWN == keycode)
+				return true ;
+			
+			return false; 
+		}
+		
+		private boolean pressingLeft(int keycode) 
+		{
+			if(GVars_Heart.isAzerty && Keys.Q == keycode)
+				return true ; 
+			else if(Keys.A == keycode)
+				return true ;
+				
+			if(Keys.LEFT == keycode)
+				return true ;
+			
+			return false; 
+		}
+		
+		private boolean pressingRight(int keycode) 
+		{
+			if(Keys.D == keycode)
+				return true ; 
+			
+			if(Keys.RIGHT == keycode)
+				return true ;
+			
+			return false; 
+		}
 }

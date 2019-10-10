@@ -1,5 +1,8 @@
 package jks.input;
 
+import jks.vinterface.GVars_UI;
+import jks.vinterface.controlling.Utils_Controllable;
+
 public class Player_Inputs 
 {
 	public boolean 
@@ -81,8 +84,8 @@ public class Player_Inputs
 	
 	public static void updateInput_ControllingInterface()
 	{
-//		if(GVars_Interface.currentControllable != null)
-//		{Utils_Controllable.decodeInterfaceController();}
+		if(GVars_UI.currentControllable != null)
+		{Utils_Controllable.decodeInterfaceController();}
 	}
 
 	public void resetInputs()

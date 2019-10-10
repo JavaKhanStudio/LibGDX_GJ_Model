@@ -14,11 +14,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 import jks.camera.GVars_Camera;
+import jks.input.IKM_Game_Keyboard;
 import jks.input.IKM_Game_XBoxController;
 import jks.input.Player_Inputs;
 import jks.sounds.Enum_Music;
 import jks.sounds.GVars_AudioManager;
-import jks.vinterface.GVars_Ui;
+import jks.vinterface.GVars_UI;
 import jks.vinterface.SmoothSideSelect;
 import jks.vue.AVue_Model; 
 
@@ -38,14 +39,13 @@ public class Vue_Enter extends AVue_Model
 
 		GVars_AudioManager.PlayMusic(Enum_Music.INTRO);
 
-		Gdx.input.setInputProcessor(new InputMultiplexer(GVars_Ui.mainUi));
+		Gdx.input.setInputProcessor(new InputMultiplexer(GVars_UI.mainUi));
 		Controllers.clearListeners();
-		Controllers.addListener(new IKM_Game_XBoxController()) ; 
+		Controllers.addListener(new IKM_Game_XBoxController(), new IKM_Game_Keyboard()) ; 
 		
-
 		smoothSideSelect = new SmoothSideSelect() ; 
-		GVars_Ui.mainUi.addActor(smoothSideSelect);
-		incrementOnce = new TextButton("increment Once +",GVars_Ui.baseSkin) ; 
+		GVars_UI.mainUi.addActor(smoothSideSelect);
+		incrementOnce = new TextButton("increment Once +",GVars_UI.baseSkin) ; 
 		smoothSideSelect.enterScene();
 	}
 
@@ -67,7 +67,7 @@ public class Vue_Enter extends AVue_Model
 	public void update(float delta)
 	{
 		Player_Inputs.updateInput_ControllingInterface() ;
-		GVars_Ui.mainUi.act(delta);
+		GVars_UI.mainUi.act(delta);
 	}
 
 	@Override
