@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.kotcrab.vis.ui.VisUI;
 
 import jks.tools.Vector2Int;
-import jks.vinterface.controlling.ControllableInterface;
+import jks.vinterface.controlling.Controllable_Interface;
 import jks.vinterface.controlling.Utils_Controllable;
 import jks.vinterface.overlay.OverlayPause;
 import jks.vue.Utils_View;
@@ -29,7 +29,7 @@ public class GVars_UI implements Runnable
 	
 	public static Vector2Int cursorPos ; 
 	
-	public static ControllableInterface currentControllable;
+	public static Controllable_Interface currentControllable;
 	public static ArrayList<ArrayList<Button>> buttonMap ;
 	
 	public static Table bottomScore ; 
@@ -88,7 +88,7 @@ public class GVars_UI implements Runnable
 		}
 	}
 	
-	public static void activedInterface(ControllableInterface newInterface)
+	public static void activedInterface(Controllable_Interface newInterface)
 	{
 		currentControllable = newInterface ;
 		buttonMap = newInterface.mapInterface() ; 

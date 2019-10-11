@@ -38,11 +38,20 @@ public class GlobalTimmer
 	
 	public static Long getElapse(Object key, boolean reset)
 	{
-		long finishTime = System.currentTimeMillis();
-		long took = (finishTime-timeHolder.get(key)) ; 
+		long finishTime, took = 0 ;
+		try
+		{
+			finishTime = System.currentTimeMillis();
+			took = (finishTime-timeHolder.get(key)) ; 
 
-		if(reset)
-			timeHolder.put(key, finishTime) ;
+			if(reset)
+				timeHolder.put(key, finishTime) ;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Impossible to find " + key);
+		}
+		
 		
 		return took ; 
 	}

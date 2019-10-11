@@ -38,10 +38,12 @@ public class Vue_Enter extends AVue_Model
 		background = manager.get(maisMenus_Background, Texture.class) ;
 
 		GVars_AudioManager.PlayMusic(Enum_Music.INTRO);
+		
+//		IKM_Game_XBoxController xBoxController = new IKM_Game_XBoxController() ;
 
-		Gdx.input.setInputProcessor(new InputMultiplexer(GVars_UI.mainUi));
+		Gdx.input.setInputProcessor(new InputMultiplexer(GVars_UI.mainUi, new IKM_Game_Keyboard()));
 		Controllers.clearListeners();
-		Controllers.addListener(new IKM_Game_XBoxController(), new IKM_Game_Keyboard()) ; 
+		Controllers.addListener(new IKM_Game_XBoxController()) ; 
 		
 		smoothSideSelect = new SmoothSideSelect() ; 
 		GVars_UI.mainUi.addActor(smoothSideSelect);

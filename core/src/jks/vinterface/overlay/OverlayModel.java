@@ -10,9 +10,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 import jks.vinterface.Index_Interface;
 import jks.vinterface.Utils_TexturesAcess;
-import jks.vinterface.controlling.ControllableInterface;
+import jks.vinterface.controlling.Controllable_Interface;
 
-public abstract class OverlayModel extends Table implements ControllableInterface
+public abstract class OverlayModel extends Table implements Controllable_Interface
 {
 	
 	Color backgroundColor ; 

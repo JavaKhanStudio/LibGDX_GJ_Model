@@ -15,6 +15,7 @@ import jks.vinterface.GVars_UI;
 public class Utils_Controllable 
 {
 
+	
 	public static void decodeInterfaceKeybord(int keycode)
 	{
 		System.out.println("key " + keycode);

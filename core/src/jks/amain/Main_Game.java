@@ -6,6 +6,7 @@ import com.badlogic.gdx.Graphics.DisplayMode;
 import com.badlogic.gdx.graphics.GL20;
 
 import jks.camera.GVars_Camera;
+import jks.input.GVars_Controller;
 import jks.input.Player_Inputs;
 import jks.vars.GVars_Heart;
 import jks.vinterface.GVars_UI;
@@ -22,6 +23,7 @@ public class Main_Game extends ApplicationAdapter
 		GVars_UI.init() ; 
 		GVars_Camera.init();
 		Index_Interface.init();
+		GVars_Controller.init();
 		
 		GVars_Heart.changeVue(new Vue_Enter(),true) ; 
 

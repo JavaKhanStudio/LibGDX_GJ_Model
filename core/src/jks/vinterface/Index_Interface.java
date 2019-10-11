@@ -3,6 +3,9 @@ package jks.vinterface;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 
+import jks.tools.Enum_Timming;
+import jks.tools.GlobalTimmer;
+
 public class Index_Interface 
 {
 
@@ -31,6 +34,8 @@ public class Index_Interface
 	public static void init()
 	{
 		manager = new AssetManager();
+		
+		GlobalTimmer.registerTime(Enum_Timming.CONTROLLER_MOVE);
 		
 		initEnter() ;
 		initBasic() ; 
