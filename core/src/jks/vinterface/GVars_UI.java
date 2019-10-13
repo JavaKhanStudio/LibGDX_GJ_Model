@@ -51,7 +51,6 @@ public class GVars_UI implements Runnable
 		VisUI.load(GVars_UI.baseSkin);
 		mainUi = new Stage();
 		Gdx.input.setInputProcessor(mainUi);
-	
 	}
 	
 	public static void resize()
@@ -100,9 +99,8 @@ public class GVars_UI implements Runnable
 	public static void selectButton()
 	{
 		InputEvent event1 = new InputEvent();
-		event1.setType(InputEvent.Type.touchDown);
+		event1.setType(InputEvent.Type.touchUp);
 		buttonMap.get(cursorPos.x).get(cursorPos.y).fire(event1);
-		System.out.println("nothing");
 	}
 	
 	public static void resetInterface()

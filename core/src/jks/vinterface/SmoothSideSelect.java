@@ -17,11 +17,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 
+import jks.vars.GVars_Heart;
+import jks.vinterface.controlling.Controllable_Interface;
 import jks.vinterface.overlay.OverlayOptions;
 import jks.vinterface.overlay.ReplayAction;
 import jks.vue.Utils_View;
 
-public class SmoothSideSelect extends Table implements ReplayAction
+public class SmoothSideSelect extends Table implements ReplayAction, Controllable_Interface
 {
 
 	Float baseSpeed = 0.4f ;
@@ -33,6 +35,8 @@ public class SmoothSideSelect extends Table implements ReplayAction
 	float topPosY ;
 	
 	ArrayList<Table> list ;
+	ArrayList<Button> selectableOptionsX ;
+	ArrayList<ArrayList<Button>> selectableOptionsMapped ;
 	int index = 0; 
 	Integer movingBy = 0; 
 	
@@ -49,8 +53,12 @@ public class SmoothSideSelect extends Table implements ReplayAction
 		ref = this ; 
 		this.setLayoutEnabled(false);
 		list = new ArrayList<>() ; 
+		selectableOptionsX = new ArrayList<>() ; 
+		selectableOptionsMapped = new ArrayList<>() ;
+		selectableOptionsMapped.add(selectableOptionsX) ; 	
 		
-		Button jouer = buildButton("Jouer") ; 
+		Button jouer = buildButton("Jouer") ;
+		selectableOptionsX.add(jouer) ; 
 		jouer.addListener(new InputListener()
 		{
 			boolean onFocus ; 
@@ -77,6 +85,7 @@ public class SmoothSideSelect extends Table implements ReplayAction
 		}) ;
 		
 		Button options = buildButton("Options") ;
+		selectableOptionsX.add(options) ; 
 		options.addListener(new InputListener()
 		{
 			boolean onFocus ; 
@@ -104,6 +113,7 @@ public class SmoothSideSelect extends Table implements ReplayAction
 		}) ;
 		
 		Button credits = buildButton("Credits") ;
+		selectableOptionsX.add(credits) ; 
 		credits.addListener(new InputListener()
 		{
 			boolean onFocus ; 
@@ -131,6 +141,7 @@ public class SmoothSideSelect extends Table implements ReplayAction
 		}) ;
 		
 		Button quitter = buildButton("Quit") ;
+		selectableOptionsX.add(quitter) ; 
 		quitter.addListener(new InputListener()
 		{
 			boolean onFocus ; 
@@ -237,25 +248,12 @@ public class SmoothSideSelect extends Table implements ReplayAction
 		    list.get(a).addAction(sequence);
 		}
 
+		
+		GVars_UI.activedInterface(this);
 	}
 	
 	public void exitScene()
 	{
-//		for(int a = list.size() - 1 ; a >= 0 ; a--)
-//		{
-//			MoveToAction action1 = new MoveToAction();
-//		    action1.setPosition(-sizeX, topPosY - (sizeY * a) - (decalY * a));
-//		    action1.setDuration(leavingSpeed);
-//		    
-//		    DelayAction delay = new DelayAction((list.size() - (a + 1)) * (leavingSpeedDelayIncrement)) ; 
-//		    
-//		    SequenceAction sequence = new SequenceAction();
-//		    sequence.addAction(delay);
-//		    sequence.addAction(action1);
-//		    
-//		    list.get(a).addAction(sequence);
-//		}
-		
 		for(int a = 0 ;  a < list.size() ; a++)
 		{
 			MoveToAction action1 = new MoveToAction();
@@ -303,6 +301,12 @@ public class SmoothSideSelect extends Table implements ReplayAction
 	    sequence.addAction(action1);
 	    
 	    return sequence ; 
+	}
+
+	@Override
+	public ArrayList<ArrayList<Button>> mapInterface() 
+	{
+		return selectableOptionsMapped;
 	}
 
 }

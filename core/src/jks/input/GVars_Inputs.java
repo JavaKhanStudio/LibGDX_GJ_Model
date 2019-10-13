@@ -17,8 +17,6 @@ public class GVars_Inputs
 	public static int startSelection_X ;
 	public static int startSelection_Y ;
 	
-
-	
 	public static boolean blockActionForClick ; // Considere s'il faut annuler toute autre action de click
 
 	public static void updateInput_Game (float delta) 

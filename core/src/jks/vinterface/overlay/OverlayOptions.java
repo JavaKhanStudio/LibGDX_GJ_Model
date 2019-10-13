@@ -89,9 +89,7 @@ public class OverlayOptions extends OverlayModel
 		MoveToAction getIn = new MoveToAction();
 	    getIn.setPosition(0, returnButtonPositionY);
 	    getIn.setDuration(0.3f);
-	    retour.addAction(getIn);
-		
-	    
+	    retour.addAction(getIn); 
 	    
 		this.addActor(mainTable);
 		this.addActor(retour);

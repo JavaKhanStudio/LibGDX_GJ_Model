@@ -15,8 +15,13 @@ public class Player_Inputs
 		jumpSupression
 		;
 
+	public boolean isAdmin = true ;
+	
 	public boolean blockActionForClick ; // Considere s'il faut annuler toute autre action de click
 
+	public Player_Inputs() 
+	{}
+	
 //	PhysicSpriteHeroes ref ; 
 //	
 //	public Player_Inputs(PhysicSpriteHeroes ref)
