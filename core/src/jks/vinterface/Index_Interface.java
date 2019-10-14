@@ -13,7 +13,10 @@ public class Index_Interface
 	public static final String icon = "ui/icon/";
 	public static final String menu = icon + "menu/";
 	public static final String pausePath = icon + "pause/";
+	public static final String preload = "ui/preload" ;
 	public static final String misc = "misc/" ;
+	
+	
 	
 	public static String maisMenus_Background = menu + "background.jpg" ;
 	public static String mainMenus_Logo = menu + "logo.png";
@@ -29,11 +32,26 @@ public class Index_Interface
 	public static String frame_Gray = frame + "grayFrame.png" ; 
 	public static String frame_GraySmoke = frame + "borderSmokeGray.png" ; 
 	
+	public static String introLogo_Jam = preload + "logo_jam.png" ; 
+	public static String introLogo_LibGDX = preload + "logo_libGdx.png" ; 
+	public static String introLogo_Team = preload + "" ; 
+	
+	
+	
 	public static AssetManager manager ; 
 	
-	public static void init()
+	public static void preInit()
 	{
 		manager = new AssetManager();
+		initPreloading() ;
+		
+	}
+	
+
+	public static void init()
+	{
+		if(manager == null)
+			manager = new AssetManager();
 		
 		GlobalTimmer.registerTime(Enum_Timming.CONTROLLER_MOVE);
 		
@@ -43,6 +61,15 @@ public class Index_Interface
 		manager.finishLoading();
 	
 	}
+	
+	private static void initPreloading() 
+	{
+		manager.load(introLogo_Jam, Texture.class);
+		manager.load(introLogo_LibGDX, Texture.class);
+		manager.load(introLogo_Team, Texture.class);
+		
+	}
+
 	
 	private static void initBasic() 
 	{

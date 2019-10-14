@@ -113,7 +113,7 @@ public class GVars_AudioManager
 		
 		switch (whichOne) 
 		{
-			case INTRO:
+			case STARTING_SCREEN:
 				if (currentlyRunningMusic == null) 
 				{
 					currentlyRunningMusic = Gdx.audio.newMusic(musicFile);
@@ -121,7 +121,7 @@ public class GVars_AudioManager
 					currentlyRunningMusic.play();
 				}
 				break;
-			case GAME:
+			case GAME_INTRO:
 				if (currentlyRunningMusic == null) 
 				{
 					currentlyRunningMusic = Gdx.audio.newMusic(musicFile);

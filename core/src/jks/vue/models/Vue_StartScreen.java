@@ -23,7 +23,7 @@ import jks.vinterface.GVars_UI;
 import jks.vinterface.SmoothSideSelect;
 import jks.vue.AVue_Model; 
 
-public class Vue_Enter extends AVue_Model
+public class Vue_StartScreen extends AVue_Model
 {
 	Texture background ;
 	public Texture sourceTexture ;
@@ -37,7 +37,7 @@ public class Vue_Enter extends AVue_Model
 		
 		background = manager.get(maisMenus_Background, Texture.class) ;
 
-		GVars_AudioManager.PlayMusic(Enum_Music.INTRO);
+		GVars_AudioManager.PlayMusic(Enum_Music.STARTING_SCREEN);
 		
 //		IKM_Game_XBoxController xBoxController = new IKM_Game_XBoxController() ;
 

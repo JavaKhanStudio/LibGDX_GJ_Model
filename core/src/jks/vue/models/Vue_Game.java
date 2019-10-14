@@ -27,7 +27,6 @@ import jks.vue.AVue_Model;
 public class Vue_Game extends AVue_Model
 {
     
-   
     boolean inDebug = true ; 
     Box2DDebugRenderer debugRenderer ;
     public static Sprite star1 ; 
@@ -44,7 +43,7 @@ public class Vue_Game extends AVue_Model
     	Gdx.input.setInputProcessor(new InputMultiplexer(GVars_UI.mainUi, new IKM_Game_Keyboard()));
 		Controllers.clearListeners();
 		Controllers.addListener(new IKM_Game_XBoxController()) ; 
-		GVars_AudioManager.PlayMusic(Enum_Music.GAME);
+		GVars_AudioManager.PlayMusic(Enum_Music.GAME_INTRO);
 		
     }
 
