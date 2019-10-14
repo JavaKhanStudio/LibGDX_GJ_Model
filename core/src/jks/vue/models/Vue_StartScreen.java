@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 import jks.camera.GVars_Camera;
+import jks.input.GVars_Inputs;
 import jks.input.IKM_Game_Keyboard;
 import jks.input.IKM_Game_XBoxController;
 import jks.input.Player_Inputs;
@@ -39,8 +40,6 @@ public class Vue_StartScreen extends AVue_Model
 
 		GVars_AudioManager.PlayMusic(Enum_Music.STARTING_SCREEN);
 		
-//		IKM_Game_XBoxController xBoxController = new IKM_Game_XBoxController() ;
-
 		Gdx.input.setInputProcessor(new InputMultiplexer(GVars_UI.mainUi, new IKM_Game_Keyboard()));
 		Controllers.clearListeners();
 		Controllers.addListener(new IKM_Game_XBoxController()) ; 
@@ -69,6 +68,7 @@ public class Vue_StartScreen extends AVue_Model
 	public void update(float delta)
 	{
 		Player_Inputs.updateInput_ControllingInterface() ;
+		GVars_Inputs.updateInput_ControllingInterface() ;
 		GVars_UI.mainUi.act(delta);
 	}
 

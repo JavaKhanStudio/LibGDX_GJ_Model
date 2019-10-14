@@ -9,8 +9,7 @@ sourceSets
     {
         java 
         {
-            srcDir 'src'
-            srcDir 'testFolder'     
+            srcDir 'src'  
         }
     }
 }

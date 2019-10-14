@@ -20,19 +20,30 @@ public class Main_Game extends ApplicationAdapter
 	@Override
 	public void create () 
 	{
-//		GVars_UI.init() ; 
-//		GVars_Camera.init();
-//		Index_Interface.init();
-//		GVars_Controller.init();
-//		
-//		GVars_Heart.changeVue(new Vue_StartScreen(),true) ; 
-//
-//		if(GVars_Heart.isFullScreen)
-//		{
-//			DisplayMode mode = Gdx.graphics.getDisplayMode();
-//			Gdx.graphics.setFullscreenMode(mode);
-//		}
+//		startAtLogo() ; 
+		startAtStartScreen();	
+	}
+	
+	public void startAtLogo() 
+	{
+		GVars_UI.init() ; 
+		GVars_Camera.init();
+		Index_Interface.preInit();
+		GVars_Controller.init();
 		
+		GVars_Heart.changeVue(new Vue_StartScreen(),true) ; 
+
+		if(GVars_Heart.isFullScreen)
+		{
+			DisplayMode mode = Gdx.graphics.getDisplayMode();
+			Gdx.graphics.setFullscreenMode(mode);
+		}
+		
+		Index_Interface.init();
+	}
+
+	private void startAtStartScreen()
+	{
 		GVars_UI.init() ; 
 		GVars_Camera.init();
 		Index_Interface.init();
@@ -46,7 +57,6 @@ public class Main_Game extends ApplicationAdapter
 			Gdx.graphics.setFullscreenMode(mode);
 		}
 		
-		Index_Interface.init();
 	}
 
 	@Override

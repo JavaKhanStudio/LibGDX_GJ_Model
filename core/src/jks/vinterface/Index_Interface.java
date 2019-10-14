@@ -43,8 +43,7 @@ public class Index_Interface
 	public static void preInit()
 	{
 		manager = new AssetManager();
-		initPreloading() ;
-		
+		initPreloading() ;	
 	}
 	
 

@@ -38,8 +38,11 @@ public class Utils_Controllable
 	
 	public static void decodeInterfaceController()
 	{
+		
 		if(neededTime > GlobalTimmer.getElapse(Enum_Timming.CONTROLLER_MOVE, false))
 			return ;
+		
+		System.out.println(GlobalTimmer.getElapse(Enum_Timming.CONTROLLER_MOVE, false));
 		///*	
 		if(leftPressed)
 		{moveX(false) ;}

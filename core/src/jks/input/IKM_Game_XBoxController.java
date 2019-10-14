@@ -31,7 +31,7 @@ public class IKM_Game_XBoxController implements ControllerListener
 	@Override
 	public boolean buttonDown(Controller controller, int buttonCode) 
 	{
-		Player_Inputs inputing = getPlayer(controller) ; 
+		Player_Inputs inputing = getPlayer(null) ; 
 		if(inputing == null)
 		{
 			return false; 
@@ -83,8 +83,8 @@ public class IKM_Game_XBoxController implements ControllerListener
 	@Override
 	public boolean axisMoved(Controller controller, int axisCode, float value) 
 	{
-		Player_Inputs inputing = getPlayer(controller) ; 
-		
+		Player_Inputs inputing = getPlayer(null) ; 
+		System.out.println(inputing);
 		if(inputing == null)
 		{return false;}
 		
