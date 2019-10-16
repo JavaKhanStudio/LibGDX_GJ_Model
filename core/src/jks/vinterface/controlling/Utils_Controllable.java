@@ -1,18 +1,20 @@
 package jks.vinterface.controlling;
 
+import static jks.input.IKM_Game_Keyboard.pressingDown;
+import static jks.input.IKM_Game_Keyboard.pressingEnter;
+import static jks.input.IKM_Game_Keyboard.pressingLeft;
+import static jks.input.IKM_Game_Keyboard.pressingRight;
+import static jks.input.IKM_Game_Keyboard.pressingTop;
 import static jks.vinterface.GVars_UI.buttonMap;
 import static jks.vinterface.GVars_UI.cursorPos;
-import static jks.input.GVars_Inputs.* ; 
 
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 
 import jks.input.KeysXbox;
 import jks.tools.Enum_Timming;
 import jks.tools.GlobalTimmer;
-import jks.vinterface.GVars_UI;
-import static jks.input.IKM_Game_Keyboard.* ; 
+import jks.vinterface.GVars_UI; 
 
 public class Utils_Controllable 
 {
@@ -42,8 +44,7 @@ public class Utils_Controllable
 		if(neededTime > GlobalTimmer.getElapse(Enum_Timming.CONTROLLER_MOVE, false))
 			return ;
 		
-		System.out.println(GlobalTimmer.getElapse(Enum_Timming.CONTROLLER_MOVE, false));
-		///*	
+		/*	
 		if(leftPressed)
 		{moveX(false) ;}
 		else if(rightPressed)
