@@ -21,7 +21,7 @@ allprojects {
     version = '1.0'
     ext {
         appName = "generic"
-        gdxVersion = '1.9.9'
+        gdxVersion = '1.9.10'
         roboVMVersion = '2.3.5'
         box2DLightsVersion = '1.4'
         ashleyVersion = '1.7.0'
@@ -35,6 +35,13 @@ allprojects {
         google()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+    }
+}
+
+
+tasks.withType(JavaExec) {
+    if (System.getProperty('DEBUG', 'false') == 'true') {
+        jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9099'
     }
 }
 
@@ -70,6 +77,7 @@ project(":core") {
   		compile "com.kotcrab.vis:vis-ui:$visuiVersion"
         compile 'org.apache.commons:commons-collections4:4.1'
         compile "com.badlogicgames.box2dlights:box2dlights:1.4"
+        compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
         compile fileTree(dir: 'jars', include: '*.jar')
     }
 }

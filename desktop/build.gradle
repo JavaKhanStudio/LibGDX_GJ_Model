@@ -13,7 +13,7 @@ sourceSets
     }
 }
 
-project.ext.mainClassName = "jks.launcher.Launcher_Test"
+project.ext.mainClassName = "jks.launcher.Launcher_Game"
 project.ext.assetsDir = new File("../desktop/assets");
 
 eclipse {
