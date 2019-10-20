@@ -23,17 +23,19 @@ public abstract class OverlayModel extends Table implements Controllable_Interfa
 		super(skin);
 		texture = Utils_TexturesAcess.getTexture(Index_Interface.empty) ; 
 		backgroundColor = new Color(0, 0, 0, 0.5f) ; 
-//		this.setMovable(false);
 		this.setTouchable(Touchable.childrenOnly);
 	}
 	
 	@Override
-	protected void drawBackground (Batch batch, float parentAlpha, float x, float y) {
+	protected void drawBackground (Batch batch, float parentAlpha, float x, float y) 
+	{
 		batch.setColor(backgroundColor);
 		batch.draw(texture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	}
 	
+	public abstract void resize() ; 
+	
 	public abstract void destroy() ;
 	public abstract boolean disableMainClickAction() ;
-
+	
 }

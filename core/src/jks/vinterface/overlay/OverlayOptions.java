@@ -1,27 +1,20 @@
 package jks.vinterface.overlay;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics.DisplayMode;
-import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
-import com.badlogic.gdx.utils.Align;
-import com.kotcrab.vis.ui.widget.VisCheckBox;
-import com.kotcrab.vis.ui.widget.VisLabel;
 import com.kotcrab.vis.ui.widget.VisTable;
-import com.kotcrab.vis.ui.widget.VisTextButton;
 
 import jks.tools.Vector2Int;
 import jks.vinterface.GVars_UI;
 import jks.vinterface.Index_Interface;
+import jks.vinterface.Resolution_Block;
 import jks.vinterface.Utils_TexturesAcess;
 import jks.vue.Utils_View;
 
@@ -33,13 +26,10 @@ public class OverlayOptions extends OverlayModel
 	
 	VisTable mainTable ; 
 	
-	VisTable graphicBloc ; 
+	Resolution_Block graphicBloc ; 
 	VisTable soundBloc ; 
 	VisTable prefBloc ; 
-	VisTable languageBloc ;
-	
-	HashMap<String,DisplayMode> displayMap ;
-	ArrayList<String> displayList ; 
+	VisTable languageBloc ; 
 	
 	String frames = Index_Interface.frame_Gray ;
 	
@@ -68,7 +58,7 @@ public class OverlayOptions extends OverlayModel
 		mainTable.setTouchable(Touchable.childrenOnly);
 		mainTable.setBackground(Utils_TexturesAcess.buildDrawingRegionTexture(frames));
 		
-		graphicBloc = buildGraphicsBloc(); 
+		graphicBloc = new Resolution_Block(); 
 		graphicBloc.setBackground(Utils_TexturesAcess.buildDrawingRegionTexture(frames));
 		
 		soundBloc = buildSoundsBloc() ; 
@@ -106,7 +96,6 @@ public class OverlayOptions extends OverlayModel
 		float size_Main_Height = Gdx.graphics.getHeight() * heightPercent ; 
 		float decalY = size_Main_Height / 20f ;
 		
-		
 		mainTable.setWidth(size_Main_Width);
 		mainTable.setHeight(size_Main_Height);
 		mainTable.setPosition((Gdx.graphics.getWidth() - size_Main_Width)/2, (Gdx.graphics.getHeight() - size_Main_Height)/2);
@@ -142,48 +131,7 @@ public class OverlayOptions extends OverlayModel
 		this.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	}
 	
-	public VisTable buildGraphicsBloc()
-	{
-		VisTable table = new VisTable() ;
-		
-		VisLabel graphics = new VisLabel("Graphics") ;
-		graphics.setAlignment(Align.center);
-		
-
-		final SelectBox<String> selectBox_Resolution = buildResolutionBox() ; 	
-		final SelectBox<String> selectBox_FPS = new SelectBox<String>(GVars_UI.baseSkin);
-		VisCheckBox vSynchCheckBox = new VisCheckBox("Is VSynch") ; 
-		VisTextButton apply = new VisTextButton("Apply") ;
-		
-		table.add(graphics).colspan(2) ;
-		table.row() ; 
-		table.add(new VisLabel("Resolution:")).align(Align.left) ; 
-		table.add(selectBox_Resolution).align(Align.left) ;
-		table.row() ; 
-		table.add(new VisLabel("Frame Per Sec:")).align(Align.left) ; 
-		table.add(selectBox_FPS).align(Align.left) ;
-		table.row() ;
-		table.add(vSynchCheckBox).colspan(2).align(Align.left) ; 
-		table.row() ;
-		table.add(apply).colspan(2).align(Align.center) ; 
-		
-		return table ; 
-	}
 	
-	private SelectBox<String> buildResolutionBox() 
-	{
-		buildDisplayList() ; 
-		SelectBox<String> selectBox = new SelectBox<String>(GVars_UI.baseSkin);
-		String[] resolutions = new String[displayMap.size()];
-		
-		int a = 0; 
-		for(String value : displayList)
-		{resolutions[a++] = value ;}
-		
-		selectBox.setItems(resolutions);
-		
-		return selectBox ;
-	}
 
 	public VisTable buildSoundsBloc()
 	{
@@ -221,28 +169,6 @@ public class OverlayOptions extends OverlayModel
 		return returningList;
 	}
 	
-	public void buildDisplayList()
-	{
-		DisplayMode[] modes = Lwjgl3ApplicationConfiguration.getDisplayModes();
-		displayMap = new HashMap<String,DisplayMode>() ;
-		displayList = new ArrayList<>() ;
-		
-		for(DisplayMode mode : modes)
-		{
-			if(mode.width >= 800 
-					&& mode.refreshRate == 60
-					)
-			{
-				float ratio = (float)mode.width/(float)mode.height ; 
-				if(ratio < 1.778 && ratio > 1.7)
-				{
-					String displaySize = mode.width + "x" + mode.height ; 
-					displayMap.put(displaySize, mode) ; 
-					displayList.add(displaySize) ;
-				}	
-			}
-		} 
-	}
 	
 	@Override
 	public Vector2Int startAt()

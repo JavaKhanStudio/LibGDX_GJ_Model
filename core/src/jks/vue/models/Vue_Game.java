@@ -44,7 +44,6 @@ public class Vue_Game extends AVue_Model
 		Controllers.clearListeners();
 		Controllers.addListener(new IKM_Game_XBoxController()) ; 
 		GVars_AudioManager.PlayMusic(Enum_Music.GAME_INTRO);
-		
     }
 
     @Override
@@ -59,7 +58,6 @@ public class Vue_Game extends AVue_Model
     	Parallax_Heart.worldCamera.position.add(screenMovementSpeed, 0, 0);
     	Parallax_Heart.renderMainPage();
 		
-    	
     	staticBatch.begin();
   
     	staticBatch.end();
@@ -93,4 +91,9 @@ public class Vue_Game extends AVue_Model
 		
 	}
 
+	@Override
+	public void resize(int x, int y) 
+	{
+		
+	}
 }

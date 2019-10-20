@@ -26,6 +26,13 @@ public abstract class AVue_Model
 	public abstract void update (float delta) ;
 	public abstract void render () ;
 	
+	public void resize(int x, int y)
+	{
+		if(filter != null)
+		{filter.resize();}
+		
+		
+	}
 	
 	public void clear()
 	{

@@ -75,13 +75,21 @@ public class Main_Game extends ApplicationAdapter
     		GVars_Heart.vue.render();
     	}
 	}
-	
+    
     @Override
 	public void resize(int width, int height) 
 	{
-
+		System.out.println("working here");
+//		GVars_UI.mainUi.getViewport().setWorldSize(width, height);
+//		GVars_UI.mainUi.getViewport().setScreenSize(width, height);
+		GVars_UI.mainUi.getViewport().update(width, height, true);
+		GVars_UI.mainUi.getViewport().getCamera().update();
+		GVars_Camera.staticBatch.getProjectionMatrix().setToOrtho2D(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		if(GVars_Heart.vue != null)
+			GVars_Heart.vue.resize(width,height) ; 
 	}
-
+    
     @Override
     public void pause()
     {}

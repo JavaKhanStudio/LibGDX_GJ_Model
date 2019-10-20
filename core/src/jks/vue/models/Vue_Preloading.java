@@ -40,7 +40,11 @@ public class Vue_Preloading extends AVue_Model
 		
 	}
 
-	
+	@Override
+	public void resize(int x, int y) 
+	{
+		
+	}
 	
 	
 }

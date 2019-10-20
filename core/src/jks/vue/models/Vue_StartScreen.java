@@ -36,7 +36,7 @@ public class Vue_StartScreen extends AVue_Model
 		toRender = new ArrayList<>() ;
 		
 		background = manager.get(maisMenus_Background, Texture.class) ;
-
+		
 		GVars_AudioManager.PlayMusic(Enum_Music.STARTING_SCREEN);
 		
 		Gdx.input.setInputProcessor(new InputMultiplexer(GVars_UI.mainUi, new IKM_Game_Keyboard()));
@@ -79,9 +79,16 @@ public class Vue_StartScreen extends AVue_Model
 		
 		GVars_Camera.staticBatch.begin() ;
 		GVars_Camera.staticBatch.draw(background,0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+//		GVars_Camera.staticBatch.draw(background,0,0, 100,100);
 		GVars_Camera.staticBatch.end() ;
 		
 		renderBeforeInterface() ;
 		drawInterface() ;
+	}
+	
+	@Override
+	public void resize(int x, int y) 
+	{
+		super.resize(x,y) ; 
 	}
 }

@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.kotcrab.vis.ui.VisUI;
 
 import jks.tools.Vector2Int;
@@ -49,7 +50,7 @@ public class GVars_UI implements Runnable
 		
 		baseSkin = new Skin(Gdx.files.internal("ui/skins/basic/uiskin.json"));
 		VisUI.load(GVars_UI.baseSkin);
-		mainUi = new Stage();
+		mainUi = new Stage(new ScreenViewport());
 		Gdx.input.setInputProcessor(mainUi);
 	}
 	
@@ -66,6 +67,7 @@ public class GVars_UI implements Runnable
 	
 	public static void reset()
 	{
+		
 		mainUi = new Stage();
 		Gdx.input.setInputProcessor(mainUi);
 	}

@@ -69,4 +69,10 @@ public class OverlayPause extends OverlayModel
 	@Override
 	public Vector2Int startAt()
 	{return new Vector2Int(0,0) ;}
+
+	@Override
+	public void resize() 
+	{
+	
+	}
 }
