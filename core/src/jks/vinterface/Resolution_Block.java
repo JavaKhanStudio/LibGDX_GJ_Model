@@ -1,18 +1,13 @@
 package jks.vinterface;
 
-import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.lwjgl.opengl.Display;
-
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Graphics.DisplayMode;
 import com.badlogic.gdx.Graphics.Monitor;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Graphics;
-import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Window;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
@@ -22,7 +17,6 @@ import com.kotcrab.vis.ui.widget.VisLabel;
 import com.kotcrab.vis.ui.widget.VisTable;
 import com.kotcrab.vis.ui.widget.VisTextButton;
 
-import jks.camera.GVars_Camera;
 import jks.vars.GVars_Heart;
 
 public class Resolution_Block extends VisTable
@@ -118,7 +112,7 @@ public class Resolution_Block extends VisTable
 	{
 		if(settingMax)
 		{
-//			selectBox_Resolution.setSelectedIndex(selectBox_Resolution.getItems().size - 1);
+			selectBox_Resolution.setSelectedIndex(selectBox_Resolution.getItems().size - 1);
 			selectBox_Resolution.setDisabled(true);
 		}
 		else
@@ -148,23 +142,15 @@ public class Resolution_Block extends VisTable
 		}
 		else
 		{
-			System.out.println(GVars_UI.mainUi.getHeight());
 			Gdx.graphics.setWindowedMode(width, height);
 			Lwjgl3Graphics g = (Lwjgl3Graphics) Gdx.graphics;
 	        var mode = g.getDisplayMode();
 	        var window = g.getWindow();
 	        window.setPosition(mode.width / 2 - g.getWidth() / 2, mode.height / 2 - g.getHeight() / 2);	
 		}
-		System.out.println(GVars_UI.mainUi.getHeight());
-//		System.out.println(Gdx.graphics.getPpiX() + " " + Gdx.graphics.getPpiY() + " will");
-//		System.out.println(width + " " + height + " team");
-//		System.out.println(Gdx.graphics.getWidth() + " " + Gdx.graphics.getHeight() + " build");
 
 		GVars_Heart.vue.resize(width, height);
 	}
-
-//	DisplayModeJKS mode = new DisplayModeJKS(width, height, Integer.parseInt(selectBox_FPS.getSelected()), 1) ;
-//	Gdx.graphics.setFullscreenMode(mode) ; 
 	
 	public void buildDisplayList()
 	{

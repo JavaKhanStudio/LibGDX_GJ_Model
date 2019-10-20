@@ -79,7 +79,6 @@ public class Vue_StartScreen extends AVue_Model
 		
 		GVars_Camera.staticBatch.begin() ;
 		GVars_Camera.staticBatch.draw(background,0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-//		GVars_Camera.staticBatch.draw(background,0,0, 100,100);
 		GVars_Camera.staticBatch.end() ;
 		
 		renderBeforeInterface() ;
