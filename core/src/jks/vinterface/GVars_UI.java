@@ -38,8 +38,9 @@ public class GVars_UI implements Runnable
 	public static FreeTypeFontGenerator generator ;
 	public static FreeTypeFontGenerator generator2 ;
 	public static FreeTypeFontParameter parameter ;
-	public static BitmapFont mainFont ; 
-	public static BitmapFont secondFont ; 
+	public static BitmapFont font_Title ; 
+	public static BitmapFont font_Main ; 
+	public static BitmapFont fontont_Second ; 
 
 	public static void init() 
 	{
@@ -56,12 +57,16 @@ public class GVars_UI implements Runnable
 	
 	public static void resize()
 	{
-		parameter.size = 30 ;
-		mainFont = generator.generateFont(parameter);
-		secondFont = generator2.generateFont(parameter);
-		mainFont.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		parameter.size = (int) (Gdx.graphics.getWidth()/fontTitleSizeDivide) ;
+		font_Title = generator.generateFont(parameter);
+		parameter.size = (int) (Gdx.graphics.getWidth()/fontBasicSizeDivide) ;
+		font_Main = generator.generateFont(parameter);
+		fontont_Second = generator2.generateFont(parameter);
+		font_Main.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
 	}
 
+	private static float fontTitleSizeDivide = 30 ; 
+	private static float fontBasicSizeDivide = 40 ; 
 	private static float width = 0.7f; 
 	private static float height = 0.12f ; 
 	
@@ -118,8 +123,6 @@ public class GVars_UI implements Runnable
 		{
 			buttonMap = null ; 
 			cursorPos = null ; 
-		}
-	
+		}	
 	}
-
 }

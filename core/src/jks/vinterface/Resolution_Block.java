@@ -8,8 +8,11 @@ import com.badlogic.gdx.Graphics.DisplayMode;
 import com.badlogic.gdx.Graphics.Monitor;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Graphics;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Window;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.ui.Cell;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.utils.Align;
 import com.kotcrab.vis.ui.widget.VisCheckBox;
@@ -22,6 +25,8 @@ import jks.vars.GVars_Heart;
 public class Resolution_Block extends VisTable
 {
 
+	VisLabel graphicLabel,resolutionLabel,fpsLabel ;
+	VisLabel leftDecalX , rightDecalX ; 
 	VisCheckBox vSynchCheckBox ; 
 	VisCheckBox fullScreenCheckBox ;
 	SelectBox<String> selectBox_Resolution ; 
@@ -30,10 +35,16 @@ public class Resolution_Block extends VisTable
 	HashMap<String,DisplayMode> displayMap ;
 	ArrayList<String> displayList ;
 	
+	Cell<VisLabel> leftDecalXCell, rightDecalXCell ; 
+	
 	public Resolution_Block()
 	{		
-		VisLabel graphics = new VisLabel("Graphics") ;
-		graphics.setAlignment(Align.center);
+//		this.setLayoutEnabled(false);
+		leftDecalX = new VisLabel("    ") ; rightDecalX = new VisLabel("    ") ;
+		graphicLabel = new VisLabel("Graphics") ;
+		graphicLabel.setAlignment(Align.center);
+		resolutionLabel = new VisLabel("Resolution:") ; 
+		fpsLabel = new VisLabel("Frame Per Sec:") ; 
 		
 
 		selectBox_Resolution = buildResolutionBox() ; 	
@@ -67,19 +78,30 @@ public class Resolution_Block extends VisTable
 			{applyNewResolution() ;}
 		}) ; 
 		
-		this.add(graphics).colspan(2) ;
+		this.add(graphicLabel).colspan(4) ;
 		this.row() ; 
-		this.add(new VisLabel("Resolution:")).align(Align.left) ; 
+		
+		leftDecalXCell = this.add(leftDecalX) ; 
+		this.add(resolutionLabel).align(Align.left).expandX() ; 
 		this.add(selectBox_Resolution).align(Align.right) ;
+		rightDecalXCell = this.add(rightDecalX) ; 
 		this.row() ; 
-		this.add(new VisLabel("Frame Per Sec:")).align(Align.left) ; 
-		this.add(selectBox_FPS).align(Align.right) ;
+		
+		this.add(fpsLabel).align(Align.left) ; 
+		this.add(selectBox_FPS).align(Align.right).expandX() ;
 		this.row() ;
-		this.add(fullScreenCheckBox).colspan(2).align(Align.left) ; 
+		
+		this.add() ; 
+		this.add(fullScreenCheckBox).colspan(2).align(Align.left).expandX() ; 
+		this.add() ; 
 		this.row() ;
-		this.add(vSynchCheckBox).colspan(2).align(Align.left) ; 
+		
+		this.add() ; 
+		this.add(vSynchCheckBox).colspan(2).align(Align.left).expandX() ; 
+		this.add() ; 
 		this.row() ;
-		this.add(apply).colspan(2).align(Align.center) ; 
+		
+		this.add(apply).colspan(4).align(Align.center) ; 
 	}
 	
 	public SelectBox<String> buildResolutionBox() 
@@ -137,19 +159,20 @@ public class Resolution_Block extends VisTable
 			DisplayMode displayMode = Gdx.graphics.getDisplayMode(currMonitor);
 			System.out.println(displayMode);
 			if(!Gdx.graphics.setFullscreenMode(displayMode)) 
-			{}
-			
+			{}	
 		}
 		else
 		{
 			Gdx.graphics.setWindowedMode(width, height);
 			Lwjgl3Graphics g = (Lwjgl3Graphics) Gdx.graphics;
-	        var mode = g.getDisplayMode();
-	        var window = g.getWindow();
+			DisplayMode mode = g.getDisplayMode();
+			Lwjgl3Window window = g.getWindow();
 	        window.setPosition(mode.width / 2 - g.getWidth() / 2, mode.height / 2 - g.getHeight() / 2);	
 		}
 
+		GVars_UI.resize();
 		GVars_Heart.vue.resize(width, height);
+	
 	}
 	
 	public void buildDisplayList()
@@ -161,8 +184,7 @@ public class Resolution_Block extends VisTable
 		for(DisplayMode mode : modes)
 		{
 			if(mode.width >= 800 
-					&& mode.refreshRate == 60
-					)
+					&& mode.refreshRate == 60)
 			{
 				float ratio = (float)mode.width/(float)mode.height ; 
 				if(ratio < 1.778 && ratio > 1.7)
@@ -174,4 +196,30 @@ public class Resolution_Block extends VisTable
 			}
 		} 
 	}
+	
+	public void resize()
+	{
+		System.out.println(this.getWidth() + "jeans");
+		float decalX = this.getWidth()/40 ;
+		leftDecalXCell.minWidth(decalX) ;
+		rightDecalXCell.minWidth(decalX) ; 
+		
+		graphicLabel.getStyle().font = GVars_UI.font_Title ; 
+		graphicLabel.setFontScale(2);
+		vSynchCheckBox.getLabel().getStyle().font = GVars_UI.font_Main ; 
+		fullScreenCheckBox.getLabel().getStyle().font = GVars_UI.font_Main ; 
+		selectBox_Resolution.getStyle().font = GVars_UI.font_Main ; 
+		selectBox_FPS.getStyle().font = GVars_UI.font_Main ;
+		
+//		graphicLabel.setHeight(height);
+		
+	}
+	
+//	VisCheckBox vSynchCheckBox ; 
+//	VisCheckBox fullScreenCheckBox ;
+//	SelectBox<String> selectBox_Resolution ; 
+//	SelectBox<String> selectBox_FPS ;
+//	
+//	HashMap<String,DisplayMode> displayMap ;
+//	ArrayList<String> displayList ;
 }

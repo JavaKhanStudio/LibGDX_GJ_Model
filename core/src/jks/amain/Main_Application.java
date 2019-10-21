@@ -13,7 +13,7 @@ import jks.vinterface.GVars_UI;
 import jks.vinterface.Index_Interface;
 import jks.vue.models.Vue_StartScreen;
 
-public class Main_Game extends ApplicationAdapter 
+public class Main_Application extends ApplicationAdapter 
 {
 
 
@@ -84,7 +84,10 @@ public class Main_Game extends ApplicationAdapter
 		GVars_Camera.staticBatch.getProjectionMatrix().setToOrtho2D(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		if(GVars_Heart.vue != null)
+		{
 			GVars_Heart.vue.resize(width,height) ; 
+		}
+			
 	}
     
     @Override

@@ -31,7 +31,9 @@ public abstract class AVue_Model
 		if(filter != null)
 		{filter.resize();}
 		
-		
+		if(overlay != null)
+		{overlay.resize();}
+	
 	}
 	
 	public void clear()

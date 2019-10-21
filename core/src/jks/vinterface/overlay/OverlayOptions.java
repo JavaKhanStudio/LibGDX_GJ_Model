@@ -103,6 +103,7 @@ public class OverlayOptions extends OverlayModel
 		float bloc_Width = (size_Main_Width/2) - (decalSideX * 1.5f) ; 
 		float bloc_Height = (size_Main_Height/2) - (decalY * 1.5f) ; 
 		
+		graphicBloc.resize();
 		graphicBloc.setWidth(bloc_Width);
 		graphicBloc.setHeight(bloc_Height);
 		graphicBloc.setPosition(decalSideX, graphicBloc.getHeight() + decalY * 2);
@@ -122,7 +123,7 @@ public class OverlayOptions extends OverlayModel
 		retour.setSize(sizebuttonX, Gdx.graphics.getHeight() / 9.0f);
 		returnButtonPositionY = Gdx.graphics.getHeight() / 3.8f ; 
 		
-		if(retour.getX() <= 0) 
+		if(retour.getX() < 0) 
 			retour.setPosition(-sizebuttonX, returnButtonPositionY);
 		else
 			retour.setPosition(0, returnButtonPositionY);

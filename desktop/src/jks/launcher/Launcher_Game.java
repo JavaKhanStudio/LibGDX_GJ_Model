@@ -3,7 +3,7 @@ package jks.launcher;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 
-import jks.amain.Main_Game;
+import jks.amain.Main_Application;
 import jks.debug.GVars_Debug;
 import jks.sounds.GVars_Audio;
 
@@ -26,7 +26,7 @@ public class Launcher_Game
 		
 //		config.setBackBufferConfig(8, 8, 8, 8, 32, 2, 4);
 		
-		Lwjgl3Application application = new Lwjgl3Application(new Main_Game(), config);
+		Lwjgl3Application application = new Lwjgl3Application(new Main_Application(), config);
 	
 	}
 	
@@ -34,7 +34,7 @@ public class Launcher_Game
 	{
 		GVars_Audio.muted = false ;
 		GVars_Debug.debugMode = false;
-		new Lwjgl3Application(new Main_Game(), config);
+		new Lwjgl3Application(new Main_Application(), config);
 	}
 	
 	/*

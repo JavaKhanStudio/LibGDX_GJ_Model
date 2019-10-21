@@ -188,7 +188,7 @@ public class SmoothSideSelect extends Table implements ReplayAction, Controllabl
 		table.setLayoutEnabled(false);
 		
 		Label.LabelStyle labelStyle = new Label.LabelStyle();
-	    labelStyle.font = GVars_UI.mainFont;
+	    labelStyle.font = GVars_UI.font_Main;
 	    
 		Label textLabel = new Label(text, labelStyle) ;
 		textLabel.setTouchable(Touchable.disabled);
