@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFont
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -41,28 +42,43 @@ public class GVars_UI implements Runnable
 	public static BitmapFont font_Title ; 
 	public static BitmapFont font_Main ; 
 	public static BitmapFont fontont_Second ; 
+	
+	public static LabelStyle labelStyle_Title ;
+	public static LabelStyle labelStyle_Second ; 
 
 	public static void init() 
 	{
-		generator = new FreeTypeFontGenerator(Gdx.files.internal("ui/fonts/OptimusPrinceps.ttf"));
-		generator2 = new FreeTypeFontGenerator(Gdx.files.internal("ui/fonts/GeosansLight.ttf"));
-		parameter = new FreeTypeFontParameter();
-		resize() ;
-		
 		baseSkin = new Skin(Gdx.files.internal("ui/skins/basic/uiskin.json"));
 		VisUI.load(GVars_UI.baseSkin);
 		mainUi = new Stage(new ScreenViewport());
 		Gdx.input.setInputProcessor(mainUi);
+		
+		prebuild() ; 
+		resize() ;	
+	}
+	
+	public static void prebuild()
+	{
+		generator = new FreeTypeFontGenerator(Gdx.files.internal("ui/fonts/OptimusPrinceps.ttf"));
+		generator2 = new FreeTypeFontGenerator(Gdx.files.internal("ui/fonts/GeosansLight.ttf"));
+		parameter = new FreeTypeFontParameter();
+		
+		labelStyle_Title = new LabelStyle(baseSkin.get("default", LabelStyle.class)) ; 
+		labelStyle_Second = new LabelStyle(baseSkin.get("default", LabelStyle.class)) ;
 	}
 	
 	public static void resize()
 	{
 		parameter.size = (int) (Gdx.graphics.getWidth()/fontTitleSizeDivide) ;
 		font_Title = generator.generateFont(parameter);
+		
 		parameter.size = (int) (Gdx.graphics.getWidth()/fontBasicSizeDivide) ;
 		font_Main = generator.generateFont(parameter);
 		fontont_Second = generator2.generateFont(parameter);
 		font_Main.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+	
+		labelStyle_Title.font = font_Title ; 
+		labelStyle_Second.font = fontont_Second ; 
 	}
 
 	private static float fontTitleSizeDivide = 30 ; 

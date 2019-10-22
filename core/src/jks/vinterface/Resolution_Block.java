@@ -87,6 +87,7 @@ public class Resolution_Block extends VisTable
 		rightDecalXCell = this.add(rightDecalX) ; 
 		this.row() ; 
 		
+		this.add() ; 
 		this.add(fpsLabel).align(Align.left) ; 
 		this.add(selectBox_FPS).align(Align.right).expandX() ;
 		this.row() ;
@@ -199,13 +200,12 @@ public class Resolution_Block extends VisTable
 	
 	public void resize()
 	{
-		System.out.println(this.getWidth() + "jeans");
 		float decalX = this.getWidth()/40 ;
 		leftDecalXCell.minWidth(decalX) ;
 		rightDecalXCell.minWidth(decalX) ; 
 		
-		graphicLabel.getStyle().font = GVars_UI.font_Title ; 
-		graphicLabel.setFontScale(2);
+		graphicLabel.setStyle(GVars_UI.labelStyle_Title) ; 
+		
 		vSynchCheckBox.getLabel().getStyle().font = GVars_UI.font_Main ; 
 		fullScreenCheckBox.getLabel().getStyle().font = GVars_UI.font_Main ; 
 		selectBox_Resolution.getStyle().font = GVars_UI.font_Main ; 
