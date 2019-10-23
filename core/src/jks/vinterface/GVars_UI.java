@@ -7,14 +7,21 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.kotcrab.vis.ui.VisUI;
+import com.kotcrab.vis.ui.widget.VisCheckBox;
 
 import jks.tools.Vector2Int;
 import jks.vinterface.controlling.Controllable_Interface;
@@ -36,16 +43,24 @@ public class GVars_UI implements Runnable
 	
 	public static Table bottomScore ; 
 	
-	public static FreeTypeFontGenerator generator ;
-	public static FreeTypeFontGenerator generator2 ;
+	public static FreeTypeFontGenerator generator_Titles ;
+	public static FreeTypeFontGenerator generator_Seconds ;
 	public static FreeTypeFontParameter parameter ;
+	
 	public static BitmapFont font_Title ; 
-	public static BitmapFont font_Main ; 
-	public static BitmapFont fontont_Second ; 
+	public static BitmapFont font_MainMenu ; 
+	public static BitmapFont font_Second ; 
+	public static BitmapFont fontont_SelectBox ; 
 	
 	public static LabelStyle labelStyle_Title ;
 	public static LabelStyle labelStyle_Second ; 
+	public static LabelStyle labelStyle_BigStuff ;
 
+	private static float fontTitleSizeDivide = 30 ; 
+	private static float fontBasicSizeDivide = 40 ; 
+	private static float width = 0.7f; 
+	private static float height = 0.12f ; 
+	
 	public static void init() 
 	{
 		baseSkin = new Skin(Gdx.files.internal("ui/skins/basic/uiskin.json"));
@@ -59,8 +74,8 @@ public class GVars_UI implements Runnable
 	
 	public static void prebuild()
 	{
-		generator = new FreeTypeFontGenerator(Gdx.files.internal("ui/fonts/OptimusPrinceps.ttf"));
-		generator2 = new FreeTypeFontGenerator(Gdx.files.internal("ui/fonts/GeosansLight.ttf"));
+		generator_Titles = new FreeTypeFontGenerator(Gdx.files.internal("ui/fonts/OptimusPrinceps.ttf"));
+		generator_Seconds = new FreeTypeFontGenerator(Gdx.files.internal("ui/fonts/GeosansLight.ttf"));
 		parameter = new FreeTypeFontParameter();
 		
 		labelStyle_Title = new LabelStyle(baseSkin.get("default", LabelStyle.class)) ; 
@@ -70,21 +85,67 @@ public class GVars_UI implements Runnable
 	public static void resize()
 	{
 		parameter.size = (int) (Gdx.graphics.getWidth()/fontTitleSizeDivide) ;
-		font_Title = generator.generateFont(parameter);
+		font_Title = generator_Titles.generateFont(parameter);
+		font_MainMenu = generator_Titles.generateFont(parameter);
 		
 		parameter.size = (int) (Gdx.graphics.getWidth()/fontBasicSizeDivide) ;
-		font_Main = generator.generateFont(parameter);
-		fontont_Second = generator2.generateFont(parameter);
-		font_Main.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		font_Second = generator_Seconds.generateFont(parameter);
+		fontont_SelectBox = generator_Seconds.generateFont(parameter);
+		
+		font_MainMenu.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
 	
 		labelStyle_Title.font = font_Title ; 
-		labelStyle_Second.font = fontont_Second ; 
+		labelStyle_Second.font = font_Second ; 
+		
+		massResize(mainUi.getActors()) ; 
 	}
+	
+	public static void massResize(Array<Actor> actorList)
+	{
+		for(int i = 0 ; i < mainUi.getActors().size; i++)
+		{
+			Actor actor = mainUi.getActors().get(i) ; 
+			workOnActor(actor) ;			
+		}
+	}
+	
+	public static void workOnActor(Actor actor)
+	{
+		if(actor instanceof Label)
+		{
+			Label label = (Label)actor ;
+			label.setStyle(label.getStyle());
+		}
+		else if(actor instanceof TextButton)
+		{
+			TextButton button = (TextButton)actor ;
+			button.getLabel().setStyle(button.getLabel().getStyle());
+			button.invalidate();
+		}
+		else if(actor instanceof SelectBox)
+		{
+			SelectBox box = (SelectBox)actor ;
+			box.invalidate();
+			box.getStyle().font = fontont_SelectBox ; 
+		}
+		else if(actor instanceof VisCheckBox)
+		{
+			VisCheckBox checkBox = (VisCheckBox)actor ;
+			checkBox.getLabel().setStyle(checkBox.getLabel().getStyle());
+			checkBox.invalidate();
+		}
+		else if(actor instanceof WidgetGroup)
+		{
+			WidgetGroup group = (WidgetGroup)actor ;
+			Array<Actor> subGroup = group.getChildren() ; 
+			for(int i = 0 ; i < subGroup.size; i++)
+				workOnActor(subGroup.get(i)) ; 
+		}
+	}
+	
+	
 
-	private static float fontTitleSizeDivide = 30 ; 
-	private static float fontBasicSizeDivide = 40 ; 
-	private static float width = 0.7f; 
-	private static float height = 0.12f ; 
+	
 	
 	public static void reset()
 	{

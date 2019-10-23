@@ -12,8 +12,8 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Window;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Cell;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
 import com.kotcrab.vis.ui.widget.VisCheckBox;
 import com.kotcrab.vis.ui.widget.VisLabel;
@@ -41,17 +41,19 @@ public class Resolution_Block extends VisTable
 	{		
 //		this.setLayoutEnabled(false);
 		leftDecalX = new VisLabel("    ") ; rightDecalX = new VisLabel("    ") ;
-		graphicLabel = new VisLabel("Graphics") ;
+		graphicLabel = new VisLabel("Graphics",GVars_UI.labelStyle_Title) ;
 		graphicLabel.setAlignment(Align.center);
-		resolutionLabel = new VisLabel("Resolution:") ; 
-		fpsLabel = new VisLabel("Frame Per Sec:") ; 
+		resolutionLabel = new VisLabel("Resolution:",GVars_UI.labelStyle_Second) ; 
+		fpsLabel = new VisLabel("Frame Per Sec:",GVars_UI.labelStyle_Second) ; 
 		
-
 		selectBox_Resolution = buildResolutionBox() ; 	
 		selectBox_FPS = buildFpsBox() ;
 		
 		vSynchCheckBox = new VisCheckBox("Is VSynch") ; 
+		vSynchCheckBox.getLabel().setStyle(GVars_UI.labelStyle_Second);
+		
 		fullScreenCheckBox = new VisCheckBox("Full screen") ; 
+		fullScreenCheckBox.getLabel().setStyle(GVars_UI.labelStyle_Second);
 		fullScreenCheckBox.addListener(new InputListener()
 		{		
 			@Override
@@ -66,7 +68,8 @@ public class Resolution_Block extends VisTable
 
 		}) ; 
 		
-		VisTextButton apply = new VisTextButton("Apply") ;
+		TextButton apply = new TextButton("Apply",GVars_UI.baseSkin) ;
+		apply.getLabel().setStyle(GVars_UI.labelStyle_Title);
 		apply.addListener(new InputListener()
 		{		
 			@Override
@@ -204,16 +207,17 @@ public class Resolution_Block extends VisTable
 		leftDecalXCell.minWidth(decalX) ;
 		rightDecalXCell.minWidth(decalX) ; 
 		
-		graphicLabel.setStyle(GVars_UI.labelStyle_Title) ; 
-		
-		vSynchCheckBox.getLabel().getStyle().font = GVars_UI.font_Main ; 
-		fullScreenCheckBox.getLabel().getStyle().font = GVars_UI.font_Main ; 
-		selectBox_Resolution.getStyle().font = GVars_UI.font_Main ; 
-		selectBox_FPS.getStyle().font = GVars_UI.font_Main ;
-		
 //		graphicLabel.setHeight(height);
 		
 	}
+	
+//	graphicLabel.setStyle(GVars_UI.labelStyle_Title) ; 
+//	
+//	vSynchCheckBox.getLabel().getStyle().font = GVars_UI.font_Main ; 
+//	fullScreenCheckBox.getLabel().getStyle().font = GVars_UI.font_Main ; 
+//	selectBox_Resolution.getStyle().font = GVars_UI.font_Main ; 
+//	selectBox_FPS.getStyle().font = GVars_UI.font_Main ;
+//	
 	
 //	VisCheckBox vSynchCheckBox ; 
 //	VisCheckBox fullScreenCheckBox ;
