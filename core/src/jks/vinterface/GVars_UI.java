@@ -52,12 +52,14 @@ public class GVars_UI implements Runnable
 	public static BitmapFont font_Second ; 
 	public static BitmapFont fontont_SelectBox ; 
 	
-	public static LabelStyle labelStyle_Title ;
+	public static LabelStyle labelStyle_OptionsTitle ;
 	public static LabelStyle labelStyle_Second ; 
+	public static LabelStyle labelStyle_ScreenTitle ; 
 	public static LabelStyle labelStyle_BigStuff ;
 
-	private static float fontTitleSizeDivide = 30 ; 
-	private static float fontBasicSizeDivide = 40 ; 
+	private static float fontMainTitleSizeDivide = 30 ; 
+	private static float fontTitleSizeDivide = 40 ; 
+	private static float fontBasicSizeDivide = 55 ; 
 	private static float width = 0.7f; 
 	private static float height = 0.12f ; 
 	
@@ -78,23 +80,28 @@ public class GVars_UI implements Runnable
 		generator_Seconds = new FreeTypeFontGenerator(Gdx.files.internal("ui/fonts/GeosansLight.ttf"));
 		parameter = new FreeTypeFontParameter();
 		
-		labelStyle_Title = new LabelStyle(baseSkin.get("default", LabelStyle.class)) ; 
+		labelStyle_ScreenTitle = new LabelStyle(baseSkin.get("default", LabelStyle.class)) ; 
+		labelStyle_OptionsTitle = new LabelStyle(baseSkin.get("default", LabelStyle.class)) ; 
 		labelStyle_Second = new LabelStyle(baseSkin.get("default", LabelStyle.class)) ;
 	}
 	
 	public static void resize()
 	{
+		parameter.size = (int) (Gdx.graphics.getWidth()/fontMainTitleSizeDivide) ;
+		font_MainMenu = generator_Titles.generateFont(parameter);
+		
 		parameter.size = (int) (Gdx.graphics.getWidth()/fontTitleSizeDivide) ;
 		font_Title = generator_Titles.generateFont(parameter);
-		font_MainMenu = generator_Titles.generateFont(parameter);
 		
 		parameter.size = (int) (Gdx.graphics.getWidth()/fontBasicSizeDivide) ;
 		font_Second = generator_Seconds.generateFont(parameter);
 		fontont_SelectBox = generator_Seconds.generateFont(parameter);
 		
-		font_MainMenu.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
-	
-		labelStyle_Title.font = font_Title ; 
+		
+		
+//		font_MainMenu.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		labelStyle_ScreenTitle.font = font_MainMenu ; 
+		labelStyle_OptionsTitle.font = font_Title ; 
 		labelStyle_Second.font = font_Second ; 
 		
 		massResize(mainUi.getActors()) ; 

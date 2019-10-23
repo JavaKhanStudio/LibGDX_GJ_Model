@@ -14,7 +14,7 @@ import com.kotcrab.vis.ui.widget.VisTable;
 import jks.tools.Vector2Int;
 import jks.vinterface.GVars_UI;
 import jks.vinterface.Index_Interface;
-import jks.vinterface.Resolution_Block;
+import jks.vinterface.Block_Resolution;
 import jks.vinterface.Utils_TexturesAcess;
 import jks.vue.Utils_View;
 
@@ -26,7 +26,7 @@ public class OverlayOptions extends OverlayModel
 	
 	VisTable mainTable ; 
 	
-	Resolution_Block graphicBloc ; 
+	Block_Resolution graphicBloc ; 
 	VisTable soundBloc ; 
 	VisTable prefBloc ; 
 	VisTable languageBloc ; 
@@ -58,7 +58,7 @@ public class OverlayOptions extends OverlayModel
 		mainTable.setTouchable(Touchable.childrenOnly);
 		mainTable.setBackground(Utils_TexturesAcess.buildDrawingRegionTexture(frames));
 		
-		graphicBloc = new Resolution_Block(); 
+		graphicBloc = new Block_Resolution(); 
 		graphicBloc.setBackground(Utils_TexturesAcess.buildDrawingRegionTexture(frames));
 		
 		soundBloc = buildSoundsBloc() ; 

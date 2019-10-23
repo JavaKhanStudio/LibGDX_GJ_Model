@@ -183,7 +183,7 @@ public class SmoothSideSelect extends Table implements ReplayAction, Controllabl
 		Table table = new Table(); 
 		table.setLayoutEnabled(false);
 		
-		Label textLabel = new Label(text, GVars_UI.labelStyle_Title) ;
+		Label textLabel = new Label(text, GVars_UI.labelStyle_ScreenTitle) ;
 		textLabel.setTouchable(Touchable.disabled);
 		
 		

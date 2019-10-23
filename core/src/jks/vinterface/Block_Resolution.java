@@ -22,7 +22,7 @@ import com.kotcrab.vis.ui.widget.VisTextButton;
 
 import jks.vars.GVars_Heart;
 
-public class Resolution_Block extends VisTable
+public class Block_Resolution extends VisTable
 {
 
 	VisLabel graphicLabel,resolutionLabel,fpsLabel ;
@@ -37,11 +37,11 @@ public class Resolution_Block extends VisTable
 	
 	Cell<VisLabel> leftDecalXCell, rightDecalXCell ; 
 	
-	public Resolution_Block()
+	public Block_Resolution()
 	{		
 //		this.setLayoutEnabled(false);
 		leftDecalX = new VisLabel("    ") ; rightDecalX = new VisLabel("    ") ;
-		graphicLabel = new VisLabel("Graphics",GVars_UI.labelStyle_Title) ;
+		graphicLabel = new VisLabel("Graphics",GVars_UI.labelStyle_OptionsTitle) ;
 		graphicLabel.setAlignment(Align.center);
 		resolutionLabel = new VisLabel("Resolution:",GVars_UI.labelStyle_Second) ; 
 		fpsLabel = new VisLabel("Frame Per Sec:",GVars_UI.labelStyle_Second) ; 
@@ -69,7 +69,7 @@ public class Resolution_Block extends VisTable
 		}) ; 
 		
 		TextButton apply = new TextButton("Apply",GVars_UI.baseSkin) ;
-		apply.getLabel().setStyle(GVars_UI.labelStyle_Title);
+		apply.getLabel().setStyle(GVars_UI.labelStyle_OptionsTitle);
 		apply.addListener(new InputListener()
 		{		
 			@Override
