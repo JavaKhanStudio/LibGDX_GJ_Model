@@ -132,13 +132,14 @@ public class GVars_UI implements Runnable
 		else if(actor instanceof SelectBox)
 		{
 			SelectBox box = (SelectBox)actor ;
-			box.invalidate();
 			box.getStyle().font = fontont_SelectBox ; 
+			box.invalidate();
 		}
 		else if(actor instanceof VisCheckBox)
 		{
 			VisCheckBox checkBox = (VisCheckBox)actor ;
 			checkBox.getLabel().setStyle(checkBox.getLabel().getStyle());
+			checkBox.setSize(300, 300);
 			checkBox.invalidate();
 		}
 		else if(actor instanceof WidgetGroup)

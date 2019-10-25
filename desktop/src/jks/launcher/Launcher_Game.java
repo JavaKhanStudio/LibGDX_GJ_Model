@@ -20,6 +20,7 @@ public class Launcher_Game
 		config.setWindowedMode(1300, 800);
 		config.useOpenGL3(true, 1, 1);
 		config.setTitle("GENERIC");
+		config.setResizable(false);
 		//config.setWindowIcon("skins/uis/parallaxIcon.png");
 
 		config.useVsync(true);

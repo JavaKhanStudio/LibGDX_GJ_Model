@@ -176,7 +176,6 @@ public class Block_Resolution extends VisTable
 
 		GVars_UI.resize();
 		GVars_Heart.vue.resize(width, height);
-	
 	}
 	
 	public void buildDisplayList()
@@ -203,12 +202,10 @@ public class Block_Resolution extends VisTable
 	
 	public void resize()
 	{
-		float decalX = this.getWidth()/40 ;
+		int decalX = Gdx.graphics.getWidth()/40; 
 		leftDecalXCell.minWidth(decalX) ;
 		rightDecalXCell.minWidth(decalX) ; 
-		
-//		graphicLabel.setHeight(height);
-		
+		this.invalidate();
 	}
 	
 //	graphicLabel.setStyle(GVars_UI.labelStyle_Title) ; 
