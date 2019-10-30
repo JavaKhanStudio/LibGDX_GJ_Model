@@ -16,7 +16,6 @@ import jks.vue.models.Vue_StartScreen;
 public class Main_Application extends ApplicationAdapter 
 {
 
-
 	@Override
 	public void create () 
 	{
@@ -26,11 +25,9 @@ public class Main_Application extends ApplicationAdapter
 	
 	public void startAtLogo() 
 	{
-		GVars_UI.init() ; 
-		GVars_Camera.init();
+		mainInit() ;
 		Index_Interface.preInit();
-		GVars_Controller.init();
-		
+	
 		GVars_Heart.changeVue(new Vue_StartScreen(),true) ; 
 
 		if(GVars_Heart.isFullScreen)
@@ -41,14 +38,18 @@ public class Main_Application extends ApplicationAdapter
 		
 		Index_Interface.init();
 	}
+	
+	private void mainInit()
+	{
+		GVars_UI.init() ; 
+		GVars_Camera.init();	
+		GVars_Controller.init();
+	}
 
 	private void startAtStartScreen()
 	{
-		GVars_UI.init() ; 
-		GVars_Camera.init();
+		mainInit() ; 
 		Index_Interface.init();
-		GVars_Controller.init();
-		
 		GVars_Heart.changeVue(new Vue_StartScreen(),true) ; 
 
 		if(GVars_Heart.isFullScreen)
@@ -83,11 +84,11 @@ public class Main_Application extends ApplicationAdapter
 		GVars_UI.mainUi.getViewport().getCamera().update();
 		GVars_Camera.staticBatch.getProjectionMatrix().setToOrtho2D(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
 		if(GVars_Heart.vue != null)
 		{
 			GVars_Heart.vue.resize(width,height) ; 
-		}
-			
+		}	
 	}
     
     @Override

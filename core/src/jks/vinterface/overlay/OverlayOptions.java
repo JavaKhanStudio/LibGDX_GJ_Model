@@ -128,7 +128,6 @@ public class OverlayOptions extends OverlayModel
 		else
 			retour.setPosition(0, returnButtonPositionY);
 			
-		
 		this.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	}
 	

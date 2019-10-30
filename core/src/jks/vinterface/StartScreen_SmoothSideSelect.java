@@ -22,7 +22,7 @@ import jks.vinterface.overlay.OverlayOptions;
 import jks.vinterface.overlay.ReplayAction;
 import jks.vue.Utils_View;
 
-public class SmoothSideSelect extends Table implements ReplayAction, Controllable_Interface
+public class StartScreen_SmoothSideSelect extends Table implements ReplayAction, Controllable_Interface
 {
 
 	float sizeX ; 
@@ -31,10 +31,10 @@ public class SmoothSideSelect extends Table implements ReplayAction, Controllabl
 	float decalY ;
 	float topPosY ;
 	
-	ArrayList<Table> list ;
+	ArrayList<Table> buttonContainerList ;
 	ArrayList<Button> selectableOptionsX ;
 	ArrayList<ArrayList<Button>> selectableOptionsMapped ;
-	int index = 1; 
+	int index = 0; 
 	Integer movingBy = 0; 
 	
 	final Float baseSpeed = 0.4f ;
@@ -46,12 +46,12 @@ public class SmoothSideSelect extends Table implements ReplayAction, Controllabl
 	
 	ReplayAction ref ;
 	 
-	public SmoothSideSelect()
+	public StartScreen_SmoothSideSelect()
 	{
 		resize() ;
 		ref = this ; 
 		this.setLayoutEnabled(false);
-		list = new ArrayList<>() ; 
+		buttonContainerList = new ArrayList<>() ; 
 		selectableOptionsX = new ArrayList<>() ; 
 		selectableOptionsMapped = new ArrayList<>() ;
 		selectableOptionsMapped.add(selectableOptionsX) ; 	
@@ -124,11 +124,8 @@ public class SmoothSideSelect extends Table implements ReplayAction, Controllabl
 			@Override
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button)
 			{
-
 				if(onFocus)
-				{
-					System.out.println("Must be implement " + button + " " + pointer) ;
-				}
+				{System.out.println("Must be implement " + button + " " + pointer) ;}
 			}
 			
 			public void exit (InputEvent event, float x, float y, int pointer, Actor toActor) 
@@ -171,11 +168,23 @@ public class SmoothSideSelect extends Table implements ReplayAction, Controllabl
 		this.setWidth(Gdx.graphics.getWidth()/4);
 		this.setHeight(Gdx.graphics.getHeight());
 		decalX = Gdx.graphics.getWidth()/15 ;
-		sizeX = 300 ;
-		sizeY = Gdx.graphics.getHeight()/20 ; 
+		sizeX = Gdx.graphics.getWidth()/5.2f ;
+		sizeY = Gdx.graphics.getHeight()/18.4f ; 
 		topPosY = Gdx.graphics.getHeight()/2.5f ;
 		movingBy = 10 ; 
 		decalY = 0 ;
+		
+		if(buttonContainerList != null)
+		{
+			for(int a = 0 ; a < buttonContainerList.size() ; a++)
+			{
+				Table buttonTable = buttonContainerList.get(a) ; 
+				buttonTable.getChild(0).setBounds(0, 0, sizeX, sizeY);
+				buttonTable.getChild(1).setBounds(0, 0, sizeX, sizeY);
+				setParkingPosition(buttonTable,a + 1) ; 
+			}
+		}
+		
 	}
 	
 	public Button buildButton(String text)
@@ -189,19 +198,14 @@ public class SmoothSideSelect extends Table implements ReplayAction, Controllabl
 		
 		Button textButton = new Button(GVars_UI.baseSkin);
 		textButton.setColor(0, 0, 0, 0.0f);
-		float positionX = -sizeX ; 
-		float positionY = topPosY - (sizeY * index) - (decalY * index) ;
-		
-	
+					
 		table.add(textButton) ;
 		table.add(textLabel) ;
 		textLabel.setAlignment(Align.left);
-		
-		table.setBounds(positionX, positionY, sizeX, sizeY);
 		textButton.setBounds(0, 0, sizeX, sizeY);
 		textLabel.setBounds(0, 0, sizeX, sizeY);
 		
-		
+		setParkingPosition(table, index + 1) ; 
 		textButton.addListener(new InputListener()
 		{		
 			public void enter (InputEvent event, float x, float y, int pointer, Actor fromActor)
@@ -222,18 +226,24 @@ public class SmoothSideSelect extends Table implements ReplayAction, Controllabl
 		}) ; 
 	
 		index ++ ;
-		
-		
-			
-		list.add(table) ;
+					
+		buttonContainerList.add(table) ;
 		this.add(table) ;
 		
 		return textButton ; 
 	}
 	
+	private void setParkingPosition(Table table, int position) 
+	{
+		float positionX = -sizeX ; 
+		float positionY = topPosY - (sizeY * position) - (decalY * position) ;		
+		table.setBounds(positionX, positionY, sizeX, sizeY);
+	}
+
 	public void enterScene()
 	{
-		for(int a = 0 ; a < list.size() ; a++)
+		resize();
+		for(int a = 0 ; a < buttonContainerList.size() ; a++)
 		{
 			MoveToAction action1 = new MoveToAction();
 		    action1.setPosition(decalX, topPosY - (sizeY * a) - (decalY * a));
@@ -246,7 +256,7 @@ public class SmoothSideSelect extends Table implements ReplayAction, Controllabl
 		    sequence.addAction(action1);
 		   
 		    
-		    list.get(a).addAction(sequence);
+		    buttonContainerList.get(a).addAction(sequence);
 		}
 
 		
@@ -255,22 +265,8 @@ public class SmoothSideSelect extends Table implements ReplayAction, Controllabl
 	
 	public void exitScene()
 	{
-//		for(int a = 0 ;  a < list.size() ; a++)
-//		{
-//			MoveToAction action1 = new MoveToAction();
-//		    action1.setPosition(-sizeX, topPosY - (sizeY * (a+1)) - (decalY * a));
-//		    action1.setDuration(leavingSpeed);
-//		    
-//		    DelayAction delay = new DelayAction(a * (leavingSpeedDelayIncrement)) ; 
-//		    
-//		    SequenceAction sequence = new SequenceAction();
-//		    sequence.addAction(delay);
-//		    sequence.addAction(action1);
-//		    
-//		    list.get(a).addAction(sequence);
-//		}
-		
-		for(int a = 0 ;  a < list.size() ; a++)
+
+		for(int a = 0 ;  a < buttonContainerList.size() ; a++)
 		{
 			MoveToAction action1 = new MoveToAction();
 		    action1.setPosition(-sizeX, topPosY - (sizeY * (a)) - (decalY * a));
@@ -287,23 +283,8 @@ public class SmoothSideSelect extends Table implements ReplayAction, Controllabl
 		    sequence.addAction(action1);
 		    sequence.addAction(action2);
 		    
-		    list.get(a).addAction(sequence);
+		    buttonContainerList.get(a).addAction(sequence);
 		}
-		
-//		for(int a = list.size() - 1 ;  a >= 0 ; a--)
-//		{
-//			MoveToAction action1 = new MoveToAction();
-//		    action1.setPosition(-sizeX, topPosY - (sizeY * (a+1)) - (decalY * a));
-//		    action1.setDuration(leavingSpeed);
-//		    
-//		    DelayAction delay = new DelayAction(((list.size() - a) + 1)  * (leavingSpeedDelayIncrement)) ; 
-//		    
-//		    SequenceAction sequence = new SequenceAction();
-//		    sequence.addAction(delay);
-//		    sequence.addAction(action1);
-//		    
-//		    list.get(a).addAction(sequence);
-//		}
 	}
 	 
 	
@@ -344,5 +325,34 @@ public class SmoothSideSelect extends Table implements ReplayAction, Controllabl
 	{
 		return selectableOptionsMapped;
 	}
-
 }
+
+//for(int a = 0 ;  a < list.size() ; a++)
+//{
+//	MoveToAction action1 = new MoveToAction();
+//    action1.setPosition(-sizeX, topPosY - (sizeY * (a+1)) - (decalY * a));
+//    action1.setDuration(leavingSpeed);
+//    
+//    DelayAction delay = new DelayAction(a * (leavingSpeedDelayIncrement)) ; 
+//    
+//    SequenceAction sequence = new SequenceAction();
+//    sequence.addAction(delay);
+//    sequence.addAction(action1);
+//    
+//    list.get(a).addAction(sequence);
+//}
+
+//for(int a = list.size() - 1 ;  a >= 0 ; a--)
+//{
+//	MoveToAction action1 = new MoveToAction();
+//    action1.setPosition(-sizeX, topPosY - (sizeY * (a+1)) - (decalY * a));
+//    action1.setDuration(leavingSpeed);
+//    
+//    DelayAction delay = new DelayAction(((list.size() - a) + 1)  * (leavingSpeedDelayIncrement)) ; 
+//    
+//    SequenceAction sequence = new SequenceAction();
+//    sequence.addAction(delay);
+//    sequence.addAction(action1);
+//    
+//    list.get(a).addAction(sequence);
+//}

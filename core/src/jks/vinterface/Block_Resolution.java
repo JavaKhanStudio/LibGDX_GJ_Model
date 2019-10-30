@@ -18,7 +18,6 @@ import com.badlogic.gdx.utils.Align;
 import com.kotcrab.vis.ui.widget.VisCheckBox;
 import com.kotcrab.vis.ui.widget.VisLabel;
 import com.kotcrab.vis.ui.widget.VisTable;
-import com.kotcrab.vis.ui.widget.VisTextButton;
 
 import jks.vars.GVars_Heart;
 
@@ -145,7 +144,6 @@ public class Block_Resolution extends VisTable
 		{
 			selectBox_Resolution.setDisabled(false);
 		}
-		
 	}
 	
 	public void applyNewResolution()
@@ -176,6 +174,10 @@ public class Block_Resolution extends VisTable
 
 		GVars_UI.resize();
 		GVars_Heart.vue.resize(width, height);
+		
+		//DO STUFF
+		
+		
 	}
 	
 	public void buildDisplayList()

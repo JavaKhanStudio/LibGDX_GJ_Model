@@ -20,7 +20,7 @@ import jks.input.Player_Inputs;
 import jks.sounds.Enum_Music;
 import jks.sounds.GVars_AudioManager;
 import jks.vinterface.GVars_UI;
-import jks.vinterface.SmoothSideSelect;
+import jks.vinterface.StartScreen_SmoothSideSelect;
 import jks.vue.AVue_Model; 
 
 public class Vue_StartScreen extends AVue_Model
@@ -28,7 +28,7 @@ public class Vue_StartScreen extends AVue_Model
 	Texture background ;
 	public Texture sourceTexture ;
 	TextButton incrementOnce ;
-	SmoothSideSelect smoothSideSelect ; 
+	StartScreen_SmoothSideSelect smoothSideSelect ; 
 	
 	@Override
 	public void init()
@@ -43,9 +43,10 @@ public class Vue_StartScreen extends AVue_Model
 		Controllers.clearListeners();
 		Controllers.addListener(new IKM_Game_XBoxController()) ; 
 		
-		smoothSideSelect = new SmoothSideSelect() ; 
+		smoothSideSelect = new StartScreen_SmoothSideSelect() ; 
 		GVars_UI.mainUi.addActor(smoothSideSelect);
 		incrementOnce = new TextButton("increment Once +",GVars_UI.baseSkin) ; 
+		GVars_UI.resize();
 		smoothSideSelect.enterScene();
 	}
 
@@ -67,7 +68,6 @@ public class Vue_StartScreen extends AVue_Model
 	public void update(float delta)
 	{
 		Player_Inputs.updateInput_ControllingInterface() ;
-//		GVars_Inputs.updateInput_ControllingInterface() ;
 		GVars_UI.mainUi.act(delta);
 	}
 

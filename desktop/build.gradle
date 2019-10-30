@@ -13,4 +13,9 @@ sourceSets
     }
 }
 
+eclipse.project {
+    name = appName + "-desktop"
+}
+
 project.ext.mainClassName = "jks.launcher.Launcher_Game"
+

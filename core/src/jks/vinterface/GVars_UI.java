@@ -97,8 +97,6 @@ public class GVars_UI implements Runnable
 		font_Second = generator_Seconds.generateFont(parameter);
 		fontont_SelectBox = generator_Seconds.generateFont(parameter);
 		
-		
-		
 //		font_MainMenu.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		labelStyle_ScreenTitle.font = font_MainMenu ; 
 		labelStyle_OptionsTitle.font = font_Title ; 
@@ -150,10 +148,6 @@ public class GVars_UI implements Runnable
 				workOnActor(subGroup.get(i)) ; 
 		}
 	}
-	
-	
-
-	
 	
 	public static void reset()
 	{
