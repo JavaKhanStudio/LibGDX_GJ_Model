@@ -151,7 +151,6 @@ public class GVars_UI implements Runnable
 	
 	public static void reset()
 	{
-		
 		mainUi = new Stage();
 		Gdx.input.setInputProcessor(mainUi);
 	}

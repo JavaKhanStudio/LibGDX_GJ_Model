@@ -27,7 +27,6 @@ public class Utils_Launcher
 		config.useVsync(true) ;
 		config.setResizable(false); ;
 		config.setTitle("generic") ; 
-		
 	}
 	
 	public static void setFullScreen(Lwjgl3ApplicationConfiguration config)
