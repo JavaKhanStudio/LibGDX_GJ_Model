@@ -159,7 +159,6 @@ public class Block_Resolution extends VisTable
 		{	
 			
 			DisplayMode displayMode = Gdx.graphics.getDisplayMode(currMonitor);
-			System.out.println(displayMode);
 			if(!Gdx.graphics.setFullscreenMode(displayMode)) 
 			{}	
 		}

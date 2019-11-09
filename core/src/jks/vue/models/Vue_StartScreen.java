@@ -30,6 +30,9 @@ public class Vue_StartScreen extends AVue_Model
 	TextButton incrementOnce ;
 	StartScreen_SmoothSideSelect smoothSideSelect ; 
 	
+	private float gettingUpPercent = 0 ; 
+	private final float gettingUpInXSec = 2 ; 
+	
 	@Override
 	public void init()
 	{
@@ -47,7 +50,7 @@ public class Vue_StartScreen extends AVue_Model
 		GVars_UI.mainUi.addActor(smoothSideSelect);
 		incrementOnce = new TextButton("increment Once +",GVars_UI.baseSkin) ; 
 		GVars_UI.resize();
-		smoothSideSelect.enterScene();
+		smoothSideSelect.enterScene(gettingUpInXSec/2);
 	}
 
 	@Override
@@ -69,15 +72,22 @@ public class Vue_StartScreen extends AVue_Model
 	{
 		Player_Inputs.updateInput_ControllingInterface() ;
 		GVars_UI.mainUi.act(delta);
+		gettingUpPercent += (1/gettingUpInXSec * delta) ; 
+		
+		if(gettingUpPercent > 1)
+			gettingUpPercent = 1 ; 
 	}
+	
+	
 
 	@Override
 	public void render()
 	{
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		GVars_Camera.staticBatch.begin() ;
+		GVars_Camera.staticBatch.setColor(gettingUpPercent, gettingUpPercent, gettingUpPercent, gettingUpPercent);
 		GVars_Camera.staticBatch.draw(background,0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		GVars_Camera.staticBatch.end() ;
 		

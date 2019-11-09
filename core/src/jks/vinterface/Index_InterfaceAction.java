@@ -63,6 +63,5 @@ public class Index_InterfaceAction
 	    applyOn.addAction(sequence);
 	    applyOn.addAction(alpha);
 	}
-	
-	
+		
 }

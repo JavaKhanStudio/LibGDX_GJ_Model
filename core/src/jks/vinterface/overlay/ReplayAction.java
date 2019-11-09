@@ -3,7 +3,7 @@ package jks.vinterface.overlay;
 public interface ReplayAction 
 {
 
-	public void enterScene() ;
+	public void enterScene(float afterXSeconde) ;
 	
 	
 }

@@ -11,6 +11,7 @@ import jks.input.Player_Inputs;
 import jks.vars.GVars_Heart;
 import jks.vinterface.GVars_UI;
 import jks.vinterface.Index_Interface;
+import jks.vue.models.Vue_Preloading;
 import jks.vue.models.Vue_StartScreen;
 
 public class Main_Application extends ApplicationAdapter 
@@ -28,7 +29,7 @@ public class Main_Application extends ApplicationAdapter
 		mainInit() ;
 		Index_Interface.preInit();
 	
-		GVars_Heart.changeVue(new Vue_StartScreen(),true) ; 
+		GVars_Heart.changeVue(new Vue_Preloading(),true) ; 
 
 		if(GVars_Heart.isFullScreen)
 		{

@@ -24,6 +24,7 @@ import com.kotcrab.vis.ui.VisUI;
 import com.kotcrab.vis.ui.widget.VisCheckBox;
 
 import jks.tools.Vector2Int;
+import jks.vars.GVars_Heart;
 import jks.vinterface.controlling.Controllable_Interface;
 import jks.vinterface.controlling.Utils_Controllable;
 import jks.vinterface.overlay.OverlayPause;
@@ -60,8 +61,7 @@ public class GVars_UI implements Runnable
 	private static float fontMainTitleSizeDivide = 30 ; 
 	private static float fontTitleSizeDivide = 40 ; 
 	private static float fontBasicSizeDivide = 55 ; 
-	private static float width = 0.7f; 
-	private static float height = 0.12f ; 
+
 	
 	public static void init() 
 	{
@@ -70,8 +70,9 @@ public class GVars_UI implements Runnable
 		mainUi = new Stage(new ScreenViewport());
 		Gdx.input.setInputProcessor(mainUi);
 		
-		prebuild() ; 
-		resize() ;	
+		prebuild() ;
+		
+		GVars_UI.resize();
 	}
 	
 	public static void prebuild()

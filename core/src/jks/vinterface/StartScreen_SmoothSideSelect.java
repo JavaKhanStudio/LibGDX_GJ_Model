@@ -240,11 +240,12 @@ public class StartScreen_SmoothSideSelect extends Table implements ReplayAction,
 		table.setBounds(positionX, positionY, sizeX, sizeY);
 	}
 
-	public void enterScene()
+	public void enterScene(float startAfterXSecondes)
 	{
 		resize();
 		for(int a = 0 ; a < buttonContainerList.size() ; a++)
 		{
+			DelayAction preInitDelay = new DelayAction(startAfterXSecondes) ;
 			MoveToAction action1 = new MoveToAction();
 		    action1.setPosition(decalX, topPosY - (sizeY * a) - (decalY * a));
 		    action1.setDuration(enterSpeed);
@@ -252,10 +253,10 @@ public class StartScreen_SmoothSideSelect extends Table implements ReplayAction,
 		    DelayAction delay = new DelayAction(a * (enterspeedDelayIncrement)) ; 
 		    
 		    SequenceAction sequence = new SequenceAction();
+		    sequence.addAction(preInitDelay);
 		    sequence.addAction(delay);
 		    sequence.addAction(action1);
 		   
-		    
 		    buttonContainerList.get(a).addAction(sequence);
 		}
 

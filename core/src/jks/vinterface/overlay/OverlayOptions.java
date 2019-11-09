@@ -49,7 +49,7 @@ public class OverlayOptions extends OverlayModel
 	        {
 				Utils_View.removeCurrentOverlay() ;
 				Utils_View.removeFilter() ;
-				backway.enterScene();
+				backway.enterScene(0);
 				return true;
 	        }
 		}) ;

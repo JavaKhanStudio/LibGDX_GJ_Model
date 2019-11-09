@@ -33,7 +33,7 @@ public class Utils_Launcher
 	{
 		basicConfig(config) ; 
 		config.setWindowedMode(finalWidth, finalHeight);
-		GVars_Heart.isFullScreen = true ; 
+		GVars_Heart.isFullScreen = false ; 
 	}
 	
 	public static void setSideTestScreen(Lwjgl3ApplicationConfiguration config)
@@ -60,10 +60,10 @@ public class Utils_Launcher
 					GVars_Heart.isFullScreen = true ;
 					DisplayMode display = config.getDisplayModes()[config.getDisplayModes().length - 1] ; 
 					config.setWindowedMode(display.width,display.height);
-					System.out.println(display + " ME");
 				}
 				else
 				{
+					System.out.println(gameConfig.width + "/" + gameConfig.height);
 					config.setWindowedMode(gameConfig.width, gameConfig.height);
 				}
 			}
