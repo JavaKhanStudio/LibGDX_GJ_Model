@@ -1,6 +1,7 @@
 apply plugin: "java"
 
-sourceCompatibility = 1.11
+//sourceCompatibility = 1.11
+sourceCompatibility = 1.8
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 sourceSets 
@@ -10,6 +11,8 @@ sourceSets
         java 
         {
             srcDir 'src'  
+            srcDir 'card'
+            srcDir 'ui'
         }
     }
 }
