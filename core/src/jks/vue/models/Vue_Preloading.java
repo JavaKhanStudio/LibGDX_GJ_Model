@@ -1,24 +1,22 @@
 package jks.vue.models;
 
-import static jks.vinterface.Index_Interface.*;
-
+import static jks.vinterface.Index_Interface.introLogo_Jam;
+import static jks.vinterface.Index_Interface.introLogo_LibGDX;
+import static jks.vinterface.Index_Interface.introLogo_Team;
 import static jks.vinterface.Index_Interface.manager;
 
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.ai.btree.branch.Sequence;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.AlphaAction;
 import com.badlogic.gdx.scenes.scene2d.actions.DelayAction;
 import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
-import com.badlogic.gdx.scenes.scene2d.actions.RemoveAction;
 import com.badlogic.gdx.scenes.scene2d.actions.RemoveActorAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.kotcrab.vis.ui.widget.VisImage;
 
-import jks.camera.GVars_Camera;
 import jks.sounds.Enum_Music;
 import jks.sounds.GVars_AudioManager;
 import jks.vars.GVars_Heart;

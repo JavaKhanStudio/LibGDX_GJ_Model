@@ -1,4 +1,4 @@
-package jks.card.model;
+package jks.card.model.card;
 
 import java.util.List;
 
