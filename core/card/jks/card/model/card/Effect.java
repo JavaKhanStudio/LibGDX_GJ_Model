@@ -8,10 +8,10 @@ import jks.card.model.Player;
 public class Effect 
 {
 	Enum_Action effect;
-	List<List<Condition>> condition ;
-	boolean positive ;
-	
 	int power ;
+	
+	List<List<Condition>> condition ;
+
 	Enum_Ressource affectedBy ;
 	
 	public boolean checkIfActive(Player caster, Player target)

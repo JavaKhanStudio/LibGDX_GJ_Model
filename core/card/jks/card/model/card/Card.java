@@ -6,8 +6,9 @@ public class Card
 {
 	int cost ; 
 	String imagePath ; 
+	boolean permanent ;
+	List<Enum_Tag> tag ; 
 	
-	List<Effect> self ;
-	List<Effect> targeted ;
-	List<Effect> random ;
+	List<Effect> play ;
+	List<Effect> passive ;
 }

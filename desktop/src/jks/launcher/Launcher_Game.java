@@ -27,7 +27,6 @@ public class Launcher_Game
 //		config.setBackBufferConfig(8, 8, 8, 8, 32, 2, 4);
 		
 		Lwjgl3Application application = new Lwjgl3Application(new Main_Application(), config);
-	
 	}
 	
 	public static void finalModelGame(Lwjgl3ApplicationConfiguration config)

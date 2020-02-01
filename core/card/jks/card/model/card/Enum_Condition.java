@@ -1,6 +1,6 @@
 package jks.card.model.card;
 
-public class CardEffect 
+public enum Enum_Condition 
 {
-
+	
 }
